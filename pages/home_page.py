@@ -1,41 +1,26 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import Qt
+# from PyQt5 import QtWidgets, uic
+# import sys
 
-class HomePage(QMainWindow):
+# class Ui(QtWidgets.QMainWindow):
+#     def __init__(self):
+#         super(Ui, self).__init__()
+#         uic.loadUi('pages/home.ui', self)
+#         self.show()
+
+# app = QtWidgets.QApplication(sys.argv)
+# window = Ui()
+# app.exec_()
+
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
+
+
+class HomePage(QWidget):
     def __init__(self):
         super().__init__()
-
-        # Set the main window properties
-        self.setWindowTitle('Pumping Test Data Analysis')
-
-        # Create the main widget
-        main_widget = QWidget(self)
-        self.setCentralWidget(main_widget)
         layout = QVBoxLayout()
-        main_widget.setLayout(layout)
+        self.well_table_button = QPushButton('Open Well Table')
+        self.create_well_button=QPushButton('Create Well')
+        layout.addWidget(self.well_table_button)
+        layout.addWidget(self.create_well_button)
+        self.setLayout(layout)
 
-        # Header
-        header_layout = QHBoxLayout()
-        logo_label = QLabel()
-        logo_pixmap = QPixmap('path_to_logo_image.png')  # Replace 'path_to_logo_image.png' with the actual logo image file path
-        logo_label.setPixmap(logo_pixmap)
-        header_layout.addWidget(logo_label)
-        header_layout.addWidget(QLabel('Pumping Test Data Analysis'))
-        layout.addLayout(header_layout)
-
-        # Description
-        description_label = QLabel(
-            "Welcome to the Pumping Test Data Analysis application. "
-            "This application allows you to analyze pumping test data and extract useful insights."
-        )
-        description_label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(description_label)
-
-        # Buttons for analysis options
-        analysis_layout = QHBoxLayout()
-        analysis_layout.addWidget(QPushButton("Data Visualization"))
-        analysis_layout.addWidget(QPushButton("Hydraulic Parameters"))
-        # Add more buttons for other analysis options as needed
-        layout.addLayout(analysis_layout)
