@@ -1,31 +1,25 @@
 import sys
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTableWidget, QTableWidgetItem, QWidget
+from PyQt5.QtWidgets import QApplication,QTableWidgetItem
+from PyQt5 import uic
+from multiPageHandler import PageWindow
 
-class WellTablePage(QMainWindow):
+class WellTablePage(PageWindow):
     def __init__(self):
-        super().__init__()
+        super(WellTablePage,self).__init__()
+        uic.loadUi('well_table.ui',self)
+        self.table_widget.setColumnWidth(0,150)
+        self.table_widget.setColumnWidth(1,150)
+        self.table_widget.setColumnWidth(2,150)
+        self.table_widget.setColumnWidth(3,150)
 
-        self.setWindowTitle('Well Table Page')
-        self.setGeometry(100, 100, 800, 600)
-
-        # Create the main widget
-        main_widget = QWidget(self)
-        self.setCentralWidget(main_widget)
-        layout = QVBoxLayout()
-        main_widget.setLayout(layout)
-
-        # Create the table widget
-        self.table_widget = QTableWidget(self)
-        layout.addWidget(self.table_widget)
-
-        # Set column count and headers
-        self.table_widget.setColumnCount(4)  # Number of selected columns
-        headers = ['Well Name', 'Location', 'Coordinates', 'Performed By']
-        self.table_widget.setHorizontalHeaderLabels(headers)
+        self.back_button.clicked.connect(self.goback)
 
         # Load data from SQLite database
         self.load_data_from_database()
+
+    def goback(self):
+        self.goto('homepage')
 
     def load_data_from_database(self):
         # Connect to the SQLite database

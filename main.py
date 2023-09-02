@@ -1,9 +1,11 @@
 import sqlite3
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton, QStackedWidget
-from pages.well_table import WellTablePage
-from pages.home_page import HomePage
-from pages.create_well import CreateWellPage
+from PyQt5 import QtCore
+from multiPageHandler import PageWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QStackedWidget
+from well_table import WellTablePage
+from home_page import HomePage
+from create_well import CreateWellPage
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
@@ -26,62 +28,38 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         PumpingRate INTEGER,
         DistanceFromWell INTEGER,
         TimeWhenPumpingStopped INTEGER,
-        CsvFilePath TEXT
-        
+        CsvFilePath TEXT  
     );
     ''')
-
-
 class MultiPageApp(QMainWindow):
     def __init__(self):
-        super().__init__()
+        super(MultiPageApp ,self).__init__()
 
-        self.setWindowTitle('MultiPage App')
-        self.setGeometry(100, 100, 800, 600)
+        self.stacked_widget=QStackedWidget()
+        self.setCentralWidget(self.stacked_widget)
 
-        # Create the main widget
-        main_widget = QWidget(self)
-        self.setCentralWidget(main_widget)
-        layout = QVBoxLayout()
-        main_widget.setLayout(layout)
+        self.pages={}
 
-        # Create a stacked widget to manage pages
-        self.stacked_widget = QStackedWidget(self)
-        layout.addWidget(self.stacked_widget)
+        self.register_page(HomePage(),'homepage')
+        self.register_page(WellTablePage(),'welltable')
+        self.register_page(CreateWellPage(),'createwell')
+        self.goto('homepage')
 
-        # Create and add pages to the stacked widget
-        self.home_page = HomePage()
-        self.well_table_page = WellTablePage()
-        self.create_well_page=CreateWellPage()
+    def register_page(self,page,name):
+        self.pages[name]=page
+        self.stacked_widget.addWidget(page)
 
-        self.stacked_widget.addWidget(self.home_page)
-        self.stacked_widget.addWidget(self.well_table_page)
-        self.stacked_widget.addWidget(self.create_well_page)
+        if isinstance(page,PageWindow):
+            page.gotoSignal.connect(self.goto)
 
-        # Connect buttons to switch pages
-        self.home_page.well_table_button.clicked.connect(self.show_well_table_page)
-        self.home_page.create_well_button.clicked.connect(self.show_create_well_page)
+    @QtCore.pyqtSlot(str)
+    def goto(self,name):
+        if name in self.pages:
+            self.stacked_widget.setCurrentWidget(self.pages[name])
 
-        self.current_page = self.home_page
-
-    def show_home_page(self):
-        self.stacked_widget.setCurrentWidget(self.home_page)
-        self.current_page = self.home_page
-
-    def show_well_table_page(self):
-        self.stacked_widget.setCurrentWidget(self.well_table_page)
-        self.current_page = self.well_table_page
-
-    def show_create_well_page(self):
-        self.stacked_widget.setCurrentWidget(self.create_well_page)
-        self.current_page = self.create_well_page
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_app = MultiPageApp()
     main_app.show()
     sys.exit(app.exec_())
-
-if(sys.exit(app.exec_())):
-    conn.commit()
-    conn.close()
