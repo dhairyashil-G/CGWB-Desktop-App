@@ -98,6 +98,11 @@
          </attribute>
          <column>
           <property name="text">
+           <string>Id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
            <string>Well Name</string>
           </property>
          </column>
@@ -114,6 +119,16 @@
          <column>
           <property name="text">
            <string>Performed By</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Delete</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Next</string>
           </property>
          </column>
         </widget>

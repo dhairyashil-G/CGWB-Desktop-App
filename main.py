@@ -2,10 +2,11 @@ import sqlite3
 import sys
 from PyQt5 import QtCore
 from multiPageHandler import PageWindow
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QStackedWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget
 from well_table import WellTablePage
 from home_page import HomePage
 from create_well import CreateWellPage
+from preview import PreviewPage
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
@@ -31,7 +32,9 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         CsvFilePath TEXT  
     );
     ''')
+
 class MultiPageApp(QMainWindow):
+ 
     def __init__(self):
         super(MultiPageApp ,self).__init__()
 
@@ -43,6 +46,7 @@ class MultiPageApp(QMainWindow):
         self.register_page(HomePage(),'homepage')
         self.register_page(WellTablePage(),'welltable')
         self.register_page(CreateWellPage(),'createwell')
+        self.register_page(PreviewPage(),'preview')
         self.goto('homepage')
 
     def register_page(self,page,name):
@@ -61,5 +65,11 @@ class MultiPageApp(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_app = MultiPageApp()
+    well_table_page=WellTablePage()
+    prev_page=PreviewPage()
+    try:
+        well_table_page.well_id_signal.connect(prev_page.get_well_id)
+    except Exception as e:
+        print("Error connecting signal:", e)
     main_app.show()
     sys.exit(app.exec_())
