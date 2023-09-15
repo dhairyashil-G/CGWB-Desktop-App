@@ -7,6 +7,7 @@ from well_table import WellTablePage
 from home_page import HomePage
 from create_well import CreateWellPage
 from preview import PreviewPage
+from theis_page import TheisPage
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
@@ -43,10 +44,20 @@ class MultiPageApp(QMainWindow):
 
         self.pages={}
 
+        well_table_obj=WellTablePage()
+        prev_page_obj=PreviewPage()
+        theis_page_obj=TheisPage()
+        try:
+            well_table_obj.well_id_signal.connect(prev_page_obj.get_well)
+            well_table_obj.well_id_signal.connect(theis_page_obj.get_well)
+        except Exception as e:
+            print("Error connecting signal:", e)
+
         self.register_page(HomePage(),'homepage')
-        self.register_page(WellTablePage(),'welltable')
-        self.register_page(CreateWellPage(),'createwell')
+        self.register_page(well_table_obj,'welltable')
+        self.register_page(prev_page_obj,'createwell')
         self.register_page(PreviewPage(),'preview')
+        self.register_page(theis_page_obj,'theispage')
         self.goto('homepage')
 
     def register_page(self,page,name):
@@ -65,11 +76,5 @@ class MultiPageApp(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_app = MultiPageApp()
-    well_table_page=WellTablePage()
-    prev_page=PreviewPage()
-    try:
-        well_table_page.well_id_signal.connect(prev_page.get_well_id)
-    except Exception as e:
-        print("Error connecting signal:", e)
     main_app.show()
     sys.exit(app.exec_())

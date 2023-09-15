@@ -104,7 +104,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="grap_container_widget" native="true"/>
+     <widget class="QWidget" name="graph_container_widget" native="true"/>
     </item>
     <item>
      <widget class="QWidget" name="widget_4" native="true">
