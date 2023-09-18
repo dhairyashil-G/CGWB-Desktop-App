@@ -8,6 +8,7 @@ from home_page import HomePage
 from create_well import CreateWellPage
 from preview import PreviewPage
 from theis_page import TheisPage
+from cooper_jacob_page import CooperJacobPage
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
@@ -44,21 +45,24 @@ class MultiPageApp(QMainWindow):
 
         self.pages={}
 
-        well_table_obj=WellTablePage()
-        prev_page_obj=PreviewPage()
-        theis_page_obj=TheisPage()
+        self.well_table_obj=WellTablePage()
+        self.prev_page_obj=PreviewPage()
+        self.theis_page_obj=TheisPage()
+        self.cooper_jacob_page_obj=CooperJacobPage()
         try:
-            well_table_obj.well_id_signal.connect(prev_page_obj.get_well)
-            well_table_obj.well_id_signal.connect(theis_page_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.prev_page_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.theis_page_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.cooper_jacob_page_obj.get_well)
         except Exception as e:
             print("Error connecting signal:", e)
 
         self.register_page(HomePage(),'homepage')
-        self.register_page(well_table_obj,'welltable')
-        self.register_page(prev_page_obj,'createwell')
+        self.register_page(self.well_table_obj,'welltable')
+        self.register_page(self.prev_page_obj,'createwell')
         self.register_page(PreviewPage(),'preview')
         self.register_page(CreateWellPage(),'createwell')
-        self.register_page(theis_page_obj,'theispage')
+        self.register_page(self.theis_page_obj,'theispage')
+        self.register_page(self.cooper_jacob_page_obj,'cooperjacobpage')
         self.goto('homepage')
 
     def register_page(self,page,name):
@@ -72,6 +76,8 @@ class MultiPageApp(QMainWindow):
     def goto(self,name):
         if name in self.pages:
             self.stacked_widget.setCurrentWidget(self.pages[name])
+            if(name=='welltable'):
+                self.well_table_obj.load_data_from_database()
 
 
 if __name__ == '__main__':
