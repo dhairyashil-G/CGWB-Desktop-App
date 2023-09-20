@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>960</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QWidget" name="widget" native="true">
       <property name="maximumSize">
@@ -38,7 +38,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Choose Method</string>
+          <string>CooperJacob Method</string>
          </property>
         </widget>
        </item>
@@ -57,46 +57,58 @@
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>80</height>
+        <height>40</height>
        </size>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="theis_button">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
          </property>
          <property name="text">
-          <string>Theis Method</string>
+          <string>Adjust X intercept :</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="cooper_jacob_button">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Cooper Jacob Method</string>
+        <widget class="QDoubleSpinBox" name="adjust_x_intercept">
+         <property name="decimals">
+          <number>6</number>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="recovery_button">
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Adjust Slope :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="adjust_slope">
+         <property name="decimals">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="update_button">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>30</height>
+           <height>25</height>
           </size>
          </property>
          <property name="text">
-          <string>Theis Recovery Method</string>
+          <string>Update</string>
          </property>
         </widget>
        </item>
@@ -105,51 +117,35 @@
     </item>
     <item>
      <widget class="QWidget" name="widget_3" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>50</height>
+        <height>40</height>
        </size>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QPushButton" name="plot_button">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Plot</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QPushButton" name="plot_button">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>10</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Plot</string>
+       </property>
+      </widget>
      </widget>
     </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QWebEngineView" name="browser" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>800</width>
-        <height>300</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>2000</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3"/>
-     </widget>
+    <item>
+     <widget class="QWebEngineView" name="graph_container" native="true"/>
     </item>
     <item>
      <widget class="QWidget" name="widget_4" native="true">
@@ -189,7 +185,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>960</width>
      <height>21</height>
     </rect>
    </property>

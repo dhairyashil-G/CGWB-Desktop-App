@@ -11,15 +11,18 @@ class PreviewPage(PageWindow, QObject):
         uic.loadUi('preview.ui', self)
         self.back_button.clicked.connect(self.goback)
         self.theis_button.clicked.connect(self.gotheis)
+        self.cooper_jacob_button.clicked.connect(self.gocooperjacob)
         well_id_global=None
         self.plot_button.clicked.connect(self.show_plot)
+        # self.show_plot()
 
     def show_plot(self):
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
 
 
-        well_id = PreviewPage.well_id_global 
+        well_id = PreviewPage.well_id_global
+    
         # print(f'IN showPlot : {well_id}')
 
 
@@ -70,8 +73,11 @@ class PreviewPage(PageWindow, QObject):
     def gotheis(self):
         self.goto('theispage')
 
+    def gocooperjacob(self):
+        self.goto('cooperjacobpage')
+
     @pyqtSlot(int)
     def get_well(self, row):
         PreviewPage.well_id_global=row
-        self.show_plot()
+        print('row received')
         

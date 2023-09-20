@@ -11,4 +11,5 @@ class TheisPage(PageWindow,QObject):
     
     @pyqtSlot(int)
     def get_well(self, row):
-        print("Received theis row:", row)
+        # print("Received theis row:", row)
+        pass

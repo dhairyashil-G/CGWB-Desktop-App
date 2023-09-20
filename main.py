@@ -78,6 +78,7 @@ class MultiPageApp(QMainWindow):
             self.stacked_widget.setCurrentWidget(self.pages[name])
             if(name=='welltable'):
                 self.well_table_obj.load_data_from_database()
+        
 
 
 if __name__ == '__main__':
