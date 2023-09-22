@@ -1,4 +1,5 @@
 from PyQt5 import uic
+from PyQt5.QtWidgets import QScrollArea,QWidget
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
 import pandas as pd
@@ -10,6 +11,16 @@ import math
 class CooperJacobPage(PageWindow,QObject):
     def __init__(self):
         super(CooperJacobPage, self).__init__()
+         # Create a scroll area to contain the entire window's content
+        self.scroll_area = QScrollArea(self)
+        self.scroll_area.setWidgetResizable(True)
+
+        # Create a widget to hold all the window's content
+        self.scroll_widget = QWidget()
+        self.scroll_area.setWidget(self.scroll_widget)
+
+        # Set the scroll area as the central widget of the main window
+        self.setCentralWidget(self.scroll_area)
         uic.loadUi('cooper_jacob.ui', self)
         CooperJacobPage.well_id_global=None
         self.back_button.clicked.connect(self.goback)
