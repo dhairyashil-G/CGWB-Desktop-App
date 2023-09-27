@@ -1,10 +1,37 @@
 from PyQt5 import uic,QtWebEngineWidgets
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject, pyqtSlot
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView
 import sqlite3
 import pandas as pd
+from PyQt5.QtGui import QStandardItemModel
 import plotly.graph_objs as go
+
+Qt = QtCore.Qt
+
+class PandasModel(QtCore.QAbstractTableModel):
+    def __init__(self, data, parent=None):
+        QtCore.QAbstractTableModel.__init__(self, parent)
+        self._data = data
+
+    def rowCount(self, parent=None):
+        return len(self._data.values)
+
+    def columnCount(self, parent=None):
+        return self._data.columns.size
+
+    def headerData(self, section, orientation, role):
+        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+            return str(self._data.columns[section])
+    
+    def data(self, index, role=Qt.DisplayRole):
+        if index.isValid():
+            if role == Qt.DisplayRole:
+                return QtCore.QVariant(str(
+                    self._data.iloc[index.row()][index.column()]))
+        return QtCore.QVariant()
+    
 
 class PreviewPage(PageWindow, QObject):
     def __init__(self):
@@ -16,11 +43,6 @@ class PreviewPage(PageWindow, QObject):
         well_id_global=None
         self.plot_button.clicked.connect(self.show_plot)
         # self.show_plot()
-
-        self.pumping_table.setColumnWidth(0, 300)  # Set minimum width for column 0 to 100 pixels
-        self.pumping_table.setColumnWidth(1, 300)
-        self.recovery_table.setColumnWidth(0, 300) 
-        self.recovery_table.setColumnWidth(1, 300)  
 
     def show_plot(self):
         conn = sqlite3.connect('database.db')
@@ -52,17 +74,14 @@ class PreviewPage(PageWindow, QObject):
         df = pd.read_csv(csv_file_url)
         df_pumping_test = df[df['Time'] <= t_when_pumping_stopped]
         df_recovery_test = df[df['Time'] > t_when_pumping_stopped]
+
+        model1 = PandasModel(df_pumping_test)
+        self.pumping_table.setModel(model1)
+
+        model2= PandasModel(df_recovery_test)
+        self.recovery_table.setModel(model2)
         
-        for i, row in enumerate(df_pumping_test.itertuples(index=False)):
-            for j, item in enumerate(row):
-                item_data= QTableWidgetItem(str(item))
-                self.pumping_table.setItem(i, j,item_data)
-        
-        for i, row in enumerate(df_recovery_test.itertuples(index=False)):
-            for j, item in enumerate(row):
-                item_data= QTableWidgetItem(str(item))
-                self.recovery_table.setItem(i, j,item_data)
-        
+    
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=df_pumping_test['Time'], y=df_pumping_test['Drawdown'],
                                  mode='lines+markers',
