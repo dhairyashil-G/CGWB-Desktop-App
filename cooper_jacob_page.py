@@ -86,6 +86,9 @@ class CooperJacobPage(PageWindow,QObject):
         T = (2.303*Q)/(4*math.pi*delta_s)
         S = (2.25*T*(t_0/1440)) / (r*r)
 
+        self.transmissivity_value.setText(str(T))
+        self.storativity_value.setText(str(S))
+        
         t_for_u = (r*r * S)/(4*T*0.05)*1440
 
         self.show_plot(x_data,y_data,y_intercept,slope)

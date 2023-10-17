@@ -64,7 +64,7 @@ class MultiPageApp(QMainWindow):
         self.register_page(self.theis_page_obj,'theispage')
         self.register_page(self.cooper_jacob_page_obj,'cooperjacobpage')
         self.goto('homepage')
-
+        
     def register_page(self,page,name):
         self.pages[name]=page
         self.stacked_widget.addWidget(page)
