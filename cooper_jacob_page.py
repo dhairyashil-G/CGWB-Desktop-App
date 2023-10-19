@@ -50,7 +50,20 @@ class CooperJacobPage(PageWindow,QObject):
                 pdf.cell(table_cell_width, table_cell_height,
                         value, align='L', border=1)
             pdf.ln(table_cell_height)
+    
+    def calculate_drawdown(self,Q, T, t, S, r):
+        return ((2.303*Q)/(4*math.pi*T))*(math.log10((2.25*T*t)/(S*r*r)))
 
+    def calculate_u(self,r, S, T, t):
+        return (r*r*S)/(4*T*t)
+
+    def mse(self,actual, predicted):
+        actual = np.array(actual)
+        predicted = np.array(predicted)
+        differences = np.subtract(actual, predicted)
+        squared_differences = np.square(differences)
+        return squared_differences.mean()
+    
     def calculate_cooper_jacob(self):
 
         well_id = CooperJacobPage.well_id_global 
@@ -102,12 +115,31 @@ class CooperJacobPage(PageWindow,QObject):
         T = (2.303*Q)/(4*math.pi*delta_s)
         S = (2.25*T*(t_0/1440)) / (r*r)
         
-        self.transmissivity_value.setText(str(T))
-        self.storativity_value.setText(str(S))
         
-        t_for_u = (r*r * S)/(4*T*0.05)*1440
+        calculate_drawdown_list = list()
+        u_list = list()
+        error_list = list()
+        for index, row in df.iterrows():
+            drawdown = row['Drawdown']
+            time = row['Time']/1440
+            calculated_drawdown = self.calculate_drawdown(Q, T, time, S, r)
+            calculate_drawdown_list.append(calculated_drawdown)
+            u = self.calculate_u(r, S, T, time)
+            u_list.append(u)
+            error = (drawdown-calculated_drawdown)/drawdown
+            error_list.append(error)
 
-    #     self.show_plot(x_data,y_data,y_intercept,slope)
+        df_calc = df
+        df_calc['Calculated_Drawdown'] = calculate_drawdown_list
+        df_calc['u'] = u_list
+        df_calc['Error'] = error_list
+        df_calc = df_calc.round(decimals=3)
+
+        mse_error = self.mse(df['Drawdown'], df['Calculated_Drawdown'])
+
+        self.transmissivity_value.setText(str(round(T,3)))
+        self.storativity_value.setText("{:.8f}".format(S))
+        self.rms_error_value.setText(str(round(mse_error,3)))
 
     # def show_plot(self,x_data,y_data,y_intercept,slope):
         fig = go.Figure()
@@ -134,10 +166,10 @@ class CooperJacobPage(PageWindow,QObject):
         pdf.add_page()
 
         pdf.set_font('Arial', 'B', 10)
-        # pdf.image('methods/images/logo.jpg', x=10, y=10, w=25, h=30)
-        # pdf.image('methods/images/aquaprobe_logo.png',
-                # x=pdf.w-60, y=10, w=50, h=25)
-        # pdf.cell(0, 30, '', ln=1)
+        pdf.image('logo.jpg', x=10, y=10, w=25, h=30)
+        pdf.image('aquaprobe_logo.png',
+                x=pdf.w-60, y=10, w=50, h=25)
+        pdf.cell(0, 30, '', ln=1)
 
         pdf.set_font('Arial', 'B', 10)
         pdf.cell(0, 10, 'CENTRAL GROUND WATER BOARD (CGWB)', ln=1)
@@ -175,8 +207,19 @@ class CooperJacobPage(PageWindow,QObject):
             pdf.cell(col_width, 10, item1, border=1)
             pdf.cell(col_width, 10, item2, border=1)
             pdf.ln(10)
+        pdf.ln(5)
+        pdf.set_font('Arial', 'B', 13)
+        pdf.cell(0, 10, "Graphical Interpretation", ln=1)
+        fig.write_image("fig.png")
+        pdf.image('fig.png', w=200, h=150)
+        os.remove("fig.png")
+        pdf.ln(5)
+        pdf.set_font('Arial', 'B', 12)
+        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
+        pdf.cell(0, 10, f'Storativity : {"{:.8f}".format(S)}', ln=1)
+        pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
+        pdf.ln(5)
 
-        pdf.cell(200, 30, txt=f"Transmissivity : {T}", ln=True, align='L')
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
                         int(pdf.get_y()), dash_length=1, space_length=1)
         CooperJacobPage.pdf_obj=pdf

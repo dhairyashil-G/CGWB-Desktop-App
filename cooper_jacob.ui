@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-232</y>
          <width>763</width>
          <height>771</height>
         </rect>
@@ -182,7 +182,7 @@
             <pointsize>11</pointsize>
            </font>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="0">
@@ -212,7 +212,32 @@
             </layout>
            </item>
            <item>
-            <layout class="QGridLayout" name="gridLayout"/>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Storativity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="storativity_value">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout_3">
@@ -224,12 +249,12 @@
                 </font>
                </property>
                <property name="text">
-                <string>Storativity</string>
+                <string>RMS Error</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLabel" name="storativity_value">
+              <widget class="QLabel" name="rms_error_value">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
