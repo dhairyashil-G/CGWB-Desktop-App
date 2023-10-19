@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-232</y>
+         <y>0</y>
          <width>763</width>
          <height>771</height>
         </rect>
@@ -53,7 +53,7 @@
               </font>
              </property>
              <property name="text">
-              <string>CooperJacob Method</string>
+              <string>Cooper Jacob Method</string>
              </property>
             </widget>
            </item>
@@ -297,7 +297,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>Download Pdf Report</string>
+                 <string>Save Report</string>
                 </property>
                </widget>
               </item>

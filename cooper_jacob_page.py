@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QScrollArea,QWidget
+from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
 import pandas as pd
@@ -9,7 +9,7 @@ import numpy as np
 import math
 from fpdf import FPDF
 import os
-
+from datetime import datetime
 class CooperJacobPage(PageWindow,QObject):
     def __init__(self):
         super(CooperJacobPage, self).__init__()
@@ -50,7 +50,7 @@ class CooperJacobPage(PageWindow,QObject):
                 pdf.cell(table_cell_width, table_cell_height,
                         value, align='L', border=1)
             pdf.ln(table_cell_height)
-            
+
     def calculate_cooper_jacob(self):
 
         well_id = CooperJacobPage.well_id_global 
@@ -147,10 +147,43 @@ class CooperJacobPage(PageWindow,QObject):
         pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
         pdf.ln(5)
 
+        pdf.set_font('Arial', '', 12)
+        lst1 = list()
+        lst2 = list()
+        lst1.append(f"Well Name: {well_object.get('WellName')}" )
+        lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
+        lst1.append(f"Location: {well_object.get('Location')}")
+        lst2.append(f"Coordinates: {well_object.get('Coordinates')}")
+        lst1.append(
+            f" Start Datetime: {well_object.get('StartDateTime')} ")
+        lst2.append(
+            f" End Datetime: {well_object.get('EndDateTime')} ")
+        lst1.append(f"Soil Type: {well_object.get('SoilType')}")
+        lst2.append(f"Lithology:  {well_object.get('Lithology')}")
+        lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
+        lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m")
+        lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
+        lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
+        lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
+        lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
+        lst1.append(
+            f"Time Pumping Stopped: {well_object.get('TimeWhenPumpingStopped')} min")
+        lst2.append('')
+        pdf.set_font("Arial", "", 12)
+        col_width = pdf.w / 2.2
+        for item1, item2 in zip(lst1, lst2):
+            pdf.cell(col_width, 10, item1, border=1)
+            pdf.cell(col_width, 10, item2, border=1)
+            pdf.ln(10)
+
         pdf.cell(200, 30, txt=f"Transmissivity : {T}", ln=True, align='L')
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
                         int(pdf.get_y()), dash_length=1, space_length=1)
         CooperJacobPage.pdf_obj=pdf
     
     def create_report(self):
-        CooperJacobPage.pdf_obj.output('report.pdf')
+        current_datetime = datetime.now()
+        formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')
+        options = QFileDialog.Options()
+        file_path, _ = QFileDialog.getSaveFileName(self, "Save Report", f"CooperJacobReport {formatted_datetime}", "PDF Files (*.pdf)", options=options)
+        CooperJacobPage.pdf_obj.output(f'{file_path}')
