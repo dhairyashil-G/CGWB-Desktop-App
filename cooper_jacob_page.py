@@ -7,6 +7,8 @@ import plotly.graph_objs as go
 import sqlite3
 import numpy as np
 import math
+from fpdf import FPDF
+import os
 
 class CooperJacobPage(PageWindow,QObject):
     def __init__(self):
@@ -23,17 +25,32 @@ class CooperJacobPage(PageWindow,QObject):
         self.setCentralWidget(self.scroll_area)
         uic.loadUi('cooper_jacob.ui', self)
         CooperJacobPage.well_id_global=None
+        CooperJacobPage.pdf_obj=None
         self.back_button.clicked.connect(self.goback)
         # self.calculate_cooper_jacob()
         self.plot_button.clicked.connect(self.calculate_cooper_jacob)
-    
+        self.download_report_button.clicked.connect(self.create_report)
+
     @pyqtSlot(int)
     def get_well(self, row):
         CooperJacobPage.well_id_global=row
 
     def goback(self):
         self.goto('preview')
-
+    
+    def output_info_table(pdf, df):
+        table_cell_width = 90
+        table_cell_height = 12
+        pdf.set_font('Arial', '', 12)
+        cols = df.columns
+        for row in df.itertuples():
+            for col in cols:
+                value = str(getattr(row, col))
+                table_cell_width = 90
+                pdf.cell(table_cell_width, table_cell_height,
+                        value, align='L', border=1)
+            pdf.ln(table_cell_height)
+            
     def calculate_cooper_jacob(self):
 
         well_id = CooperJacobPage.well_id_global 
@@ -45,7 +62,6 @@ class CooperJacobPage(PageWindow,QObject):
         row = cursor.fetchone()
 
         well_object = {}
-
         if row:
             column_names = [desc[0] for desc in cursor.description]
             for i in range(len(column_names)):
@@ -85,15 +101,15 @@ class CooperJacobPage(PageWindow,QObject):
 
         T = (2.303*Q)/(4*math.pi*delta_s)
         S = (2.25*T*(t_0/1440)) / (r*r)
-
+        
         self.transmissivity_value.setText(str(T))
         self.storativity_value.setText(str(S))
         
         t_for_u = (r*r * S)/(4*T*0.05)*1440
 
-        self.show_plot(x_data,y_data,y_intercept,slope)
+    #     self.show_plot(x_data,y_data,y_intercept,slope)
 
-    def show_plot(self,x_data,y_data,y_intercept,slope):
+    # def show_plot(self,x_data,y_data,y_intercept,slope):
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=x_data, y=y_data,
                              mode='lines+markers',
@@ -113,3 +129,28 @@ class CooperJacobPage(PageWindow,QObject):
         )
 
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
+
+        pdf = FPDF()
+        pdf.add_page()
+
+        pdf.set_font('Arial', 'B', 10)
+        # pdf.image('methods/images/logo.jpg', x=10, y=10, w=25, h=30)
+        # pdf.image('methods/images/aquaprobe_logo.png',
+                # x=pdf.w-60, y=10, w=50, h=25)
+        # pdf.cell(0, 30, '', ln=1)
+
+        pdf.set_font('Arial', 'B', 10)
+        pdf.cell(0, 10, 'CENTRAL GROUND WATER BOARD (CGWB)', ln=1)
+        pdf.ln(5)
+
+        pdf.set_font('Arial', 'BU', 18)
+        pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
+        pdf.ln(5)
+
+        pdf.cell(200, 30, txt=f"Transmissivity : {T}", ln=True, align='L')
+        pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
+                        int(pdf.get_y()), dash_length=1, space_length=1)
+        CooperJacobPage.pdf_obj=pdf
+    
+    def create_report(self):
+        CooperJacobPage.pdf_obj.output('report.pdf')
