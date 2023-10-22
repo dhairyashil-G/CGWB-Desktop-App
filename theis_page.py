@@ -105,4 +105,8 @@ class TheisPage(PageWindow,QObject):
             yaxis_title="log Drawdown (m)",
             legend_title="Legend")
 
-        self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
+        self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))   
+
+        self.transmissivity_value.setText(str(round(T,3)))
+        self.storativity_value.setText("{:.10f}".format(S))
+  
