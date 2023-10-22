@@ -229,4 +229,5 @@ class CooperJacobPage(PageWindow,QObject):
         formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')
         options = QFileDialog.Options()
         file_path, _ = QFileDialog.getSaveFileName(self, "Save Report", f"CooperJacobReport {formatted_datetime}", "PDF Files (*.pdf)", options=options)
-        CooperJacobPage.pdf_obj.output(f'{file_path}')
+        if(file_path):
+            CooperJacobPage.pdf_obj.output(f'{file_path}')
