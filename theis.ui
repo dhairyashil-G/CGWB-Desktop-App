@@ -84,14 +84,17 @@
               </font>
              </property>
              <property name="text">
-              <string>Adjust Storativity : </string>
+              <string>Adjust Storativity(10^8) : </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="adjust_storativity">
              <property name="decimals">
-              <number>6</number>
+              <number>10</number>
+             </property>
+             <property name="maximum">
+              <double>10000000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -110,7 +113,10 @@
            <item>
             <widget class="QDoubleSpinBox" name="adjust_transmissivity">
              <property name="decimals">
-              <number>6</number>
+              <number>10</number>
+             </property>
+             <property name="maximum">
+              <double>100000000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -225,7 +231,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLabel" name="rms_error_value">
+              <widget class="QLabel" name="rms_residual_value">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
