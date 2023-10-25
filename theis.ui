@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-186</y>
          <width>763</width>
          <height>725</height>
         </rect>
@@ -84,7 +84,7 @@
               </font>
              </property>
              <property name="text">
-              <string>Adjust Storativity(10^8) : </string>
+              <string>Adjust Storativity : </string>
              </property>
             </widget>
            </item>
@@ -170,7 +170,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Transmissivity:</string>
+                <string>Transmissivity(m2/day):</string>
                </property>
               </widget>
              </item>
