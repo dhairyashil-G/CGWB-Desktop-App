@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-232</y>
+         <y>0</y>
          <width>763</width>
-         <height>771</height>
+         <height>725</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -115,7 +115,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="update_button">
+            <widget class="QPushButton" name="plot_button">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -128,35 +128,6 @@
             </widget>
            </item>
           </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QWidget" name="widget_3" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>40</height>
-           </size>
-          </property>
-          <widget class="QPushButton" name="plot_button">
-           <property name="geometry">
-            <rect>
-             <x>30</x>
-             <y>10</y>
-             <width>75</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Plot</string>
-           </property>
-          </widget>
          </widget>
         </item>
         <item>
