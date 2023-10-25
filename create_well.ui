@@ -91,7 +91,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Pumping Rate:</string>
+          <string>Pumping Rate :</string>
          </property>
         </widget>
        </item>
@@ -131,7 +131,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Well Diameter:</string>
+          <string>Well Diameter (m) :</string>
          </property>
         </widget>
        </item>
@@ -301,7 +301,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Well Depth:</string>
+          <string>Well Depth (m) :</string>
          </property>
         </widget>
        </item>
@@ -320,7 +320,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Time Pumping Stopped:</string>
+          <string>Time Pumping Stopped (min) :</string>
          </property>
         </widget>
        </item>
@@ -339,7 +339,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Static Water Level:</string>
+          <string>Static Water Level (m) :</string>
          </property>
         </widget>
        </item>
@@ -351,7 +351,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Distance From Well:</string>
+          <string>Distance From Well (m) :</string>
          </property>
         </widget>
        </item>
