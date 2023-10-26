@@ -73,7 +73,6 @@ class TheisRecoveryPage(PageWindow,QObject):
         else:
             slope=self.adjust_slope.value()
             x_intercept=self.adjust_x_intercept.value()
-            print('custom slope and x intercept found')
 
         y_intercept = ((-slope)*np.log(x_intercept))
         delta_s_dash = abs((slope*math.log(100) + y_intercept) -
@@ -133,10 +132,12 @@ class TheisRecoveryPage(PageWindow,QObject):
         lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
         lst1.append(f"Location: {well_object.get('Location')}")
         lst2.append(f"Coordinates: {well_object.get('Coordinates')}")
+        startdatetime=well_object.get('StartDatetime').replace('T',' ')
+        enddatetime=well_object.get('EndDatetime').replace('T',' ')
         lst1.append(
-            f" Start Datetime: {well_object.get('StartDateTime')} ")
+            f" Start Datetime: {startdatetime} ")
         lst2.append(
-            f" End Datetime: {well_object.get('EndDateTime')} ")
+            f" End Datetime: {enddatetime} ")
         lst1.append(f"Soil Type: {well_object.get('SoilType')}")
         lst2.append(f"Lithology:  {well_object.get('Lithology')}")
         lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
