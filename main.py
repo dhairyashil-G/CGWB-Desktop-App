@@ -9,6 +9,7 @@ from create_well import CreateWellPage
 from preview import PreviewPage
 from theis_page import TheisPage
 from cooper_jacob_page import CooperJacobPage
+from theis_recovery_page import TheisRecoveryPage
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
@@ -49,10 +50,12 @@ class MultiPageApp(QMainWindow):
         self.prev_page_obj=PreviewPage()
         self.theis_page_obj=TheisPage()
         self.cooper_jacob_page_obj=CooperJacobPage()
+        self.theis_recovery_page_obj=TheisRecoveryPage()
         try:
             self.well_table_obj.well_id_signal.connect(self.prev_page_obj.get_well)
             self.well_table_obj.well_id_signal.connect(self.theis_page_obj.get_well)
             self.well_table_obj.well_id_signal.connect(self.cooper_jacob_page_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.theis_recovery_page_obj.get_well)
         except Exception as e:
             print("Error connecting signal:", e)
 
@@ -63,6 +66,7 @@ class MultiPageApp(QMainWindow):
         self.register_page(CreateWellPage(),'createwell')
         self.register_page(self.theis_page_obj,'theispage')
         self.register_page(self.cooper_jacob_page_obj,'cooperjacobpage')
+        self.register_page(self.theis_recovery_page_obj,'theisrecoverypage')
         self.goto('homepage')
         
     def register_page(self,page,name):

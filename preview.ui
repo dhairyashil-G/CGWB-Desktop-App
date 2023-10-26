@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-427</y>
+         <y>0</y>
          <width>818</width>
          <height>949</height>
         </rect>
@@ -103,7 +103,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="recovery_button">
+            <widget class="QPushButton" name="theis_recovery_button">
              <property name="minimumSize">
               <size>
                <width>0</width>

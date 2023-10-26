@@ -40,6 +40,7 @@ class PreviewPage(PageWindow, QObject):
         self.back_button.clicked.connect(self.goback)
         self.theis_button.clicked.connect(self.gotheis)
         self.cooper_jacob_button.clicked.connect(self.gocooperjacob)
+        self.theis_recovery_button.clicked.connect(self.gotheisrecovery)
         well_id_global=None
         self.plot_button.clicked.connect(self.show_plot)
         # self.show_plot()
@@ -111,6 +112,9 @@ class PreviewPage(PageWindow, QObject):
 
     def gocooperjacob(self):
         self.goto('cooperjacobpage')
+
+    def gotheisrecovery(self):
+        self.goto('theisrecoverypage')
 
     @pyqtSlot(int)
     def get_well(self, row):
