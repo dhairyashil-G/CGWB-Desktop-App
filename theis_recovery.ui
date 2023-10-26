@@ -7,40 +7,40 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_8">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QScrollArea" name="scrollArea">
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-186</y>
+         <y>-204</y>
          <width>763</width>
          <height>725</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_6">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QWidget" name="widget_6" native="true">
+         <widget class="QWidget" name="widget" native="true">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>80</height>
            </size>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
            <item alignment="Qt::AlignHCenter">
-            <widget class="QLabel" name="label_4">
+            <widget class="QLabel" name="label">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -53,12 +53,12 @@
               </font>
              </property>
              <property name="text">
-              <string>Theis Method</string>
+              <string>Cooper Jacob Method</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_2">
+            <widget class="Line" name="line">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -68,60 +68,54 @@
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="widget_7" native="true">
+         <widget class="QWidget" name="widget_2" native="true">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>40</height>
            </size>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QLabel" name="label_5">
+            <widget class="QLabel" name="label_3">
              <property name="font">
               <font>
                <pointsize>11</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Adjust Storativity : </string>
+              <string>Adjust X intercept :</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="adjust_storativity">
+            <widget class="QDoubleSpinBox" name="adjust_x_intercept">
              <property name="decimals">
-              <number>10</number>
-             </property>
-             <property name="maximum">
-              <double>10000000.000000000000000</double>
+              <number>6</number>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_6">
+            <widget class="QLabel" name="label_2">
              <property name="font">
               <font>
                <pointsize>11</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Adjust Transmissivity :</string>
+              <string>Adjust Slope :</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="adjust_transmissivity">
+            <widget class="QDoubleSpinBox" name="adjust_slope">
              <property name="decimals">
-              <number>10</number>
-             </property>
-             <property name="maximum">
-              <double>100000000.000000000000000</double>
+              <number>6</number>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="update_button">
+            <widget class="QPushButton" name="plot_button">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -147,7 +141,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="widget_8" native="true">
+         <widget class="QWidget" name="widget_6" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -163,14 +157,14 @@
            <item>
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="0">
-              <widget class="QLabel" name="label_7">
+              <widget class="QLabel" name="label_4">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
                 </font>
                </property>
                <property name="text">
-                <string>Transmissivity(m2/day):</string>
+                <string>Transmissivity (m2/day) :</string>
                </property>
               </widget>
              </item>
@@ -191,14 +185,14 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QLabel" name="label_8">
+              <widget class="QLabel" name="label_6">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
                 </font>
                </property>
                <property name="text">
-                <string>Storativity :</string>
+                <string>Storativity</string>
                </property>
               </widget>
              </item>
@@ -219,19 +213,19 @@
            <item>
             <layout class="QGridLayout" name="gridLayout_3">
              <item row="0" column="0">
-              <widget class="QLabel" name="label_9">
+              <widget class="QLabel" name="label_5">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
                 </font>
                </property>
                <property name="text">
-                <string>RMS Residual :</string>
+                <string>RMS Error</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLabel" name="rms_residual_value">
+              <widget class="QLabel" name="rms_error_value">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
@@ -248,25 +242,25 @@
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="widget_9" native="true">
+         <widget class="QWidget" name="widget_4" native="true">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>80</height>
            </size>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QWidget" name="widget_10" native="true">
+            <widget class="QWidget" name="widget_5" native="true">
              <property name="maximumSize">
               <size>
                <width>16777215</width>
                <height>80</height>
               </size>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
-               <widget class="QPushButton" name="back_button_2">
+               <widget class="QPushButton" name="back_button">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>

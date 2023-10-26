@@ -19,7 +19,7 @@ class TheisRecoveryPage(PageWindow,QObject):
         TheisRecoveryPage.pdf_obj=None
         uic.loadUi('theis_recovery.ui', self)
         # self.update_button.clicked.connect(self.calculate_theis)
-        self.back_button_2.clicked.connect(self.goback)
+        self.back_button.clicked.connect(self.goback)
         # self.download_report_button.clicked.connect(self.create_report)
 
     @pyqtSlot(int)
