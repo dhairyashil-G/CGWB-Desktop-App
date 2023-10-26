@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-204</y>
+         <y>0</y>
          <width>763</width>
          <height>725</height>
         </rect>
@@ -123,7 +123,7 @@
               </size>
              </property>
              <property name="text">
-              <string>Update</string>
+              <string>Plot</string>
              </property>
             </widget>
            </item>
@@ -164,12 +164,12 @@
                 </font>
                </property>
                <property name="text">
-                <string>Transmissivity (m2/day) :</string>
+                <string>    Δ S ' :</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLabel" name="transmissivity_value">
+              <widget class="QLabel" name="delta_s_value">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
@@ -192,12 +192,12 @@
                 </font>
                </property>
                <property name="text">
-                <string>Storativity</string>
+                <string>Transmissivity :</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="storativity_value">
+              <widget class="QLabel" name="transmissivity_value">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
@@ -220,12 +220,12 @@
                 </font>
                </property>
                <property name="text">
-                <string>RMS Error</string>
+                <string>Relative change in Storativity :</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLabel" name="rms_error_value">
+              <widget class="QLabel" name="relative_change_s_value">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
