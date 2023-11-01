@@ -139,17 +139,16 @@ class TheisRecoveryPage(PageWindow,QObject):
             f" Start Datetime: {startdatetime} ")
         lst2.append(
             f" End Datetime: {enddatetime} ")
-        lst1.append(f"Soil Type: {well_object.get('SoilType')}")
-        lst2.append(f"Lithology:  {well_object.get('Lithology')}")
+        lst1.append(
+            f"Time Pumping Stopped: {well_object.get('TimeWhenPumpingStopped')} min")
+        lst2.append(f"Geology:  {well_object.get('Geology')}")
         lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
         lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
         lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
         lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
         lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
-        lst1.append(
-            f"Time Pumping Stopped: {well_object.get('TimeWhenPumpingStopped')} min")
-        lst2.append('')
+        
         pdf.set_font("Arial", "", 12)
         col_width = pdf.w / 2.2
         for item1, item2 in zip(lst1, lst2):
