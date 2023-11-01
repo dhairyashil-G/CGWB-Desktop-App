@@ -58,12 +58,12 @@ class CooperJacobPage(PageWindow,QObject):
     def calculate_u(self,r, S, T, t):
         return (r*r*S)/(4*T*t)
 
-    # def mse(self,actual, predicted):
-    #     actual = np.array(actual)
-    #     predicted = np.array(predicted)
-    #     differences = np.subtract(actual, predicted)
-    #     squared_differences = np.square(differences)
-    #     return squared_differences.mean()
+    def mse(self,actual, predicted):
+        actual = np.array(actual)
+        predicted = np.array(predicted)
+        differences = np.subtract(actual, predicted)
+        squared_differences = np.square(differences)
+        return squared_differences.mean()
     
     def calculate_cooper_jacob(self):
 
