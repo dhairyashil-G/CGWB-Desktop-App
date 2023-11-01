@@ -141,13 +141,34 @@
         </widget>
        </item>
        <item row="6" column="2">
-        <widget class="QDoubleSpinBox" name="welldepth_spinbox"/>
+        <widget class="QDoubleSpinBox" name="welldepth_spinbox">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="8" column="2">
-        <widget class="QDoubleSpinBox" name="distancefromwell_spinbox"/>
+        <widget class="QDoubleSpinBox" name="distancefromwell_spinbox">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="8" column="5">
-        <widget class="QDoubleSpinBox" name="staticwaterlevel_spinbox"/>
+        <widget class="QDoubleSpinBox" name="staticwaterlevel_spinbox">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="8" column="0">
         <widget class="QLabel" name="label_15">
@@ -162,10 +183,24 @@
         </widget>
        </item>
        <item row="12" column="2">
-        <widget class="QDoubleSpinBox" name="pumpingrate_spinbox"/>
+        <widget class="QDoubleSpinBox" name="pumpingrate_spinbox">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="6" column="5">
-        <widget class="QDoubleSpinBox" name="welldiameter_spinbox"/>
+        <widget class="QDoubleSpinBox" name="welldiameter_spinbox">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_20">
@@ -180,7 +215,14 @@
         </widget>
        </item>
        <item row="12" column="5">
-        <widget class="QDoubleSpinBox" name="timepumpingstopped_spinbox"/>
+        <widget class="QDoubleSpinBox" name="timepumpingstopped_spinbox">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="3" column="4">
         <widget class="QLabel" name="label_18">
