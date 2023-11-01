@@ -33,7 +33,6 @@ class CreateWellPage(PageWindow):
         wellname = self.wellname_edit.text()
         location = self.location_edit.text()
         coordinates = self.coordinates_edit.text()
-        soiltype = self.soiltype_combo.currentText()
         geology = self.geology_edit.text()
         performedby = self.performedby_edit.text()
         startdatetime = self.startdatetime_edit.dateTime().toString(Qt.ISODate)
@@ -60,8 +59,8 @@ class CreateWellPage(PageWindow):
         conn = sqlite3.connect('./database.db')
         cursor = conn.cursor()
         try:
-            cursor.execute(f'''INSERT INTO WellData (WellName, Location, Coordinates, SoilType, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell,TimeWhenPumpingStopped, CsvFilePath) 
-            VALUES ('{wellname}', '{location}', '{coordinates}', '{soiltype}', '{geology}', '{performedby}', '{current_datetime}', '{startdatetime}', '{enddatetime}', {totalduration}, {zonestappedin}, {welldepth}, {welldiameter}, {staticwaterlevel}, {pumpingrate}, {distancefromwell}, {timepumpingstopped}, '{csv_file_path}')''')
+            cursor.execute(f'''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell,TimeWhenPumpingStopped, CsvFilePath) 
+            VALUES ('{wellname}', '{location}', '{coordinates}', '{geology}', '{performedby}', '{current_datetime}', '{startdatetime}', '{enddatetime}', {totalduration}, {zonestappedin}, {welldepth}, {welldiameter}, {staticwaterlevel}, {pumpingrate}, {distancefromwell}, {timepumpingstopped}, '{csv_file_path}')''')
         except sqlite3.Error as e:
             print("SQLite error:", e)
             print("Failed to execute query with values:")
@@ -81,3 +80,4 @@ class CreateWellPage(PageWindow):
         self.staticwaterlevel_spinbox.setValue(0)
         self.pumpingrate_spinbox.setValue(0)
         self.distancefromwell_spinbox.setValue(0)
+        self.geology_edit.clear()

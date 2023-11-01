@@ -102,25 +102,6 @@
          </property>
         </widget>
        </item>
-       <item row="13" column="4">
-        <widget class="QSpinBox" name="zonestappedin_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="label_17">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Start DateTime:</string>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="4">
         <widget class="QSpinBox" name="staticwaterlevel_spinbox">
          <property name="maximum">
@@ -137,18 +118,6 @@
          </property>
          <property name="text">
           <string>Static Water Level (m) :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_11">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Time Pumping Stopped (min) :</string>
          </property>
         </widget>
        </item>
@@ -191,70 +160,7 @@
         </widget>
        </item>
        <item row="13" column="3">
-        <widget class="QWidget" name="widget_2" native="true">
-         <widget class="QLabel" name="label_10">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>138</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Zones tapped-in:</string>
-          </property>
-         </widget>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QSpinBox" name="timepumpingstopped_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="2">
-        <widget class="QDateTimeEdit" name="startdatetime_edit"/>
-       </item>
-       <item row="8" column="4">
-        <widget class="QSpinBox" name="pumpingrate_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="3">
-        <widget class="QLabel" name="label_12">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Pumping Rate :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="3">
-        <widget class="QLabel" name="label_18">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>End DateTime:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="4">
-        <widget class="QDateTimeEdit" name="enddatetime_edit"/>
+        <widget class="QWidget" name="widget_2" native="true"/>
        </item>
        <item row="3" column="3">
         <widget class="QLabel" name="label_16">
@@ -325,64 +231,95 @@
        <item row="1" column="2">
         <widget class="QLineEdit" name="wellname_edit"/>
        </item>
+       <item row="6" column="2">
+        <widget class="QLineEdit" name="geology_edit"/>
+       </item>
        <item row="6" column="3">
-        <widget class="QLabel" name="label_19">
+        <widget class="QLabel" name="label_12">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Soil Type:</string>
+          <string>Pumping Rate :</string>
          </property>
         </widget>
        </item>
        <item row="6" column="4">
-        <widget class="QComboBox" name="soiltype_combo">
-         <item>
-          <property name="text">
-           <string>Alluvial Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Red and Yellow Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Black Cotton Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Laterite Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mountainous or Forest Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Arid or Desert Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Saline and Alkaline Soil</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Peaty and Marshy Soil</string>
-          </property>
-         </item>
+        <widget class="QSpinBox" name="pumpingrate_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <widget class="QLineEdit" name="geology_edit"/>
+       <item row="8" column="3">
+        <widget class="QLabel" name="label_18">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>End DateTime:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4">
+        <widget class="QDateTimeEdit" name="enddatetime_edit"/>
+       </item>
+       <item row="12" column="4">
+        <widget class="QSpinBox" name="timepumpingstopped_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="3">
+        <widget class="QLabel" name="label_11">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Time Pumping Stopped (min) :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QDateTimeEdit" name="startdatetime_edit"/>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Start DateTime:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Zones tapped-in:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="2">
+        <widget class="QSpinBox" name="zonestappedin_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
