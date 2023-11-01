@@ -115,7 +115,7 @@ class TheisPage(PageWindow,QObject):
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))   
 
         self.transmissivity_value.setText(str(round(T,3)))
-        self.storativity_value.setText("{:.10f}".format(S))
+        self.storativity_value.setText("{:.3f}".format(S))
         # self.rms_residual_value.setText(str(round(rms_residual,3)))
 
 
@@ -173,7 +173,7 @@ class TheisPage(PageWindow,QObject):
         pdf.ln(5)
         pdf.set_font('Arial', 'B', 12)
         pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
-        pdf.cell(0, 10, f'Storativity : {"{:.10f}".format(S)}', ln=1)
+        pdf.cell(0, 10, f'Storativity : {"{:.3f}".format(S)}', ln=1)
         # pdf.cell(0, 10, f'RMS Residual : {round(rms_residual, 3)}%', ln=1)
         pdf.ln(5)
 
