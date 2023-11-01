@@ -18,7 +18,6 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         WellName TEXT UNIQUE,
         Location TEXT,
         Coordinates TEXT,
-        SoilType TEXT CHECK(SoilType IN ('Alluvial Soil', 'Red and Yellow Soil', 'Black Cotton Soil', 'Laterite Soil', 'Mountainous or Forest Soil','Arid or Desert Soil','Saline and Alkaline Soil','Peaty and Marshy Soil')),
         Geology TEXT,
         PerformedBy TEXT,
         CurrentDatetime TIMESTAMP,
