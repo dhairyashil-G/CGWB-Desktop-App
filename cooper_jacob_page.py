@@ -24,6 +24,7 @@ class CooperJacobPage(PageWindow,QObject):
         # # Set the scroll area as the central widget of the main window
         # self.setCentralWidget(self.scroll_area)
         uic.loadUi('cooper_jacob.ui', self)
+        self.setWindowTitle('AquaProbe-Beta1')
         CooperJacobPage.well_id_global=None
         CooperJacobPage.pdf_obj=None
         self.back_button.clicked.connect(self.goback)

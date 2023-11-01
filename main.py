@@ -19,7 +19,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         Location TEXT,
         Coordinates TEXT,
         SoilType TEXT CHECK(SoilType IN ('Alluvial Soil', 'Red and Yellow Soil', 'Black Cotton Soil', 'Laterite Soil', 'Mountainous or Forest Soil','Arid or Desert Soil','Saline and Alkaline Soil','Peaty and Marshy Soil')),
-        Lithology TEXT CHECK(Lithology IN ('Evaporitic', 'Carbonated', 'Detrital', 'Non consolidated', 'Plutonic','Volcanic','Metamorphic','Ortogneissic')),
+        Geology TEXT,
         PerformedBy TEXT,
         CurrentDatetime TIMESTAMP,
         StartDatetime TIMESTAMP,
@@ -45,7 +45,7 @@ class MultiPageApp(QMainWindow):
         self.setCentralWidget(self.stacked_widget)
 
         self.pages={}
-
+        self.setWindowTitle('AquaProbe-Beta1')
         self.well_table_obj=WellTablePage()
         self.prev_page_obj=PreviewPage()
         self.theis_page_obj=TheisPage()

@@ -7,6 +7,7 @@ class HomePage(PageWindow):
     def __init__(self):
         super(HomePage,self).__init__()
         uic.loadUi('home_page.ui',self)
+        self.setWindowTitle('AquaProbe-Beta1')
 
         self.welltable_button.clicked.connect(self.goto_welltable)
         self.createwell_button.clicked.connect(self.goto_createwell)

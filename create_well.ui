@@ -61,23 +61,169 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+       <item row="1" column="4">
+        <widget class="QLineEdit" name="coordinates_edit"/>
+       </item>
+       <item row="13" column="2">
+        <widget class="QPushButton" name="csv_button">
+         <property name="text">
+          <string>Open File Explorer</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="label_21">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Well Name:</string>
+          <string>Select CSV File:</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
-        <widget class="QLineEdit" name="wellname_edit"/>
+       <item row="4" column="2">
+        <widget class="QSpinBox" name="welldepth_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Well Depth (m) :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="4">
+        <widget class="QSpinBox" name="zonestappedin_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Start DateTime:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QSpinBox" name="staticwaterlevel_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLabel" name="label_14">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Static Water Level (m) :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Time Pumping Stopped (min) :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Performed By:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QLabel" name="label_15">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Distance From Well (m) :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QSpinBox" name="distancefromwell_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QSpinBox" name="welldiameter_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="3">
+        <widget class="QWidget" name="widget_2" native="true">
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>138</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Zones tapped-in:</string>
+          </property>
+         </widget>
+        </widget>
        </item>
        <item row="8" column="2">
         <widget class="QSpinBox" name="timepumpingstopped_spinbox">
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="2">
+        <widget class="QDateTimeEdit" name="startdatetime_edit"/>
+       </item>
+       <item row="8" column="4">
+        <widget class="QSpinBox" name="pumpingrate_spinbox">
          <property name="maximum">
           <number>10000</number>
          </property>
@@ -95,16 +241,6 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="2">
-        <widget class="QDateTimeEdit" name="startdatetime_edit"/>
-       </item>
-       <item row="8" column="4">
-        <widget class="QSpinBox" name="pumpingrate_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
        <item row="12" column="3">
         <widget class="QLabel" name="label_18">
          <property name="font">
@@ -119,9 +255,6 @@
        </item>
        <item row="12" column="4">
         <widget class="QDateTimeEdit" name="enddatetime_edit"/>
-       </item>
-       <item row="3" column="2">
-        <widget class="QLineEdit" name="performedby_edit"/>
        </item>
        <item row="3" column="3">
         <widget class="QLabel" name="label_16">
@@ -150,15 +283,18 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="3">
-        <widget class="QLabel" name="label_19">
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="performedby_edit"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_13">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Soil Type:</string>
+          <string>Geology:</string>
          </property>
         </widget>
        </item>
@@ -174,60 +310,31 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_13">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Lithology:</string>
+          <string>Well Name:</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <widget class="QComboBox" name="lithology_combo">
-         <item>
-          <property name="text">
-           <string>Evaporitic</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Carbonated</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Detrital</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Non consolidated</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Plutonic</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Volcanic</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Metamorphic</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ortogneissic</string>
-          </property>
-         </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="wellname_edit"/>
+       </item>
+       <item row="6" column="3">
+        <widget class="QLabel" name="label_19">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Soil Type:</string>
+         </property>
         </widget>
        </item>
        <item row="6" column="4">
@@ -274,156 +381,8 @@
          </item>
         </widget>
        </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="label_17">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Start DateTime:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QSpinBox" name="welldepth_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_20">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Well Depth (m) :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="4">
-        <widget class="QSpinBox" name="zonestappedin_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_11">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Time Pumping Stopped (min) :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="4">
-        <widget class="QSpinBox" name="staticwaterlevel_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QLabel" name="label_14">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Static Water Level (m) :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="3">
-        <widget class="QLabel" name="label_15">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Distance From Well (m) :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Performed By:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="4">
-        <widget class="QSpinBox" name="distancefromwell_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="4">
-        <widget class="QSpinBox" name="welldiameter_spinbox">
-         <property name="maximum">
-          <number>10000</number>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="2">
-        <widget class="QPushButton" name="csv_button">
-         <property name="text">
-          <string>Open File Explorer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="0">
-        <widget class="QLabel" name="label_21">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Select CSV File:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QLineEdit" name="coordinates_edit"/>
-       </item>
-       <item row="13" column="3">
-        <widget class="QWidget" name="widget_2" native="true">
-         <widget class="QLabel" name="label_10">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>138</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Zones tapped-in:</string>
-          </property>
-         </widget>
-        </widget>
+       <item row="6" column="2">
+        <widget class="QLineEdit" name="geology_edit"/>
        </item>
       </layout>
      </widget>

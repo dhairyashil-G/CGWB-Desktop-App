@@ -10,6 +10,7 @@ class CreateWellPage(PageWindow):
     def __init__(self):
         super(CreateWellPage,self).__init__()
         uic.loadUi('create_well.ui',self)
+        self.setWindowTitle('AquaProbe-Beta1')
 
         self.csv_button.clicked.connect(self.select_csv_file)
         self.save_button.clicked.connect(self.save_well_data)
@@ -33,7 +34,7 @@ class CreateWellPage(PageWindow):
         location = self.location_edit.text()
         coordinates = self.coordinates_edit.text()
         soiltype = self.soiltype_combo.currentText()
-        lithology = self.lithology_combo.currentText()
+        geology = self.geology_edit.text()
         performedby = self.performedby_edit.text()
         startdatetime = self.startdatetime_edit.dateTime().toString(Qt.ISODate)
         enddatetime = self.enddatetime_edit.dateTime().toString(Qt.ISODate)
@@ -59,8 +60,8 @@ class CreateWellPage(PageWindow):
         conn = sqlite3.connect('./database.db')
         cursor = conn.cursor()
         try:
-            cursor.execute(f'''INSERT INTO WellData (WellName, Location, Coordinates, SoilType, Lithology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell,TimeWhenPumpingStopped, CsvFilePath) 
-            VALUES ('{wellname}', '{location}', '{coordinates}', '{soiltype}', '{lithology}', '{performedby}', '{current_datetime}', '{startdatetime}', '{enddatetime}', {totalduration}, {zonestappedin}, {welldepth}, {welldiameter}, {staticwaterlevel}, {pumpingrate}, {distancefromwell}, {timepumpingstopped}, '{csv_file_path}')''')
+            cursor.execute(f'''INSERT INTO WellData (WellName, Location, Coordinates, SoilType, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell,TimeWhenPumpingStopped, CsvFilePath) 
+            VALUES ('{wellname}', '{location}', '{coordinates}', '{soiltype}', '{geology}', '{performedby}', '{current_datetime}', '{startdatetime}', '{enddatetime}', {totalduration}, {zonestappedin}, {welldepth}, {welldiameter}, {staticwaterlevel}, {pumpingrate}, {distancefromwell}, {timepumpingstopped}, '{csv_file_path}')''')
         except sqlite3.Error as e:
             print("SQLite error:", e)
             print("Failed to execute query with values:")

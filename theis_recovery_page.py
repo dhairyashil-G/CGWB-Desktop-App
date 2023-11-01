@@ -19,6 +19,7 @@ class TheisRecoveryPage(PageWindow,QObject):
         TheisRecoveryPage.well_id_global=None
         TheisRecoveryPage.pdf_obj=None
         uic.loadUi('theis_recovery.ui', self)
+        self.setWindowTitle('AquaProbe-Beta1')
         self.plot_button.clicked.connect(self.calculate_theis_recovery)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)

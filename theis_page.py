@@ -18,6 +18,7 @@ class TheisPage(PageWindow,QObject):
         TheisPage.well_id_global=None
         TheisPage.pdf_obj=None
         uic.loadUi('theis.ui', self)
+        self.setWindowTitle('AquaProbe-Beta1')
         self.update_button.clicked.connect(self.calculate_theis)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)
