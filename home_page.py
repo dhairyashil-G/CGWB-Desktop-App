@@ -12,9 +12,13 @@ class HomePage(PageWindow):
 
         self.welltable_button.clicked.connect(self.goto_welltable)
         self.createwell_button.clicked.connect(self.goto_createwell)
+        self.actionAbout_Us.triggered.connect(self.goto_aboutus)
 
     def goto_welltable(self):
         self.goto('welltable')
+
+    def goto_aboutus(self):
+        self.goto('aboutus')
 
     def goto_createwell(self):
         self.goto('createwell')

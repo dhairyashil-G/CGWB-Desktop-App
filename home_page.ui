@@ -158,10 +158,16 @@ freeware for use by ground water professionals, researchers, students, teachers 
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionAbout_Us"/>
    </widget>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout_Us">
+   <property name="text">
+    <string>About Us</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
