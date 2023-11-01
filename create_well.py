@@ -10,7 +10,7 @@ class CreateWellPage(PageWindow):
     def __init__(self):
         super(CreateWellPage,self).__init__()
         uic.loadUi('create_well.ui',self)
-        self.setWindowTitle('AquaProbe-Beta1')
+        self.setWindowTitle('AquaProbe-Beta1.1')
 
         self.csv_button.clicked.connect(self.select_csv_file)
         self.save_button.clicked.connect(self.save_well_data)
