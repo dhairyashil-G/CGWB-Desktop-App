@@ -125,9 +125,6 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="5">
-        <widget class="QLineEdit" name="coordinates_edit"/>
-       </item>
        <item row="1" column="5">
         <widget class="QLineEdit" name="performedby_edit"/>
        </item>
@@ -143,6 +140,15 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="2">
+        <widget class="QDoubleSpinBox" name="welldepth_spinbox"/>
+       </item>
+       <item row="8" column="2">
+        <widget class="QDoubleSpinBox" name="distancefromwell_spinbox"/>
+       </item>
+       <item row="8" column="5">
+        <widget class="QDoubleSpinBox" name="staticwaterlevel_spinbox"/>
+       </item>
        <item row="8" column="0">
         <widget class="QLabel" name="label_15">
          <property name="font">
@@ -155,6 +161,12 @@
          </property>
         </widget>
        </item>
+       <item row="12" column="2">
+        <widget class="QDoubleSpinBox" name="pumpingrate_spinbox"/>
+       </item>
+       <item row="6" column="5">
+        <widget class="QDoubleSpinBox" name="welldiameter_spinbox"/>
+       </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_20">
          <property name="font">
@@ -166,6 +178,9 @@
           <string>Well Depth (m) :</string>
          </property>
         </widget>
+       </item>
+       <item row="12" column="5">
+        <widget class="QDoubleSpinBox" name="timepumpingstopped_spinbox"/>
        </item>
        <item row="3" column="4">
         <widget class="QLabel" name="label_18">
@@ -279,23 +294,31 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <widget class="QDoubleSpinBox" name="welldepth_spinbox"/>
-       </item>
-       <item row="6" column="5">
-        <widget class="QDoubleSpinBox" name="welldiameter_spinbox"/>
-       </item>
-       <item row="8" column="2">
-        <widget class="QDoubleSpinBox" name="distancefromwell_spinbox"/>
-       </item>
-       <item row="8" column="5">
-        <widget class="QDoubleSpinBox" name="staticwaterlevel_spinbox"/>
-       </item>
-       <item row="12" column="2">
-        <widget class="QDoubleSpinBox" name="pumpingrate_spinbox"/>
-       </item>
-       <item row="12" column="5">
-        <widget class="QDoubleSpinBox" name="timepumpingstopped_spinbox"/>
+       <item row="2" column="5">
+        <widget class="QWidget" name="widget_2" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Latitude:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="latitude_edit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Longitude:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="longitude_edit"/>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>

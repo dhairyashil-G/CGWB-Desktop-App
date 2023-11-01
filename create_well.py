@@ -32,7 +32,9 @@ class CreateWellPage(PageWindow):
     def save_well_data(self):
         wellname = self.wellname_edit.text()
         location = self.location_edit.text()
-        coordinates = self.coordinates_edit.text()
+        latitude=self.latitude_edit.text()
+        longitude=self.longitude_edit.text()
+        coordinates = "Latitude: "+latitude+"  Longitude: "+longitude
         geology = self.geology_edit.text()
         performedby = self.performedby_edit.text()
         startdatetime = self.startdatetime_edit.dateTime().toString(Qt.ISODate)
@@ -70,7 +72,8 @@ class CreateWellPage(PageWindow):
         # Clear input fields after saving
         self.wellname_edit.clear()
         self.location_edit.clear()
-        self.coordinates_edit.clear()
+        self.latitude_edit.clear()
+        self.longitude_edit.clear()
         self.performedby_edit.clear()
         self.startdatetime_edit.setDateTime(QDateTime.currentDateTime())
         self.enddatetime_edit.setDateTime(QDateTime.currentDateTime())
