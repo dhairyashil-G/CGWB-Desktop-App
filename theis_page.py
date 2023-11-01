@@ -150,7 +150,7 @@ class TheisPage(PageWindow,QObject):
         lst2.append(
             f" End Datetime: {enddatetime} ")
         lst1.append(
-            f"Time Pumping Stopped: {well_object.get('TimeWhenPumpingStopped')} min")
+            f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
         lst2.append(f"Geology:  {well_object.get('Geology')}")
         lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
         lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m")
