@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-186</y>
+         <y>0</y>
          <width>763</width>
          <height>725</height>
         </rect>
@@ -91,10 +91,13 @@
            <item>
             <widget class="QDoubleSpinBox" name="adjust_storativity">
              <property name="decimals">
-              <number>10</number>
+              <number>3</number>
              </property>
              <property name="maximum">
               <double>10000000.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.001000000000000</double>
              </property>
             </widget>
            </item>
@@ -113,10 +116,13 @@
            <item>
             <widget class="QDoubleSpinBox" name="adjust_transmissivity">
              <property name="decimals">
-              <number>10</number>
+              <number>3</number>
              </property>
              <property name="maximum">
               <double>100000000.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.001000000000000</double>
              </property>
             </widget>
            </item>
