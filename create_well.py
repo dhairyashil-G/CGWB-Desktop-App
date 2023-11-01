@@ -81,3 +81,4 @@ class CreateWellPage(PageWindow):
         self.pumpingrate_spinbox.setValue(0)
         self.distancefromwell_spinbox.setValue(0)
         self.geology_edit.clear()
+        
