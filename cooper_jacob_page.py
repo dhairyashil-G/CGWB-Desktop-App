@@ -24,7 +24,7 @@ class CooperJacobPage(PageWindow,QObject):
         # # Set the scroll area as the central widget of the main window
         # self.setCentralWidget(self.scroll_area)
         uic.loadUi('cooper_jacob.ui', self)
-        self.setWindowTitle('AquaProbe-Beta1')
+        self.setWindowTitle('AquaProbe-Beta1.1')
         CooperJacobPage.well_id_global=None
         CooperJacobPage.pdf_obj=None
         self.back_button.clicked.connect(self.goback)
@@ -58,12 +58,12 @@ class CooperJacobPage(PageWindow,QObject):
     def calculate_u(self,r, S, T, t):
         return (r*r*S)/(4*T*t)
 
-    def mse(self,actual, predicted):
-        actual = np.array(actual)
-        predicted = np.array(predicted)
-        differences = np.subtract(actual, predicted)
-        squared_differences = np.square(differences)
-        return squared_differences.mean()
+    # def mse(self,actual, predicted):
+    #     actual = np.array(actual)
+    #     predicted = np.array(predicted)
+    #     differences = np.subtract(actual, predicted)
+    #     squared_differences = np.square(differences)
+    #     return squared_differences.mean()
     
     def calculate_cooper_jacob(self):
 

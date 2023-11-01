@@ -77,7 +77,7 @@ class TheisPage(PageWindow,QObject):
             S_calc, T_calc = self.get_S_and_T(m, c, Q, r)
             S = S_calc
             T = T_calc
-            self.adjust_storativity.setValue(S*(10**8))
+            self.adjust_storativity.setValue(S)
             self.adjust_transmissivity.setValue(T)
         else:
             S=self.adjust_storativity.value()
