@@ -87,7 +87,7 @@ class TheisPage(PageWindow,QObject):
         wu = exp1(u)
         one_by_u = 1/u
 
-        rms_residual = np.sqrt(np.sum((wu - s)**2))
+        # rms_residual = np.sqrt(np.sum((wu - s)**2))
 
         fig = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -116,7 +116,7 @@ class TheisPage(PageWindow,QObject):
 
         self.transmissivity_value.setText(str(round(T,3)))
         self.storativity_value.setText("{:.10f}".format(S))
-        self.rms_residual_value.setText(str(round(rms_residual,3)))
+        # self.rms_residual_value.setText(str(round(rms_residual,3)))
 
 
         pdf = FPDF()
@@ -174,7 +174,7 @@ class TheisPage(PageWindow,QObject):
         pdf.set_font('Arial', 'B', 12)
         pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
         pdf.cell(0, 10, f'Storativity : {"{:.10f}".format(S)}', ln=1)
-        pdf.cell(0, 10, f'RMS Residual : {round(rms_residual, 3)}%', ln=1)
+        # pdf.cell(0, 10, f'RMS Residual : {round(rms_residual, 3)}%', ln=1)
         pdf.ln(5)
 
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
