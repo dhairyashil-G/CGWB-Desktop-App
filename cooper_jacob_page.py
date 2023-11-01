@@ -140,7 +140,7 @@ class CooperJacobPage(PageWindow,QObject):
 
         self.transmissivity_value.setText(str(round(T,3)))
         self.storativity_value.setText("{:.10f}".format(S))
-        self.rms_error_value.setText(str(round(mse_error,3)))
+        # self.rms_error_value.setText(str(round(mse_error,3)))
 
     # def show_plot(self,x_data,y_data,y_intercept,slope):
         fig = go.Figure()
@@ -218,7 +218,7 @@ class CooperJacobPage(PageWindow,QObject):
         pdf.set_font('Arial', 'B', 12)
         pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
         pdf.cell(0, 10, f'Storativity : {"{:.10f}".format(S)}', ln=1)
-        pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
+        # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
         pdf.ln(5)
 
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
