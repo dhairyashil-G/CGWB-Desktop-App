@@ -18,6 +18,7 @@ class WellTablePage(PageWindow,QObject):
         self.table_widget.setColumnHidden(0, True)
 
         self.back_button.clicked.connect(self.goback)
+        self.create_well_button.clicked.connect(self.gocreatewell)
         self.table_widget.clicked.connect(self.singleclick)
 
         # Load data from SQLite database
@@ -25,6 +26,9 @@ class WellTablePage(PageWindow,QObject):
 
     def goback(self):
         self.goto('homepage')
+
+    def gocreatewell(self):
+        self.goto('createwell')
 
     def singleclick(self):
         for item in self.table_widget.selectedItems():

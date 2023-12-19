@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QVBoxLayout, QPushButton
 from PyQt5 import uic
 from multiPageHandler import PageWindow
-from PyQt5.QtGui import QPixmap
 
 
 class HomePage(PageWindow):

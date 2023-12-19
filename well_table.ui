@@ -177,6 +177,19 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="create_well_button">
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Create Well</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>

@@ -61,7 +61,7 @@ class MultiPageApp(QMainWindow):
 
         self.register_page(HomePage(),'homepage')
         self.register_page(self.well_table_obj,'welltable')
-        self.register_page(self.prev_page_obj,'createwell')
+        self.register_page(self.prev_page_obj,'preview')
         self.register_page(PreviewPage(),'preview')
         self.register_page(CreateWellPage(),'createwell')
         self.register_page(self.theis_page_obj,'theispage')
