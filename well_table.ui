@@ -100,35 +100,77 @@
           <property name="text">
            <string>Id</string>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
          </column>
          <column>
           <property name="text">
            <string>Well Name</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
           </property>
          </column>
          <column>
           <property name="text">
            <string>Location</string>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
          </column>
          <column>
           <property name="text">
            <string>Coordinates</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
           </property>
          </column>
          <column>
           <property name="text">
            <string>Performed By</string>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
          </column>
          <column>
           <property name="text">
            <string>Delete</string>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
          </column>
          <column>
           <property name="text">
            <string>Next</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
           </property>
          </column>
         </widget>
