@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
+    <width>869</width>
     <height>600</height>
    </rect>
   </property>
@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-191</y>
-         <width>833</width>
-         <height>1049</height>
+         <y>0</y>
+         <width>978</width>
+         <height>1114</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -81,7 +81,7 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>30</height>
+               <height>35</height>
               </size>
              </property>
              <property name="text">
@@ -94,7 +94,7 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>30</height>
+               <height>35</height>
               </size>
              </property>
              <property name="text">
@@ -107,7 +107,7 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>30</height>
+               <height>35</height>
               </size>
              </property>
              <property name="text">
@@ -132,7 +132,7 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>20</height>
+               <height>30</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -141,8 +141,18 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>Plot</string>
+             </property>
+             <property name="icon">
+              <iconset theme="plot">
+               <normaloff>.</normaloff>.</iconset>
              </property>
             </widget>
            </item>
@@ -153,8 +163,8 @@
          <widget class="QWebEngineView" name="browser" native="true">
           <property name="minimumSize">
            <size>
-            <width>800</width>
-            <height>500</height>
+            <width>960</width>
+            <height>550</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -175,32 +185,8 @@
         <item>
          <widget class="QWidget" name="widget_5" native="true">
           <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Pumping Data</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_3">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Recovery Data</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QTableView" name="pumping_table">
+           <item row="1" column="1">
+            <widget class="QTableView" name="recovery_table">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -212,8 +198,42 @@
              </attribute>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QTableView" name="recovery_table">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Pumping Data</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_3">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Recovery Data</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QTableView" name="pumping_table">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -270,7 +290,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>870</width>
+     <width>869</width>
      <height>21</height>
     </rect>
    </property>

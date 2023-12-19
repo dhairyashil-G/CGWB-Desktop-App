@@ -19,7 +19,7 @@ class TheisPage(PageWindow,QObject):
         TheisPage.pdf_obj=None
         uic.loadUi('theis.ui', self)
         self.setWindowTitle('AquaProbe-Beta1.1')
-        self.update_button.clicked.connect(self.calculate_theis)
+        self.plot_button.clicked.connect(self.calculate_theis)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)
 
@@ -146,9 +146,9 @@ class TheisPage(PageWindow,QObject):
         startdatetime=well_object.get('StartDatetime').replace('T',' ')
         enddatetime=well_object.get('EndDatetime').replace('T',' ')
         lst1.append(
-            f" Start Datetime: {startdatetime} ")
+            f"Start Datetime: {startdatetime} ")
         lst2.append(
-            f" End Datetime: {enddatetime} ")
+            f"End Datetime: {enddatetime} ")
         lst1.append(
             f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
         lst2.append(f"Geology:  {well_object.get('Geology')}")

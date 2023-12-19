@@ -190,9 +190,9 @@ class CooperJacobPage(PageWindow,QObject):
         startdatetime=well_object.get('StartDatetime').replace('T',' ')
         enddatetime=well_object.get('EndDatetime').replace('T',' ')
         lst1.append(
-            f" Start Datetime: {startdatetime} ")
+            f"Start Datetime: {startdatetime} ")
         lst2.append(
-            f" End Datetime: {enddatetime} ")
+            f"End Datetime: {enddatetime} ")
         lst1.append(
             f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
         lst2.append(f"Geology:  {well_object.get('Geology')}")

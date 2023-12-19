@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-99</y>
-         <width>841</width>
-         <height>825</height>
+         <y>0</y>
+         <width>978</width>
+         <height>927</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -81,6 +81,8 @@
              <property name="font">
               <font>
                <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
@@ -106,6 +108,8 @@
              <property name="font">
               <font>
                <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
@@ -126,22 +130,44 @@
              </property>
             </widget>
            </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_3" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>50</height>
+           </size>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QPushButton" name="update_button">
+            <widget class="QPushButton" name="plot_button">
              <property name="minimumSize">
               <size>
-               <width>100</width>
-               <height>25</height>
+               <width>0</width>
+               <height>30</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>100</width>
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>Plot</string>
+             </property>
+             <property name="icon">
+              <iconset theme="plot">
+               <normaloff>.</normaloff>.</iconset>
              </property>
             </widget>
            </item>
@@ -152,8 +178,8 @@
          <widget class="QWebEngineView" name="graph_container" native="true">
           <property name="minimumSize">
            <size>
-            <width>800</width>
-            <height>500</height>
+            <width>960</width>
+            <height>550</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -164,7 +190,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QWidget" name="widget_6" native="true">
           <property name="minimumSize">
            <size>
@@ -185,6 +211,8 @@
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
                 </font>
                </property>
                <property name="text">
@@ -207,12 +235,32 @@
             </layout>
            </item>
            <item>
+            <widget class="QLabel" name="storativity_value_2">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
               <widget class="QLabel" name="label_6">
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
                 </font>
                </property>
                <property name="text">
