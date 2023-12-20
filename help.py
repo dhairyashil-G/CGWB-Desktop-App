@@ -2,10 +2,10 @@ from PyQt5.QtWidgets import QVBoxLayout, QPushButton
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 
-class AboutUsPage(PageWindow):
+class HelpPage(PageWindow):
     def __init__(self):
-        super(AboutUsPage,self).__init__()
-        uic.loadUi('about_us.ui',self)
+        super(HelpPage,self).__init__()
+        uic.loadUi('help.ui',self)
         self.setWindowTitle('AquaProbe-Beta1')
         self.back_button.clicked.connect(self.goback)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)

@@ -31,6 +31,14 @@ class CooperJacobPage(PageWindow,QObject):
         # self.calculate_cooper_jacob()
         self.plot_button.clicked.connect(self.calculate_cooper_jacob)
         self.download_report_button.clicked.connect(self.create_report)
+        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        self.menuHelp.aboutToShow.connect(self.goto_help)
+
+    def goto_aboutus(self):
+        self.goto('aboutus')
+
+    def goto_help(self):
+        self.goto('helppage')
 
     @pyqtSlot(int)
     def get_well(self, row):

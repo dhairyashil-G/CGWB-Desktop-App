@@ -23,6 +23,13 @@ class TheisRecoveryPage(PageWindow,QObject):
         self.plot_button.clicked.connect(self.calculate_theis_recovery)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)
+        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        self.menuHelp.aboutToShow.connect(self.goto_help)
+    def goto_aboutus(self):
+        self.goto('aboutus')
+
+    def goto_help(self):
+        self.goto('helppage')
 
     @pyqtSlot(int)
     def get_well(self, row):
@@ -88,7 +95,6 @@ class TheisRecoveryPage(PageWindow,QObject):
         self.delta_s_value.setText("{:.3f}".format(delta_s_dash))
         self.relative_change_s_value.setText(str(round(ratio_of_S,3)))
 
-
         fig = go.Figure()
 
         fig.add_trace(go.Scatter(x=x_data, y=y_data,
@@ -108,6 +114,7 @@ class TheisRecoveryPage(PageWindow,QObject):
             legend_title="Legend"
         )
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
+        
         
         pdf = FPDF()
         pdf.add_page()

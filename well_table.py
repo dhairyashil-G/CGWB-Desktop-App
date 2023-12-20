@@ -1,8 +1,9 @@
 import sqlite3
-from PyQt5.QtWidgets import QTableWidgetItem, QPushButton
+from PyQt5.QtWidgets import QTableWidgetItem, QPushButton ,QMessageBox
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import pyqtSignal, QObject
+
 
 class WellTablePage(PageWindow,QObject):
     well_id_signal = pyqtSignal(int)
@@ -24,8 +25,18 @@ class WellTablePage(PageWindow,QObject):
         self.create_well_button.clicked.connect(self.gocreatewell)
         self.table_widget.clicked.connect(self.singleclick)
 
+        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        self.menuHelp.aboutToShow.connect(self.goto_help)
         # Load data from SQLite database
         self.load_data_from_database()
+
+    def goto_aboutus(self):
+        self.goto('aboutus')
+
+    def goto_help(self):
+        self.goto('helppage')
+
+
 
     def goback(self):
         self.goto('homepage')
@@ -84,23 +95,32 @@ class WellTablePage(PageWindow,QObject):
             print("No 'Id' value found for row:", row)
             return
 
+        confirmation = QMessageBox.question(
+            self, "Confirmation", "Are you sure you want to delete this well?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+
+
+        if confirmation == QMessageBox.Yes:
         # Connect to the SQLite database
-        conn = sqlite3.connect('database.db')  # Replace 'database.db' with your database file name
-        cursor = conn.cursor()
+            conn = sqlite3.connect('database.db')  # Replace 'database.db' with your database file name
+            cursor = conn.cursor()
 
-        try:
-            # Use SQL DELETE statement to remove the row from the database
-            cursor.execute('DELETE FROM WellData WHERE "Id" = ?', (id_value,))
-            conn.commit()
-            print(f"Deleted row with 'Id' {id_value} from the database.")
-        except sqlite3.Error as e:
-            print("SQLite error:", e)
-            conn.rollback()
-        finally:
-            conn.close()
+            try:
+                # Use SQL DELETE statement to remove the row from the database
+                cursor.execute('DELETE FROM WellData WHERE "Id" = ?', (id_value,))
+                conn.commit()
+                print(f"Deleted row with 'Id' {id_value} from the database.")
+            except sqlite3.Error as e:
+                print("SQLite error:", e)
+                conn.rollback()
+            finally:
+                conn.close()
 
-        # Remove the row from the table widget
-        self.table_widget.removeRow(row)
+            # Remove the row from the table widget
+            self.table_widget.removeRow(row)
+        else:
+            print('Deletion cancelled!')
 
     def next_row(self):
         # Get the row number from the button's property

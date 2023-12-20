@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-405</y>
          <width>978</width>
          <height>927</height>
         </rect>
@@ -210,7 +210,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Transmissivity (m2/day) :</string>
+                <string>Transmissivity (m&lt;sup&gt;2&lt;/sup&gt;/day) :</string>
                </property>
               </widget>
              </item>
@@ -258,7 +258,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Storativity</string>
+                <string>Storativity :</string>
                </property>
               </widget>
              </item>
@@ -301,7 +301,7 @@
                <widget class="QPushButton" name="back_button">
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
+                  <width>100</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -320,7 +320,7 @@
                <widget class="QPushButton" name="download_report_button">
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
+                  <width>100</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -356,6 +356,18 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About Us</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <addaction name="menuAbout"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

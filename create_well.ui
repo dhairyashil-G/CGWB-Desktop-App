@@ -76,7 +76,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Select CSV File:</string>
+          <string>Select CSV File :</string>
          </property>
         </widget>
        </item>
@@ -94,7 +94,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Well Name:</string>
+          <string>Well Name :</string>
          </property>
         </widget>
        </item>
@@ -109,7 +109,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Location:</string>
+          <string>Location :</string>
          </property>
         </widget>
        </item>
@@ -136,7 +136,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Performed By:</string>
+          <string>Performed By :</string>
          </property>
         </widget>
        </item>
@@ -232,7 +232,7 @@
           </font>
          </property>
          <property name="text">
-          <string>End Datetime:</string>
+          <string>End Datetime :</string>
          </property>
         </widget>
        </item>
@@ -271,7 +271,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Coordinates:</string>
+          <string>Coordinates :</string>
          </property>
         </widget>
        </item>
@@ -283,7 +283,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Start Datetime:</string>
+          <string>Start Datetime :</string>
          </property>
         </widget>
        </item>
@@ -342,7 +342,7 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Latitude:</string>
+             <string>Latitude :</string>
             </property>
            </widget>
           </item>
@@ -352,7 +352,7 @@
           <item>
            <widget class="QLabel" name="label_8">
             <property name="text">
-             <string>Longitude:</string>
+             <string>Longitude :</string>
             </property>
            </widget>
           </item>
@@ -383,6 +383,12 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QPushButton" name="back_button">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>200</width>
@@ -396,6 +402,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="save_button">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>200</width>
@@ -421,8 +433,25 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About Us</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <addaction name="menuAbout"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actiontime">
+   <property name="text">
+    <string>time</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
