@@ -170,9 +170,9 @@ class TheisRecoveryPage(PageWindow,QObject):
         os.remove("fig.png")
         pdf.ln(5)
         pdf.set_font('Arial', 'B', 12)
-        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
+        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
         pdf.cell(0, 10, f'delta S : {round(delta_s_dash,3)}', ln=1)
-        pdf.cell(0, 10, f'Relative Change in S = {round(ratio_of_S, 3)}%', ln=1)
+        pdf.cell(0, 10, f'Relative Change in S : {round(ratio_of_S, 3)}%', ln=1)
         pdf.ln(5)
 
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,

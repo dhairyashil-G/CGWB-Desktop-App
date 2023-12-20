@@ -23,8 +23,8 @@
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
-         <x>-110</x>
-         <y>-423</y>
+         <x>0</x>
+         <y>0</y>
          <width>978</width>
          <height>927</height>
         </rect>
@@ -50,6 +50,8 @@
              <property name="font">
               <font>
                <pointsize>18</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
@@ -81,12 +83,12 @@
              <property name="font">
               <font>
                <pointsize>11</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <weight>50</weight>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
-              <string>Adjust X intercept :</string>
+              <string>Adjust x-intercept :</string>
              </property>
             </widget>
            </item>
@@ -105,8 +107,8 @@
              <property name="font">
               <font>
                <pointsize>11</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <weight>50</weight>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -210,7 +212,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>    Δ S ' :</string>
+                <string>    ΔS' :</string>
                </property>
               </widget>
              </item>
@@ -306,7 +308,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Relative change in Storativity :</string>
+                <string>Relative Change in Storativity :</string>
                </property>
               </widget>
              </item>

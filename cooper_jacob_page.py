@@ -224,7 +224,7 @@ class CooperJacobPage(PageWindow,QObject):
         os.remove("fig.png")
         pdf.ln(5)
         pdf.set_font('Arial', 'B', 12)
-        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
+        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
         pdf.cell(0, 10, f'Storativity : {"{:.3f}".format(S)}', ln=1)
         # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
         pdf.ln(5)

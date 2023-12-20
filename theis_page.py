@@ -180,7 +180,7 @@ class TheisPage(PageWindow,QObject):
         os.remove("fig.png")
         pdf.ln(5)
         pdf.set_font('Arial', 'B', 12)
-        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m2/day', ln=1)
+        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
         pdf.cell(0, 10, f'Storativity : {"{:.3f}".format(S)}', ln=1)
         # pdf.cell(0, 10, f'RMS Residual : {round(rms_residual, 3)}%', ln=1)
         pdf.ln(5)
