@@ -246,7 +246,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Pumping Rate (m3/day) :</string>
+          <string>Pumping Rate (m&lt;sup&gt;3&lt;/sup&gt;/day) :</string>
          </property>
         </widget>
        </item>
