@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QFileDialog,QMessageBox
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import sqlite3
@@ -197,3 +197,4 @@ class TheisPage(PageWindow,QObject):
         file_path, _ = QFileDialog.getSaveFileName(self, "Save Report", f"Theis Report {formatted_datetime}", "PDF Files (*.pdf)", options=options)
         if(file_path):
             TheisPage.pdf_obj.output(f'{file_path}')
+            QMessageBox.information(self, 'Success', 'Report saved successfully!')

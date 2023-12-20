@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog
+from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog,QMessageBox
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
 import pandas as pd
@@ -240,3 +240,4 @@ class CooperJacobPage(PageWindow,QObject):
         file_path, _ = QFileDialog.getSaveFileName(self, "Save Report", f"Cooper Jacob Report {formatted_datetime}", "PDF Files (*.pdf)", options=options)
         if(file_path):
             CooperJacobPage.pdf_obj.output(f'{file_path}')
+            QMessageBox.information(self, 'Success', 'Report saved successfully!')
