@@ -85,15 +85,19 @@ class PreviewPage(PageWindow, QObject):
         df_pumping_test = df[df['Time'] <= t_when_pumping_stopped]
         df_recovery_test = df[df['Time'] > t_when_pumping_stopped]
 
+        print(df_pumping_test)
         # Rename columns in df_pumping_test
-        df_pumping_test.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
-        # Rename columns in df_recovery_test
-        df_recovery_test.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
+        df_recovery_test_new = df_recovery_test.copy()
+        df_recovery_test_new.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
 
-        model1 = PandasModel(df_pumping_test)
+        # Rename columns in df_recovery_test
+        df_pumping_test_new = df_pumping_test.copy()
+        df_pumping_test_new.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
+
+        model1 = PandasModel(df_pumping_test_new)
         self.pumping_table.setModel(model1)
 
-        model2= PandasModel(df_recovery_test)
+        model2= PandasModel(df_recovery_test_new)
         self.recovery_table.setModel(model2)
         
     
