@@ -24,21 +24,37 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-405</y>
+         <y>0</y>
          <width>978</width>
-         <height>927</height>
+         <height>977</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <widget class="QWidget" name="widget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>100</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>80</height>
            </size>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QWidget" name="widget_9" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>100</height>
+              </size>
+             </property>
+            </widget>
+           </item>
            <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="label">
              <property name="minimumSize">
@@ -60,7 +76,32 @@
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line">
+            <widget class="QLabel" name="label_5">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>logo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_8" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="Line" name="line_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -80,6 +121,12 @@
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
             <widget class="QLabel" name="label_3">
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>11</pointsize>
@@ -94,6 +141,12 @@
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="adjust_x_intercept">
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="decimals">
               <number>3</number>
              </property>
@@ -103,7 +156,23 @@
             </widget>
            </item>
            <item>
+            <widget class="QWidget" name="widget_7" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>450</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="label_2">
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>11</pointsize>
@@ -118,6 +187,12 @@
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="adjust_slope">
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="decimals">
               <number>3</number>
              </property>
@@ -137,8 +212,8 @@
             <height>50</height>
            </size>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item alignment="Qt::AlignLeft">
             <widget class="QPushButton" name="plot_button">
              <property name="minimumSize">
               <size>

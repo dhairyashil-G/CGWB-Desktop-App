@@ -26,19 +26,35 @@
          <x>0</x>
          <y>0</y>
          <width>978</width>
-         <height>1114</height>
+         <height>1164</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
          <widget class="QWidget" name="widget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>100</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>80</height>
            </size>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QWidget" name="widget_7" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>100</height>
+              </size>
+             </property>
+            </widget>
+           </item>
            <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="label">
              <property name="minimumSize">
@@ -60,7 +76,32 @@
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line">
+            <widget class="QLabel" name="label_4">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>logo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_6" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="Line" name="line_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
