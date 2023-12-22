@@ -1,6 +1,6 @@
 import sqlite3
-import sys
-from PyQt5 import QtCore
+import sys, os
+from PyQt5 import QtCore, QtGui
 from multiPageHandler import PageWindow
 from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget
 from well_table import WellTablePage
@@ -12,6 +12,8 @@ from cooper_jacob_page import CooperJacobPage
 from theis_recovery_page import TheisRecoveryPage
 from about_us_page import AboutUsPage
 from help import HelpPage
+
+basedir = os.path.dirname(__file__)
 
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
@@ -90,6 +92,7 @@ class MultiPageApp(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, 'icon.ico')))
     main_app = MultiPageApp()
     main_app.show()
     sys.exit(app.exec_())
