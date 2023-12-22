@@ -104,147 +104,152 @@ class CooperJacobPage(PageWindow,QObject):
         r = well_object.get('DistanceFromWell')
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
         csv_file_url = well_object.get('CsvFilePath')
-        df = pd.read_csv(csv_file_url)
+        try:
+            df = pd.read_csv(csv_file_url)
+            # recovery_df = df.loc[df['Time'] > t_when_pumping_stopped]
+            df = df.loc[df['Time'] <= t_when_pumping_stopped]
 
-        # recovery_df = df.loc[df['Time'] > t_when_pumping_stopped]
-        df = df.loc[df['Time'] <= t_when_pumping_stopped]
+            x_data = np.array(df['Time'])
+            y_data = np.array(df['Drawdown'])
 
-        x_data = np.array(df['Time'])
-        y_data = np.array(df['Drawdown'])
-
-        if(self.adjust_slope.value()==0 and self.adjust_x_intercept.value()==0):
-            print('if block')
-            slope, y_intercept = np.polyfit(np.log(x_data), y_data, 1)
-            x_intercept = np.exp((-y_intercept)/slope)
-            self.adjust_slope.setValue(round(slope,6))
-            self.adjust_x_intercept.setValue(round(x_intercept,6))
-        else:
-            slope=self.adjust_slope.value()
-            x_intercept=self.adjust_x_intercept.value()
-
-
-        y_intercept = ((-slope)*np.log(x_intercept))
+            if(self.adjust_slope.value()==0 and self.adjust_x_intercept.value()==0):
+                print('if block')
+                slope, y_intercept = np.polyfit(np.log(x_data), y_data, 1)
+                x_intercept = np.exp((-y_intercept)/slope)
+                self.adjust_slope.setValue(round(slope,6))
+                self.adjust_x_intercept.setValue(round(x_intercept,6))
+            else:
+                slope=self.adjust_slope.value()
+                x_intercept=self.adjust_x_intercept.value()
 
 
-        delta_s = abs((slope*math.log(100) + y_intercept) -
-                    (slope*math.log(10) + y_intercept))
-        t_0 = np.exp((-y_intercept)/slope)
+            y_intercept = ((-slope)*np.log(x_intercept))
 
-        T = (2.303*Q)/(4*math.pi*delta_s)
-        S = (2.25*T*(t_0/1440)) / (r*r)
-        
-        
-        calculate_drawdown_list = list()
-        u_list = list()
-        error_list = list()
-        for index, row in df.iterrows():
-            drawdown = row['Drawdown']
-            time = row['Time']/1440
-            calculated_drawdown = self.calculate_drawdown(Q, T, time, S, r)
-            calculate_drawdown_list.append(calculated_drawdown)
-            u = self.calculate_u(r, S, T, time)
-            u_list.append(u)
-            error = (drawdown-calculated_drawdown)/drawdown
-            error_list.append(error)
 
-        df_calc = df
-        df_calc['Calculated_Drawdown'] = calculate_drawdown_list
-        df_calc['u'] = u_list
-        df_calc['Error'] = error_list
-        df_calc = df_calc.round(decimals=3)
+            delta_s = abs((slope*math.log(100) + y_intercept) -
+                        (slope*math.log(10) + y_intercept))
+            t_0 = np.exp((-y_intercept)/slope)
 
-        mse_error = self.mse(df['Drawdown'], df['Calculated_Drawdown'])
+            T = (2.303*Q)/(4*math.pi*delta_s)
+            S = (2.25*T*(t_0/1440)) / (r*r)
+            
+            
+            calculate_drawdown_list = list()
+            u_list = list()
+            error_list = list()
+            for index, row in df.iterrows():
+                drawdown = row['Drawdown']
+                time = row['Time']/1440
+                calculated_drawdown = self.calculate_drawdown(Q, T, time, S, r)
+                calculate_drawdown_list.append(calculated_drawdown)
+                u = self.calculate_u(r, S, T, time)
+                u_list.append(u)
+                error = (drawdown-calculated_drawdown)/drawdown
+                error_list.append(error)
 
-        self.transmissivity_value.setText(str(round(T,3)))
-        self.storativity_value.setText("{:.3f}".format(S))
-        # self.rms_error_value.setText(str(round(mse_error,3)))
+            df_calc = df
+            df_calc['Calculated_Drawdown'] = calculate_drawdown_list
+            df_calc['u'] = u_list
+            df_calc['Error'] = error_list
+            df_calc = df_calc.round(decimals=3)
 
-    # def show_plot(self,x_data,y_data,y_intercept,slope):
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=x_data, y=y_data,
-                             mode='lines+markers',
-                             name='Actual Data'))
-        fig.update_xaxes(type="log")
+            mse_error = self.mse(df['Drawdown'], df['Calculated_Drawdown'])
 
-        fig.add_trace(go.Scatter(x=np.exp((y_data - y_intercept)/slope), y=y_data,
+            self.transmissivity_value.setText(str(round(T,3)))
+            self.storativity_value.setText("{:.3f}".format(S))
+            # self.rms_error_value.setText(str(round(mse_error,3)))
+
+        # def show_plot(self,x_data,y_data,y_intercept,slope):
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=x_data, y=y_data,
                                 mode='lines+markers',
-                                name='Fitting Line'))
-        fig.update_xaxes(type="log")
+                                name='Actual Data'))
+            fig.update_xaxes(type="log")
 
-        fig.update_layout(
-        title="Drawdown vs Time",
-        xaxis_title="log Time (min)",
-        yaxis_title="Drawdown (m)",
-        legend_title="Legend"
-        )
+            fig.add_trace(go.Scatter(x=np.exp((y_data - y_intercept)/slope), y=y_data,
+                                    mode='lines+markers',
+                                    name='Fitting Line'))
+            fig.update_xaxes(type="log")
 
-        self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
+            fig.update_layout(
+            title="Drawdown vs Time",
+            xaxis_title="log Time (min)",
+            yaxis_title="Drawdown (m)",
+            legend_title="Legend"
+            )
 
-        pdf = FPDF()
-        pdf.add_page()
+            self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
 
-        pdf.set_font('Arial', 'B', 10)
-        pdf.image('logo.jpg', x=10, y=10, w=25, h=30)
-        pdf.image('aquaprobe_logo.png',
-                x=pdf.w-60, y=10, w=50, h=25)
-        pdf.cell(0, 30, '', ln=1)
+            pdf = FPDF()
+            pdf.add_page()
 
-        pdf.set_font('Arial', 'B', 10)
-        pdf.cell(0, 10, 'CENTRAL GROUND WATER BOARD (CGWB)', ln=1)
-        pdf.ln(5)
+            pdf.set_font('Arial', 'B', 10)
+            pdf.image('logo.jpg', x=10, y=10, w=25, h=30)
+            pdf.image('aquaprobe_logo.png',
+                    x=pdf.w-60, y=10, w=50, h=25)
+            pdf.cell(0, 30, '', ln=1)
 
-        pdf.set_font('Arial', 'BU', 18)
-        pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
-        pdf.ln(5)
+            pdf.set_font('Arial', 'B', 10)
+            pdf.cell(0, 10, 'CENTRAL GROUND WATER BOARD (CGWB)', ln=1)
+            pdf.ln(5)
 
-        pdf.set_font('Arial', '', 12)
-        lst1 = list()
-        lst2 = list()
-        lst1.append(f"Well Name: {well_object.get('WellName')}" )
-        lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
-        lst1.append(f"Location: {well_object.get('Location')}")
-        lst2.append(f"Coordinates: {well_object.get('Coordinates')}")
-        startdatetime=well_object.get('StartDatetime').replace('T',' ')
-        enddatetime=well_object.get('EndDatetime').replace('T',' ')
-        lst1.append(
-            f"Start Datetime: {startdatetime} ")
-        lst2.append(
-            f"End Datetime: {enddatetime} ")
-        lst1.append(
-            f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
-        lst2.append(f"Geology:  {well_object.get('Geology')}")
-        lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
-        lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m")
-        lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
-        lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
-        lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
-        lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
-        pdf.set_font("Arial", "", 12)
-        col_width = pdf.w / 2.2
-        for item1, item2 in zip(lst1, lst2):
-            pdf.cell(col_width, 10, item1, border=1)
-            pdf.cell(col_width, 10, item2, border=1)
-            pdf.ln(10)
-        pdf.ln(5)
-        pdf.set_font('Arial', 'B', 13)
-        pdf.cell(0, 10, "Graphical Interpretation", ln=1)
-        fig.write_image("fig.png")
-        pdf.image('fig.png', w=200, h=150)
-        os.remove("fig.png")
-        pdf.ln(5)
-        pdf.set_font('Arial', 'B', 12)
-        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
-        pdf.cell(0, 10, f'Storativity : {"{:.3f}".format(S)}', ln=1)
-        # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
-        pdf.ln(5)
+            pdf.set_font('Arial', 'BU', 18)
+            pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
+            pdf.ln(5)
 
-        pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
-                        int(pdf.get_y()), dash_length=1, space_length=1)
-        CooperJacobPage.pdf_obj=pdf
+            pdf.set_font('Arial', '', 12)
+            lst1 = list()
+            lst2 = list()
+            lst1.append(f"Well Name: {well_object.get('WellName')}" )
+            lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
+            lst1.append(f"Location: {well_object.get('Location')}")
+            lst2.append(f"Coordinates: {well_object.get('Coordinates')}")
+            startdatetime=well_object.get('StartDatetime').replace('T',' ')
+            enddatetime=well_object.get('EndDatetime').replace('T',' ')
+            lst1.append(
+                f"Start Datetime: {startdatetime} ")
+            lst2.append(
+                f"End Datetime: {enddatetime} ")
+            lst1.append(
+                f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
+            lst2.append(f"Geology:  {well_object.get('Geology')}")
+            lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
+            lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m")
+            lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
+            lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
+            lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
+            lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
+            pdf.set_font("Arial", "", 12)
+            col_width = pdf.w / 2.2
+            for item1, item2 in zip(lst1, lst2):
+                pdf.cell(col_width, 10, item1, border=1)
+                pdf.cell(col_width, 10, item2, border=1)
+                pdf.ln(10)
+            pdf.ln(5)
+            pdf.set_font('Arial', 'B', 13)
+            pdf.cell(0, 10, "Graphical Interpretation", ln=1)
+            fig.write_image("fig.png")
+            pdf.image('fig.png', w=200, h=150)
+            os.remove("fig.png")
+            pdf.ln(5)
+            pdf.set_font('Arial', 'B', 12)
+            pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
+            pdf.cell(0, 10, f'Storativity : {"{:.3f}".format(S)}', ln=1)
+            # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
+            pdf.ln(5)
 
-        # self.movie.stop()
-        # self.loading_label.clear()
-        self.loading_label.setText('')
+            pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
+                            int(pdf.get_y()), dash_length=1, space_length=1)
+            CooperJacobPage.pdf_obj=pdf
+
+            # self.movie.stop()
+            # self.loading_label.clear()
+            self.loading_label.setText('')
+        except Exception as e:
+            print(e)
+            self.loading_label.setText('')
+            QMessageBox.critical(None,"Error","File not found at given location!")
+            self.goto('welltable')
 
     def create_report(self):
         current_datetime = datetime.now()
