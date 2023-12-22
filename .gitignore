@@ -2,3 +2,4 @@
 /virt
 database.db
 __pycache__
+.pylintrc
