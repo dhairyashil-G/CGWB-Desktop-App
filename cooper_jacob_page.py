@@ -1,7 +1,8 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog,QMessageBox
+from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog,QMessageBox,QApplication
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
+from PyQt5.QtGui import QMovie
 import pandas as pd
 import plotly.graph_objs as go
 import sqlite3
@@ -29,6 +30,10 @@ class CooperJacobPage(PageWindow,QObject):
         CooperJacobPage.pdf_obj=None
         self.back_button.clicked.connect(self.goback)
         # self.calculate_cooper_jacob()
+        
+        # self.loading_label.hide()
+
+
         self.plot_button.clicked.connect(self.calculate_cooper_jacob)
         self.download_report_button.clicked.connect(self.create_report)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
@@ -74,10 +79,14 @@ class CooperJacobPage(PageWindow,QObject):
         return squared_differences.mean()
     
     def calculate_cooper_jacob(self):
-
+        self.loading_label.setText('Please wait...This might take some time...')
+        # self.movie = QMovie("loading_gif.gif")
+        # self.loading_label.setMovie(self.movie)
+        # self.loading_label.show()
+        # self.movie.start()
+        QApplication.processEvents()
         well_id = CooperJacobPage.well_id_global 
         # print(f'IN showPlot : {well_id}')
-
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
@@ -232,7 +241,11 @@ class CooperJacobPage(PageWindow,QObject):
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
                         int(pdf.get_y()), dash_length=1, space_length=1)
         CooperJacobPage.pdf_obj=pdf
-    
+
+        # self.movie.stop()
+        # self.loading_label.clear()
+        self.loading_label.setText('')
+
     def create_report(self):
         current_datetime = datetime.now()
         formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')

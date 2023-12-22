@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
-from PyQt5.QtWidgets import QFileDialog,QMessageBox
+from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import sqlite3
@@ -39,6 +39,8 @@ class TheisRecoveryPage(PageWindow,QObject):
         self.goto('preview')
 
     def calculate_theis_recovery(self):
+        self.loading_label.setText('Please wait...This might take some time...')
+        QApplication.processEvents()
         well_id = TheisRecoveryPage.well_id_global 
         # print(f'IN showPlot : {well_id}')
 
@@ -178,7 +180,8 @@ class TheisRecoveryPage(PageWindow,QObject):
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
                         int(pdf.get_y()), dash_length=1, space_length=1)
         TheisRecoveryPage.pdf_obj=pdf
-    
+        self.loading_label.setText('')
+
     def create_report(self):
         current_datetime = datetime.now()
         formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')

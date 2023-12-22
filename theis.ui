@@ -218,7 +218,7 @@
             <height>50</height>
            </size>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
            <item>
             <widget class="QPushButton" name="plot_button">
              <property name="minimumSize">
@@ -245,6 +245,18 @@
              <property name="icon">
               <iconset theme="plot">
                <normaloff>.</normaloff>.</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="loading_label">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>

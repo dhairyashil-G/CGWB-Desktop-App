@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot
-from PyQt5.QtWidgets import QFileDialog,QMessageBox
+from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import sqlite3
@@ -47,6 +47,8 @@ class TheisPage(PageWindow,QObject):
         return (r*r*S)/(4*T*t)
 
     def calculate_theis(self):
+        self.loading_label.setText('Please wait...This might take some time...')
+        QApplication.processEvents()
         well_id = TheisPage.well_id_global 
         # print(f'IN showPlot : {well_id}')
 
@@ -188,7 +190,7 @@ class TheisPage(PageWindow,QObject):
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
                         int(pdf.get_y()), dash_length=1, space_length=1)
         TheisPage.pdf_obj=pdf
-
+        self.loading_label.setText('')
 
     def create_report(self):
         current_datetime = datetime.now()
