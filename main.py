@@ -15,6 +15,13 @@ from help import HelpPage
 
 basedir = os.path.dirname(__file__)
 
+try:
+    from ctypes import windll  # Only exists on Windows.
+    myappid = 'cgwb.aquaprobe.app.1.3'
+    windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+except ImportError:
+    pass
+
 conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
@@ -48,7 +55,7 @@ class MultiPageApp(QMainWindow):
         self.setCentralWidget(self.stacked_widget)
 
         self.pages={}
-        self.setWindowTitle('AquaProbe-Beta1')
+        self.setWindowTitle('AquaProbe')
         self.well_table_obj=WellTablePage()
         self.prev_page_obj=PreviewPage()
         self.theis_page_obj=TheisPage()
