@@ -46,13 +46,13 @@ class CreateWellPage(PageWindow):
     def save_well_data(self):
 
         if(self.startdatetime_edit.dateTime()>self.enddatetime_edit.dateTime()):
-            QMessageBox.information(self, 'Error', 'Invalid datetime input!')
+            QMessageBox.critical(self, 'Error', 'Invalid datetime input!')
 
         elif(self.is_csv_file(self.file_name)==False):
-            QMessageBox.information(self, 'Error', 'Invalid File type!')
+            QMessageBox.critical(self, 'Error', 'Invalid File type!')
 
         elif(self.file_name==''):
-            QMessageBox.information(self, 'Error', 'CSV File not selected!')
+            QMessageBox.critical(self, 'Error', 'CSV File not selected!')
 
 
         else:
@@ -114,5 +114,5 @@ class CreateWellPage(PageWindow):
                 self.geology_edit.clear()
                 self.goto('welltable')
             except Exception as e:
-                QMessageBox.information(self, 'Error', 'Well creation unsuccessful!')
+                QMessageBox.critical(self, 'Error', 'Well creation unsuccessful!')
 
