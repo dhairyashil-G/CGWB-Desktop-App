@@ -133,7 +133,7 @@ class TheisRecoveryPage(PageWindow,QObject):
             pdf.ln(5)
 
             pdf.set_font('Arial', 'BU', 18)
-            pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
+            pdf.cell(0, 10, 'Theis Recovery Test Report', align='C', ln=1)
             pdf.ln(5)
 
             pdf.set_font('Arial', '', 12)
