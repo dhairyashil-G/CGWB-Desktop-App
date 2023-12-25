@@ -2,7 +2,7 @@ from PyQt5 import uic,QtWebEngineWidgets
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject, pyqtSlot
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView,QMessageBox
+from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView,QMessageBox,QApplication
 import sqlite3
 import pandas as pd
 from PyQt5.QtGui import QStandardItemModel
@@ -55,6 +55,9 @@ class PreviewPage(PageWindow, QObject):
         self.goto('helppage')
 
     def show_plot(self):
+        self.loading_label.setText('Please wait...This might take some time...')
+        QApplication.processEvents()
+
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
 
@@ -122,10 +125,13 @@ class PreviewPage(PageWindow, QObject):
             )
             
             self.browser.setHtml(fig.to_html(include_plotlyjs='cdn'))
+            self.loading_label.setText('')
+
         except Exception as e:
             print(e)
             
             QMessageBox.critical(None,"Error","File not found at given location!")
+            self.loading_label.setText('')
             self.goto('welltable')
 
     def goback(self):
