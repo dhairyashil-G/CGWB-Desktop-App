@@ -36,6 +36,7 @@ class CreateWellPage(PageWindow):
         
         if self.file_name:
             QMessageBox.information(self, 'Success', 'Upload successful!')
+            self.csv_button.setText(self.file_name)
             print("Selected CSV File:", self.file_name)
 
 
