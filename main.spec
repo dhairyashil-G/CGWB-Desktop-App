@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['main.py'],
+    ['main.py', 'help.py', 'about_us_page.py', 'well_table.py', 'create_well.py', 'home_page.py', 'multiPageHandler.py', 'cooper_jacob_page.py', 'preview.py', 'theis_page.py', 'theis_recovery_page.py'],
     pathex=[],
     binaries=[],
     datas=[
@@ -13,8 +13,8 @@ a = Analysis(
         ('theis.ui', '.'),
         ('cooper_jacob.ui', '.'),
         ('theis_recovery.ui', '.'),
-        ('about_us.ui', .),
-        ('help.ui', .),
+        ('about_us.ui', '.'),
+        ('help.ui', '.'),
         ('aquaprobe_logo.png', '.'),
         ('logo.png','.'),
         ('logo.jpg','.'),
