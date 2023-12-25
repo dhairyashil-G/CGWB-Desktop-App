@@ -86,53 +86,54 @@ class PreviewPage(PageWindow, QObject):
         print(csv_file_url)
         try:
             df = pd.read_csv(csv_file_url)
-            df_pumping_test = df[df['Time'] <= t_when_pumping_stopped]
-            df_recovery_test = df[df['Time'] > t_when_pumping_stopped]
-
-            print(df_pumping_test)
-            # Rename columns in df_pumping_test
-            df_recovery_test_new = df_recovery_test.copy()
-            df_recovery_test_new.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
-
-            # Rename columns in df_recovery_test
-            df_pumping_test_new = df_pumping_test.copy()
-            df_pumping_test_new.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
-
-            model1 = PandasModel(df_pumping_test_new)
-            self.pumping_table.setModel(model1)
-
-            model2= PandasModel(df_recovery_test_new)
-            self.recovery_table.setModel(model2)
-            
-        
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x=df_pumping_test['Time'], y=df_pumping_test['Drawdown'],
-                                    mode='lines+markers',
-                                    name='Pumping Data',
-                                    line=dict(color='blue'), 
-                                    marker=dict(color='blue') 
-                                    ))
-            fig.update_xaxes(type="log")
-            fig.add_trace(go.Scatter(x=df_recovery_test['Time'], y=df_recovery_test['Drawdown'],
-                                    mode='lines+markers',
-                                    name='Recovery Data'))
-            fig.update_xaxes(type="log")
-            fig.update_layout(
-                title="Drawdown vs Time",
-                xaxis_title="log Time (min)",
-                yaxis_title="Drawdown (m)",
-                legend_title="Legend"
-            )
-            
-            self.browser.setHtml(fig.to_html(include_plotlyjs='cdn'))
-            self.loading_label.setText('')
-
         except Exception as e:
             print(e)
             
             QMessageBox.critical(None,"Error","File not found at given location!")
             self.loading_label.setText('')
             self.goto('welltable')
+
+        df_pumping_test = df[df['Time'] <= t_when_pumping_stopped]
+        df_recovery_test = df[df['Time'] > t_when_pumping_stopped]
+
+        print(df_pumping_test)
+        # Rename columns in df_pumping_test
+        df_recovery_test_new = df_recovery_test.copy()
+        df_recovery_test_new.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
+
+        # Rename columns in df_recovery_test
+        df_pumping_test_new = df_pumping_test.copy()
+        df_pumping_test_new.rename(columns={'Time': 'Time (min)', 'Drawdown': 'Drawdown (m)'}, inplace=True)
+
+        model1 = PandasModel(df_pumping_test_new)
+        self.pumping_table.setModel(model1)
+
+        model2= PandasModel(df_recovery_test_new)
+        self.recovery_table.setModel(model2)
+        
+    
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=df_pumping_test['Time'], y=df_pumping_test['Drawdown'],
+                                mode='lines+markers',
+                                name='Pumping Data',
+                                line=dict(color='blue'), 
+                                marker=dict(color='blue') 
+                                ))
+        fig.update_xaxes(type="log")
+        fig.add_trace(go.Scatter(x=df_recovery_test['Time'], y=df_recovery_test['Drawdown'],
+                                mode='lines+markers',
+                                name='Recovery Data'))
+        fig.update_xaxes(type="log")
+        fig.update_layout(
+            title="Drawdown vs Time",
+            xaxis_title="log Time (min)",
+            yaxis_title="Drawdown (m)",
+            legend_title="Legend"
+        )
+        
+        self.browser.setHtml(fig.to_html(include_plotlyjs='cdn'))
+        self.loading_label.setText('')
+
 
     def goback(self):
         self.goto('welltable') 
