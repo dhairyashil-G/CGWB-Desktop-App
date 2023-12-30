@@ -66,7 +66,7 @@ class WellTablePage(PageWindow,QObject):
 
             # Create "Delete" and "Next" buttons in the last two columns
             delete_button = QPushButton("Delete")
-            next_button = QPushButton("Next")
+            next_button = QPushButton("Analysis")
 
             # Set button properties
             delete_button.setProperty("row", row_index)

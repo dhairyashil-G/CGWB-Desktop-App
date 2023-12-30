@@ -210,7 +210,7 @@
          </column>
          <column>
           <property name="text">
-           <string>Next</string>
+           <string>Analysis</string>
           </property>
           <property name="font">
            <font>
