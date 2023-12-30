@@ -221,7 +221,7 @@ class CooperJacobPage(PageWindow,QObject):
             f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
         lst2.append(f"Geology:  {well_object.get('Geology')}")
         lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
-        lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m")
+        lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m-bgl")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
         lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
         lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")

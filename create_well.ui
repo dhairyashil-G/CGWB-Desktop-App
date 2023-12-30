@@ -176,7 +176,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Static Water Level (m) :</string>
+          <string>Static Water Level (m-bgl) :</string>
          </property>
         </widget>
        </item>
