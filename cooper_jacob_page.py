@@ -233,6 +233,11 @@ class CooperJacobPage(PageWindow,QObject):
             pdf.cell(col_width, 10, item2, border=1)
             pdf.ln(10)
         pdf.ln(5)
+
+        pdf.cell(0,10,f"x-intercept value : {round(x_intercept,3)}",ln=1)
+        pdf.cell(0,10,f"Slope value : {round(slope,3)}",ln=1)
+        pdf.ln(5)
+
         pdf.set_font('Arial', 'B', 13)
         pdf.cell(0, 10, "Graphical Interpretation", ln=1)
         fig.write_image("fig.png")
