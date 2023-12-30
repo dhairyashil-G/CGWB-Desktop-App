@@ -101,7 +101,9 @@ class TheisRecoveryPage(PageWindow,QObject):
         df = df.round(decimals=3)
         self.transmissivity_value.setText(str(round(T,3)))
         self.delta_s_value.setText("{:.3f}".format(delta_s_dash))
-        self.relative_change_s_value.setText(str(round(ratio_of_S,3)))
+        
+        # To add this create a label in ui with name "realtive_change_s_value" and uncomment in pdf creation code
+        # self.relative_change_s_value.setText(str(round(ratio_of_S,3)))
 
         fig = go.Figure()
 
@@ -180,7 +182,7 @@ class TheisRecoveryPage(PageWindow,QObject):
         pdf.set_font('Arial', 'B', 12)
         pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
         pdf.cell(0, 10, f'delta S : {round(delta_s_dash,3)}', ln=1)
-        pdf.cell(0, 10, f'Relative Change in S : {round(ratio_of_S, 3)}%', ln=1)
+        # pdf.cell(0, 10, f'Relative Change in S : {round(ratio_of_S, 3)}%', ln=1)
         pdf.ln(5)
 
         pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
