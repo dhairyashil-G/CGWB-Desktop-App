@@ -208,7 +208,7 @@
        <item row="8" column="2">
         <widget class="QDoubleSpinBox" name="distancefromwell_spinbox">
          <property name="decimals">
-          <number>3</number>
+          <number>5</number>
          </property>
          <property name="maximum">
           <double>99999.990000000005239</double>
