@@ -250,7 +250,7 @@
        <item row="6" column="5">
         <widget class="QDoubleSpinBox" name="welldiameter_spinbox">
          <property name="decimals">
-          <number>3</number>
+          <number>5</number>
          </property>
          <property name="maximum">
           <double>99999.990000000005239</double>
