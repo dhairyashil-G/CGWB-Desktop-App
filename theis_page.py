@@ -130,7 +130,15 @@ class TheisPage(PageWindow,QObject):
             yaxis_title="log Drawdown (m)",
             legend_title="Legend",title_x=0.5
         )
-
+        fig.add_annotation(
+            text="Method : Theis",
+            xref="paper",
+            yref="paper",
+            x=0,  # Set x-coordinate to 1 for right alignment
+            y=1,  # Set y-coordinate to 1 for top alignment
+            showarrow=False,
+            font=dict(size=16)
+        )
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))   
 
         self.transmissivity_value.setText(str(round(T,3)))
