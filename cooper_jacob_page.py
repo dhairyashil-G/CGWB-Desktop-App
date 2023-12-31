@@ -182,7 +182,8 @@ class CooperJacobPage(PageWindow,QObject):
         title="Drawdown vs Time",
         xaxis_title="log Time (min)",
         yaxis_title="Drawdown (m)",
-        legend_title="Legend"
+        legend_title="Legend",
+        title_x=0.5
         )
 
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))

@@ -124,9 +124,12 @@ class TheisPage(PageWindow,QObject):
 
         fig.data[1].update(xaxis='x2')
 
-        fig.update_layout(title="Drawdown vs Time", xaxis_title="log Time (min)",
+        fig.update_layout(
+            title="Drawdown vs Time", 
+            xaxis_title="log Time (min)",
             yaxis_title="log Drawdown (m)",
-            legend_title="Legend")
+            legend_title="Legend",title_x=0.5
+        )
 
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))   
 
