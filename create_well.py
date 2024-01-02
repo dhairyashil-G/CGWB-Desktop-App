@@ -1,8 +1,8 @@
 import os
 import sys
 import sqlite3
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QLineEdit,QSpinBox, QPushButton, QComboBox, QDateTimeEdit,QScrollArea
-from PyQt5.QtCore import Qt, pyqtSignal,QDateTime
+from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtCore import Qt, QDateTime
 from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from PyQt5 import uic
 from multiPageHandler import PageWindow
@@ -12,6 +12,8 @@ class CreateWellPage(PageWindow):
         uic.loadUi('create_well.ui',self)
         self.setWindowTitle('AquaProbe-Beta1.1')
 
+        self.zones_list = []
+
         self.csv_button.clicked.connect(self.select_csv_file)
         self.save_button.clicked.connect(self.save_well_data)
         self.back_button.clicked.connect(self.goback)
@@ -19,6 +21,7 @@ class CreateWellPage(PageWindow):
         self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
+        self.zones_tapped_add_button.clicked.connect(self.add_zones_range)
 
     def goto_aboutus(self):
         self.goto('aboutus')
@@ -31,6 +34,28 @@ class CreateWellPage(PageWindow):
 
     def goto_welltable(self):
         self.goto('welltable')
+
+    def add_zones_range(self):
+        try:
+            start_value = self.zones_tapped_start_spinbox.text()
+            end_value = self.zones_tapped_end_spinbox.text()
+            self.zones_list.append([start_value, end_value])
+            self.updateTable()
+            self.zones_tapped_start_spinbox.clear()
+            self.zones_tapped_end_spinbox.clear()
+            print(self.zones_list)
+        except ValueError:
+            print(ValueError)
+            pass  # Ignore if the input is not a valid number
+    
+    def updateTable(self):
+        num_ranges = len(self.zones_list)
+
+        self.zones_tapped_table.setRowCount(num_ranges)
+
+        for i, (start, end) in enumerate(self.zones_list):
+            self.zones_tapped_table.setItem(i, 0, QTableWidgetItem(str(start)))
+            self.zones_tapped_table.setItem(i, 1, QTableWidgetItem(str(end)))
 
     def is_csv_file(self,file_path):
         _, file_extension = os.path.splitext(file_path)
@@ -83,7 +108,9 @@ class CreateWellPage(PageWindow):
 
                 
                 totalduration = startdatetime_datetype.secsTo(enddatetime_datetype)
-                zonestappedin = self.zonestappedin_spinbox.value()
+                zonestappedstring=str(self.zones_list)
+                zonestappedin = zonestappedstring
+                print(f"{zonestappedin} : {type(zonestappedin)}")
                 welldepth = self.welldepth_spinbox.value()
                 welldiameter = self.welldiameter_spinbox.value()
                 staticwaterlevel = self.staticwaterlevel_spinbox.value()
@@ -97,8 +124,9 @@ class CreateWellPage(PageWindow):
                 conn = sqlite3.connect('./database.db')
                 cursor = conn.cursor()
                 try:
-                    cursor.execute(f'''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell,TimeWhenPumpingStopped, CsvFilePath) 
-                    VALUES ('{wellname}', '{location}', '{coordinates}', '{geology}', '{performedby}', '{current_datetime}', '{startdatetime}', '{enddatetime}', {totalduration}, {zonestappedin}, {welldepth}, {welldiameter}, {staticwaterlevel}, {pumpingrate}, {distancefromwell}, {timepumpingstopped}, '{csv_file_path}')''')
+                    cursor.execute('''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell, TimeWhenPumpingStopped, CsvFilePath) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                   (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime, enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel, pumpingrate, distancefromwell, timepumpingstopped, csv_file_path))
                 except sqlite3.Error as e:
                     print("SQLite error:", e)
                     print("Failed to execute query with values:")
@@ -113,7 +141,8 @@ class CreateWellPage(PageWindow):
                 self.performedby_edit.clear()
                 self.startdatetime_edit.setDateTime(QDateTime.currentDateTime())
                 self.enddatetime_edit.setDateTime(QDateTime.currentDateTime())
-                self.zonestappedin_spinbox.setValue(0)
+                # self.zonestappedin_spinbox.setValue(0)
+                self.zones_tapped_table.clearContents()
                 self.welldepth_spinbox.setValue(0)
                 self.welldiameter_spinbox.setValue(0)
                 self.staticwaterlevel_spinbox.setValue(0)

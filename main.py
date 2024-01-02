@@ -35,7 +35,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         StartDatetime TIMESTAMP,
         EndDatetime TIMESTAMP,
         TotalDuration INTEGER,
-        ZonesTappedIn INTEGER,
+        ZonesTappedIn TEXT,
         WellDepth INTEGER,
         WellDiameter INTEGER,
         StaticWaterLevel INTEGER,
