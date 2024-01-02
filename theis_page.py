@@ -187,7 +187,8 @@ class TheisPage(PageWindow,QObject):
         lst1.append(
             f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
         lst2.append(f"Geology:  {well_object.get('Geology')}")
-        lst1.append(f"Zones Tapped: {well_object.get('ZonesTappedIn')} bgl-m")
+        zones_list=eval(well_object.get('ZonesTappedIn'))
+        lst1.append(f"Zones Tapped: {len(zones_list)}")
         lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m-bgl")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
         lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
