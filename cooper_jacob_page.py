@@ -36,14 +36,22 @@ class CooperJacobPage(PageWindow,QObject):
 
         self.plot_button.clicked.connect(self.calculate_cooper_jacob)
         self.download_report_button.clicked.connect(self.create_report)
+        self.menuWellTable.aboutToShow.connect(self.goto_welltable)
+        self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
         self.goto('aboutus')
 
+    def goto_home(self):
+        self.goto('homepage')
+
     def goto_help(self):
         self.goto('helppage')
+
+    def goto_welltable(self):
+        self.goto('welltable')
 
     @pyqtSlot(int)
     def get_well(self, row):
@@ -123,14 +131,16 @@ class CooperJacobPage(PageWindow,QObject):
             print('if block')
             slope, y_intercept = np.polyfit(np.log(x_data), y_data, 1)
             x_intercept = np.exp((-y_intercept)/slope)
+            x_intercept = np.log(x_intercept)  #log of x-intercept
             self.adjust_slope.setValue(round(slope,6))
             self.adjust_x_intercept.setValue(round(x_intercept,6))
+           
         else:
             slope=self.adjust_slope.value()
             x_intercept=self.adjust_x_intercept.value()
 
 
-        y_intercept = ((-slope)*np.log(x_intercept))
+        y_intercept = ((-slope)*(x_intercept))
 
 
         delta_s = abs((slope*math.log(100) + y_intercept) -
@@ -179,14 +189,14 @@ class CooperJacobPage(PageWindow,QObject):
         fig.update_xaxes(type="log")
 
         fig.update_layout(
-        title="Drawdown vs Time",
+        title="Method:Cooper Jacob",
         xaxis_title="log Time (min)",
         yaxis_title="Drawdown (m)",
         legend_title="Legend",
         title_x=0.5
         )
         fig.add_annotation(
-            text="Method : Cooper Jacob",
+            text="Drawdown vs Time",
             xref="paper",
             yref="paper",
             x=0,  # Set x-coordinate to 1 for right alignment

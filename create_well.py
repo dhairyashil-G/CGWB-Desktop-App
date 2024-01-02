@@ -15,14 +15,22 @@ class CreateWellPage(PageWindow):
         self.csv_button.clicked.connect(self.select_csv_file)
         self.save_button.clicked.connect(self.save_well_data)
         self.back_button.clicked.connect(self.goback)
+        self.menuWellTable.aboutToShow.connect(self.goto_welltable)
+        self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
         self.goto('aboutus')
 
+    def goto_home(self):
+        self.goto('homepage')
+
     def goto_help(self):
         self.goto('helppage')
+
+    def goto_welltable(self):
+        self.goto('welltable')
 
     def is_csv_file(self,file_path):
         _, file_extension = os.path.splitext(file_path)

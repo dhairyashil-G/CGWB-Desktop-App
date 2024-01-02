@@ -196,7 +196,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Praveen Kumar</string>
+                 <string>Praveen Kumar (Domain Expert)</string>
                 </property>
                </widget>
               </item>
@@ -208,7 +208,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Sanjay Jotwani</string>
+                 <string>Sanjay Jotwani (Technical Mentor)</string>
                 </property>
                </widget>
               </item>
@@ -220,7 +220,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Vikas Baloda</string>
+                 <string>Vikas Baloda (Technical Mentor)</string>
                 </property>
                </widget>
               </item>
@@ -276,6 +276,16 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHome">
+    <property name="title">
+     <string>Home</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuWellTable">
+    <property name="title">
+     <string>Well Table</string>
+    </property>
+   </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About Us</string>
@@ -286,6 +296,8 @@
      <string>Help</string>
     </property>
    </widget>
+   <addaction name="menuHome"/>
+   <addaction name="menuWellTable"/>
    <addaction name="menuAbout"/>
    <addaction name="menuHelp"/>
   </widget>

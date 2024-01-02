@@ -24,19 +24,25 @@ class WellTablePage(PageWindow,QObject):
         self.back_button.clicked.connect(self.goback)
         self.create_well_button.clicked.connect(self.gocreatewell)
         self.table_widget.clicked.connect(self.singleclick)
-
-        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
-        self.menuHelp.aboutToShow.connect(self.goto_help)
         # Load data from SQLite database
         self.load_data_from_database()
+
+        self.menuWellTable.aboutToShow.connect(self.goto_welltable)
+        self.menuHome.aboutToShow.connect(self.goto_home)
+        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
         self.goto('aboutus')
 
+    def goto_home(self):
+        self.goto('homepage')
+
     def goto_help(self):
         self.goto('helppage')
 
-
+    def goto_welltable(self):
+        self.goto('welltable')
 
     def goback(self):
         self.goto('homepage')
