@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog,QMessageBox,QApplication
 from multiPageHandler import PageWindow
-from PyQt5.QtCore import QObject,pyqtSlot
+from PyQt5.QtCore import QObject,pyqtSlot,pyqtSignal
 from PyQt5.QtGui import QMovie
 import pandas as pd
 import plotly.graph_objs as go
@@ -12,6 +12,7 @@ from fpdf import FPDF
 import os
 from datetime import datetime
 class CooperJacobPage(PageWindow,QObject):
+    cooper_jacob_analyzed=pyqtSignal(bool)
     def __init__(self):
         super(CooperJacobPage, self).__init__()
          # Create a scroll area to contain the entire window's content
@@ -278,6 +279,7 @@ class CooperJacobPage(PageWindow,QObject):
         # self.movie.stop()
         # self.loading_label.clear()
         self.loading_label.setText('')
+        self.cooper_jacob_analyzed.emit(True)
         
     def create_report(self):
         current_datetime = datetime.now()

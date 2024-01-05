@@ -44,6 +44,11 @@ class PreviewPage(PageWindow, QObject):
         self.theis_recovery_button.clicked.connect(self.gotheisrecovery)
         well_id_global=None
         self.plot_button.clicked.connect(self.show_plot)
+
+        self.is_cooper_jacob_analyzed=False
+        self.is_theis_analyzed=False
+        self.is_theis_recovery_analyzed=False
+
         # self.show_plot()
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
         self.menuHome.aboutToShow.connect(self.goto_home)
@@ -160,3 +165,17 @@ class PreviewPage(PageWindow, QObject):
         PreviewPage.well_id_global=row
         print('row received')
         
+    @pyqtSlot(bool)
+    def cooper_jacob_analyzed(self,value):
+        self.is_cooper_jacob_analyzed=True
+        print(f'Cooper Jacob :{value}')
+
+    @pyqtSlot(bool)
+    def theis_analyzed(self,value):
+        self.is_theis_analyzed = value
+        print(f'Theis :{value}')
+
+    @pyqtSlot(bool)
+    def theis_recovery_analyzed(self,value):
+        self.is_theis_recovery_analyzed = value
+        print(f'Theis Recovery :{value}')

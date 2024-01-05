@@ -1,6 +1,6 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
-from PyQt5.QtCore import QObject,pyqtSlot
+from PyQt5.QtCore import QObject,pyqtSlot,pyqtSignal
 from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -13,6 +13,8 @@ import os
 from datetime import datetime
 
 class TheisPage(PageWindow,QObject):
+    theis_analyzed=pyqtSignal(bool)
+
     def __init__(self):
         super(TheisPage, self).__init__()
         TheisPage.well_id_global=None
@@ -217,7 +219,7 @@ class TheisPage(PageWindow,QObject):
                         int(pdf.get_y()), dash_length=1, space_length=1)
         TheisPage.pdf_obj=pdf
         self.loading_label.setText('')
-        
+        self.theis_analyzed.emit(True)
 
     def create_report(self):
         current_datetime = datetime.now()

@@ -1,6 +1,6 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
-from PyQt5.QtCore import QObject,pyqtSlot
+from PyQt5.QtCore import QObject,pyqtSlot,pyqtSignal
 from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -14,6 +14,7 @@ import math
 from datetime import datetime
 
 class TheisRecoveryPage(PageWindow,QObject):
+    theis_recovery_analyzed=pyqtSignal(bool)
     def __init__(self):
         super(TheisRecoveryPage, self).__init__()
         TheisRecoveryPage.well_id_global=None
@@ -213,7 +214,7 @@ class TheisRecoveryPage(PageWindow,QObject):
                         int(pdf.get_y()), dash_length=1, space_length=1)
         TheisRecoveryPage.pdf_obj=pdf
         self.loading_label.setText('')
-        
+        self.theis_recovery_analyzed(True)
 
     def create_report(self):
         current_datetime = datetime.now()
