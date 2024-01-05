@@ -276,7 +276,7 @@ class PreviewPage(PageWindow, QObject):
             pdf.ln(5)
 
             pdf.add_page()
-            pdf.set_font('Arial', 'B', 14)
+            pdf.set_font('Arial', 'UB', 16)
             pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
             pdf.ln(5)
 
@@ -300,7 +300,7 @@ class PreviewPage(PageWindow, QObject):
 
 
             pdf.add_page()
-            pdf.set_font('Arial', 'B', 14)
+            pdf.set_font('Arial', 'UB', 16)
             pdf.cell(0, 10, 'Theis Test Report', align='C', ln=1)
             pdf.ln(5)
 
@@ -318,7 +318,7 @@ class PreviewPage(PageWindow, QObject):
             pdf.ln(5)
 
             pdf.add_page()
-            pdf.set_font('Arial', 'B', 14)
+            pdf.set_font('Arial', 'UB', 16)
             pdf.cell(0, 10, 'Theis Recovery Test Report', align='C', ln=1)
             pdf.ln(5)
 

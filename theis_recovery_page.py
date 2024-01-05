@@ -130,14 +130,14 @@ class TheisRecoveryPage(PageWindow,QObject):
         fig.update_xaxes(type="log")
 
         fig.update_layout(
-            title="Drawdown vs Time",
+            title="Method : Theis Recovery",
             xaxis_title="log t/t'",
             yaxis_title="Residual Drawdown (m)",
             legend_title="Legend",
             title_x=0.5
         )
         fig.add_annotation(
-            text="Method : Theis Recovery",
+            text="Drawdown vs Time",
             xref="paper",
             yref="paper",
             x=0,  # Set x-coordinate to 1 for right alignment

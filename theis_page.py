@@ -137,13 +137,13 @@ class TheisPage(PageWindow,QObject):
         fig.data[1].update(xaxis='x2')
 
         fig.update_layout(
-            title="Drawdown vs Time", 
+            title="Method : Theis", 
             xaxis_title="log Time (min)",
             yaxis_title="log Drawdown (m)",
             legend_title="Legend",title_x=0.5
         )
         fig.add_annotation(
-            text="Method : Theis",
+            text="Drawdown vs Time",
             xref="paper",
             yref="paper",
             x=0,  # Set x-coordinate to 1 for right alignment
