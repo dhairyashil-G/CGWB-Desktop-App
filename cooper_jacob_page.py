@@ -6,6 +6,7 @@ from PyQt5.QtGui import QMovie
 import pandas as pd
 import plotly.graph_objs as go
 import sqlite3
+import plotly.io as pio
 import numpy as np
 import math
 from fpdf import FPDF
@@ -13,6 +14,8 @@ import os
 from datetime import datetime
 class CooperJacobPage(PageWindow,QObject):
     cooper_jacob_analyzed=pyqtSignal(bool)
+    cooper_jacob_signal_data=pyqtSignal(dict)
+
     def __init__(self):
         super(CooperJacobPage, self).__init__()
          # Create a scroll area to contain the entire window's content
@@ -133,12 +136,14 @@ class CooperJacobPage(PageWindow,QObject):
             slope, y_intercept = np.polyfit(np.log(x_data), y_data, 1)
             x_intercept = np.exp((-y_intercept)/slope)
             x_intercept = np.log(x_intercept)  #log of x-intercept
+
             self.adjust_slope.setValue(round(slope,6))
             self.adjust_x_intercept.setValue(round(x_intercept,6))
            
         else:
             slope=self.adjust_slope.value()
             x_intercept=self.adjust_x_intercept.value()
+
 
 
         y_intercept = ((-slope)*(x_intercept))
@@ -280,6 +285,17 @@ class CooperJacobPage(PageWindow,QObject):
         # self.loading_label.clear()
         self.loading_label.setText('')
         self.cooper_jacob_analyzed.emit(True)
+
+        fig_json = pio.to_json(fig)
+        signal_data={
+            'fig_json': fig_json,
+            'slope': slope,
+            'x_intercept': x_intercept,
+            'y_intercept': y_intercept,
+            'transmissivity': T,
+            'storativity': S,
+        }
+        self.cooper_jacob_signal_data.emit(signal_data)
         
     def create_report(self):
         current_datetime = datetime.now()

@@ -12,9 +12,11 @@ from fpdf import FPDF
 import os
 import math
 from datetime import datetime
+import plotly.io as pio
 
 class TheisRecoveryPage(PageWindow,QObject):
     theis_recovery_analyzed=pyqtSignal(bool)
+    theis_recovery_signal_data=pyqtSignal(dict)
     def __init__(self):
         super(TheisRecoveryPage, self).__init__()
         TheisRecoveryPage.well_id_global=None
@@ -214,7 +216,18 @@ class TheisRecoveryPage(PageWindow,QObject):
                         int(pdf.get_y()), dash_length=1, space_length=1)
         TheisRecoveryPage.pdf_obj=pdf
         self.loading_label.setText('')
-        self.theis_recovery_analyzed(True)
+        self.theis_recovery_analyzed.emit(True)
+
+        fig_json = pio.to_json(fig)
+        signal_data={
+            'fig_json': fig_json,
+            'slope': slope,
+            'x_intercept': x_intercept,
+            'y_intercept': y_intercept,
+            'transmissivity': T,
+            'deltas': delta_s_dash,
+        }
+        self.theis_recovery_signal_data.emit(signal_data)
 
     def create_report(self):
         current_datetime = datetime.now()

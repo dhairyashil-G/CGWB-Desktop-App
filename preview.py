@@ -2,11 +2,16 @@ from PyQt5 import uic,QtWebEngineWidgets
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject, pyqtSlot
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView,QMessageBox,QApplication
+from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView,QMessageBox,QApplication,QFileDialog
 import sqlite3
 import pandas as pd
 from PyQt5.QtGui import QStandardItemModel
 import plotly.graph_objs as go
+import plotly.io as pio
+import os
+
+from fpdf import FPDF
+from datetime import datetime
 
 Qt = QtCore.Qt
 
@@ -44,10 +49,14 @@ class PreviewPage(PageWindow, QObject):
         self.theis_recovery_button.clicked.connect(self.gotheisrecovery)
         well_id_global=None
         self.plot_button.clicked.connect(self.show_plot)
+        self.combined_report_button.clicked.connect(self.combined_report_save)
 
-        self.is_cooper_jacob_analyzed=False
-        self.is_theis_analyzed=False
-        self.is_theis_recovery_analyzed=False
+        PreviewPage.is_cooper_jacob_analyzed=False
+        PreviewPage.cooper_jacob_data_dict=dict()
+        PreviewPage.is_theis_analyzed=False
+        PreviewPage.theis_data_dict=dict()
+        PreviewPage.is_theis_recovery_analyzed=False
+        PreviewPage.theis_recivery_data_dict=dict()
 
         # self.show_plot()
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
@@ -167,15 +176,175 @@ class PreviewPage(PageWindow, QObject):
         
     @pyqtSlot(bool)
     def cooper_jacob_analyzed(self,value):
-        self.is_cooper_jacob_analyzed=True
+        PreviewPage.is_cooper_jacob_analyzed=True
         print(f'Cooper Jacob :{value}')
+
+    @pyqtSlot(dict)
+    def cooper_jacob_data(self,value):
+        PreviewPage.cooper_jacob_data_dict=value
 
     @pyqtSlot(bool)
     def theis_analyzed(self,value):
-        self.is_theis_analyzed = value
+        PreviewPage.is_theis_analyzed = value
         print(f'Theis :{value}')
+
+    @pyqtSlot(dict)
+    def theis_data(self,value):
+        PreviewPage.theis_data_dict=value
 
     @pyqtSlot(bool)
     def theis_recovery_analyzed(self,value):
-        self.is_theis_recovery_analyzed = value
+        PreviewPage.is_theis_recovery_analyzed = value
         print(f'Theis Recovery :{value}')
+
+    @pyqtSlot(dict)
+    def theis_recovery_data(self,value):
+        PreviewPage.theis_recovery_data_dict=value
+
+
+    def combined_report_save(self):
+        pass
+        print(PreviewPage.is_cooper_jacob_analyzed)
+        if(PreviewPage.is_cooper_jacob_analyzed!=True):
+            QMessageBox.warning(None,'Error','Please analyze Cooper-Jacob analysis first!')
+        elif(PreviewPage.is_theis_analyzed!=True):
+            QMessageBox.warning(None,'Error','Please analyze Theis analysis first!')
+        elif(PreviewPage.is_theis_recovery_analyzed!=True):
+            QMessageBox.warning(None,'Error','Please analyze Theis Recovery analysis first!')
+        else:
+            #pdf creation
+            print(PreviewPage.cooper_jacob_data_dict)
+            well_id = PreviewPage.well_id_global
+            conn = sqlite3.connect('database.db')
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
+            row = cursor.fetchone()
+
+            well_object = {}
+            if row:
+                column_names = [desc[0] for desc in cursor.description]
+                for i in range(len(column_names)):
+                    well_object[column_names[i]] = row[i]
+
+
+            pdf = FPDF()
+            pdf.add_page()
+
+            pdf.set_font('Arial', 'B', 10)
+            pdf.image('logo.jpg', x=10, y=10, w=25, h=30)
+            pdf.image('aquaprobe_logo.png',
+                    x=pdf.w-60, y=10, w=50, h=25)
+            pdf.cell(0, 30, '', ln=1)
+
+            pdf.set_font('Arial', 'B', 10)
+            pdf.cell(0, 10, 'CENTRAL GROUND WATER BOARD (CGWB)', ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', 'BU', 18)
+            pdf.cell(0, 10, 'Pumping Test Report', align='C', ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', '', 12)
+            lst1 = list()
+            lst2 = list()
+            lst1.append(f"Well Name: {well_object.get('WellName')}" )
+            lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
+            lst1.append(f"Location: {well_object.get('Location')}")
+            lst2.append(f"Coordinates: {well_object.get('Coordinates')}")
+            startdatetime=well_object.get('StartDatetime').replace('T',' ')
+            enddatetime=well_object.get('EndDatetime').replace('T',' ')
+            lst1.append(
+                f"Start Datetime: {startdatetime} ")
+            lst2.append(
+                f"End Datetime: {enddatetime} ")
+            lst1.append(
+                f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
+            lst2.append(f"Geology:  {well_object.get('Geology')}")
+            zones_list=eval(well_object.get('ZonesTappedIn'))
+            lst1.append(f"Zones Tapped: {len(zones_list)}")
+            lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m-bgl")
+            lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
+            lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
+            lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
+            lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
+            pdf.set_font("Arial", "", 12)
+            col_width = pdf.w / 2.2
+            for item1, item2 in zip(lst1, lst2):
+                pdf.cell(col_width, 10, item1, border=1)
+                pdf.cell(col_width, 10, item2, border=1)
+                pdf.ln(10)
+            pdf.ln(5)
+
+            pdf.add_page()
+            pdf.set_font('Arial', 'B', 14)
+            pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', 'B', 12)
+            pdf.cell(0,10,f"x-intercept value : {round(PreviewPage.cooper_jacob_data_dict.get('x_intercept'),3)}",ln=1)
+            pdf.cell(0,10,f"Slope value : {round(PreviewPage.cooper_jacob_data_dict.get('slope'),3)}",ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', 'B', 13)
+            pdf.cell(0, 10, "Graphical Interpretation", ln=1)
+            reconstructed_fig = pio.from_json(PreviewPage.cooper_jacob_data_dict.get('fig_json'))
+            reconstructed_fig.write_image("fig1.png")
+            pdf.image('fig1.png', w=200, h=150)
+            os.remove("fig1.png")
+            pdf.ln(5)
+            pdf.set_font('Arial', 'B', 12)
+            pdf.cell(0, 10, f"Transmissivity : {round(PreviewPage.cooper_jacob_data_dict.get('transmissivity'), 3)} m²/day", ln=1)
+            pdf.cell(0, 10, f"""Storativity : {"{:.3f}".format(PreviewPage.cooper_jacob_data_dict.get('storativity'))}""", ln=1)
+            # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
+            pdf.ln(5)
+
+
+            pdf.add_page()
+            pdf.set_font('Arial', 'B', 14)
+            pdf.cell(0, 10, 'Theis Test Report', align='C', ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', 'B', 13)
+            pdf.cell(0, 10, "Graphical Interpretation", ln=1)
+            reconstructed_fig = pio.from_json(PreviewPage.theis_data_dict.get('fig_json'))
+            reconstructed_fig.write_image("fig2.png")
+            pdf.image('fig2.png', w=200, h=150)
+            os.remove("fig2.png")
+            pdf.ln(5)
+            pdf.set_font('Arial', 'B', 12)
+            pdf.cell(0, 10, f"Transmissivity : {round(PreviewPage.theis_data_dict.get('transmissivity'), 3)} m²/day", ln=1)
+            pdf.cell(0, 10, f"""Storativity : {"{:.3f}".format(PreviewPage.theis_data_dict.get('storativity'))}""", ln=1)
+            # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
+            pdf.ln(5)
+
+            pdf.add_page()
+            pdf.set_font('Arial', 'B', 14)
+            pdf.cell(0, 10, 'Theis Recovery Test Report', align='C', ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', 'B', 12)
+            pdf.cell(0,10,f"x-intercept value : {round(PreviewPage.theis_recovery_data_dict.get('x_intercept'),3)}",ln=1)
+            pdf.cell(0,10,f"Slope value : {round(PreviewPage.theis_recovery_data_dict.get('slope'),3)}",ln=1)
+            pdf.ln(5)
+
+            pdf.set_font('Arial', 'B', 13)
+            pdf.cell(0, 10, "Graphical Interpretation", ln=1)
+            reconstructed_fig = pio.from_json(PreviewPage.theis_recovery_data_dict.get('fig_json'))
+            reconstructed_fig.write_image("fig3.png")
+            pdf.image('fig3.png', w=200, h=150)
+            os.remove("fig3.png")
+            pdf.ln(5)
+            pdf.set_font('Arial', 'B', 12)
+            pdf.cell(0, 10, f"Transmissivity : {round(PreviewPage.theis_recovery_data_dict.get('transmissivity'), 3)} m²/day", ln=1)
+            pdf.cell(0, 10, f"""Delta S : {"{:.3f}".format(PreviewPage.theis_recovery_data_dict.get('deltas'))}""", ln=1)
+            # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
+            pdf.ln(5)
+
+
+            current_datetime = datetime.now()
+            formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')
+            options = QFileDialog.Options()
+            file_path, _ = QFileDialog.getSaveFileName(self, "Save Report", f"Combined Report {formatted_datetime}", "PDF Files (*.pdf)", options=options)
+            if(file_path):
+                pdf.output(f'{file_path}')
+                QMessageBox.information(self, 'Success', 'Report saved successfully!')

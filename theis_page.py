@@ -11,9 +11,11 @@ import numpy as np
 from fpdf import FPDF
 import os
 from datetime import datetime
+import plotly.io as pio
 
 class TheisPage(PageWindow,QObject):
     theis_analyzed=pyqtSignal(bool)
+    theis_signal_data=pyqtSignal(dict)
 
     def __init__(self):
         super(TheisPage, self).__init__()
@@ -220,6 +222,14 @@ class TheisPage(PageWindow,QObject):
         TheisPage.pdf_obj=pdf
         self.loading_label.setText('')
         self.theis_analyzed.emit(True)
+
+        fig_json = pio.to_json(fig)
+        signal_data={
+            'fig_json': fig_json,
+            'transmissivity': T,
+            'storativity': S,
+        }
+        self.theis_signal_data.emit(signal_data)
 
     def create_report(self):
         current_datetime = datetime.now()

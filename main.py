@@ -68,8 +68,15 @@ class MultiPageApp(QMainWindow):
             self.well_table_obj.well_id_signal.connect(self.theis_recovery_page_obj.get_well)
 
             self.cooper_jacob_page_obj.cooper_jacob_analyzed.connect(self.prev_page_obj.cooper_jacob_analyzed)
+            self.cooper_jacob_page_obj.cooper_jacob_signal_data.connect(self.prev_page_obj.cooper_jacob_data)
+
             self.theis_page_obj.theis_analyzed.connect(self.prev_page_obj.theis_analyzed)
-            
+            self.theis_page_obj.theis_signal_data.connect(self.prev_page_obj.theis_data)
+
+            self.theis_recovery_page_obj.theis_recovery_analyzed.connect(self.prev_page_obj.theis_recovery_analyzed)    
+            self.theis_recovery_page_obj.theis_recovery_signal_data.connect(self.prev_page_obj.theis_recovery_data)
+
+
         except Exception as e:
             print("Error connecting signal:", e)
 

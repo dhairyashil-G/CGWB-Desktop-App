@@ -23,8 +23,8 @@
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>0</y>
+         <x>-146</x>
+         <y>-642</y>
          <width>978</width>
          <height>1164</height>
         </rect>
@@ -328,6 +328,25 @@
              </property>
              <property name="text">
               <string>Back</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="combined_report_button">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Save Combined Report</string>
              </property>
             </widget>
            </item>
