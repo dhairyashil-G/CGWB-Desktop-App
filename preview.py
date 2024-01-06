@@ -159,6 +159,9 @@ class PreviewPage(PageWindow, QObject):
 
     def goback(self):
         self.goto('welltable') 
+        PreviewPage.is_cooper_jacob_recovery_analyzed=False
+        PreviewPage.is_theis_analyzed=False
+        PreviewPage.is_theis_recovery_analyzed=False
 
     def gotheis(self):
         self.goto('theispage')
