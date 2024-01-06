@@ -206,7 +206,6 @@ class PreviewPage(PageWindow, QObject):
 
 
     def combined_report_save(self):
-        pass
         print(PreviewPage.is_cooper_jacob_analyzed)
         if(PreviewPage.is_cooper_jacob_analyzed!=True):
             QMessageBox.warning(None,'Error','Please analyze Cooper-Jacob analysis first!')

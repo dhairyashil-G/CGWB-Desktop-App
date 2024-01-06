@@ -287,7 +287,7 @@ class CooperJacobPage(PageWindow,QObject):
         signal_data={
             'fig_json': fig_json,
             'slope': slope,
-            'x_intercept': x_intercept,
+            'x_intercept': np.exp(x_intercept),
             'y_intercept': y_intercept,
             'transmissivity': T,
             'storativity': S,
