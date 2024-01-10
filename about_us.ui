@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-184</y>
          <width>763</width>
-         <height>723</height>
+         <height>763</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -120,6 +120,12 @@
             <height>0</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #f0f0f0;
+border: 2px solid #000000;
+border-radius: 10px;
+padding: 5px;</string>
+          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QWidget" name="widget_4" native="true">
@@ -138,6 +144,12 @@
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_4">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
@@ -145,8 +157,11 @@
                   <bold>true</bold>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
+                </property>
                 <property name="text">
-                 <string>Developers :</string>
+                 <string>Developers</string>
                 </property>
                </widget>
               </item>
@@ -156,6 +171,9 @@
                  <font>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
                 </property>
                 <property name="text">
                  <string>Dhairyashil Ghatage</string>
@@ -168,6 +186,9 @@
                  <font>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
                 </property>
                 <property name="text">
                  <string>Sahil Gidwani</string>
@@ -188,6 +209,12 @@
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_11">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
@@ -195,8 +222,11 @@
                   <bold>true</bold>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
+                </property>
                 <property name="text">
-                 <string>Mentors :</string>
+                 <string>Mentors</string>
                 </property>
                </widget>
               </item>
@@ -206,6 +236,9 @@
                  <font>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
                 </property>
                 <property name="text">
                  <string>Praveen Kumar (Domain Expert)</string>
@@ -219,6 +252,9 @@
                   <pointsize>10</pointsize>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
+                </property>
                 <property name="text">
                  <string>Sanjay Jotwani (Technical Mentor)</string>
                 </property>
@@ -230,6 +266,9 @@
                  <font>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
                 </property>
                 <property name="text">
                  <string>Vikas Baloda (Technical Mentor)</string>
@@ -251,119 +290,144 @@
            </size>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QWidget" name="vision_widget" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>250</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>250</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #f0f0f0;
-border: 2px solid #3498db;
-border-radius: 10px;
-padding: 2px;</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_5">
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_6">
-                <property name="maximumSize">
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QWidget" name="widget_7" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QWidget" name="vision_widget" native="true">
+                <property name="minimumSize">
                  <size>
-                  <width>16777215</width>
-                  <height>30</height>
+                  <width>300</width>
+                  <height>0</height>
                  </size>
                 </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
+                <property name="maximumSize">
+                 <size>
+                  <width>250</width>
+                  <height>250</height>
+                 </size>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: #f0f0f0;
-padding: 2px;</string>
-                </property>
-                <property name="text">
-                 <string>Vision</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_7">
-                <property name="text">
-                 <string>Sustainable development and management of Ground Water resources of the Country.</string>
-                </property>
-                <property name="scaledContents">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_7" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>250</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>250</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #f0f0f0;
-border: 2px solid #3498db;
+border: 2px solid #000000;
 border-radius: 10px;
 padding: 5px;</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_6">
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_13">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
                 </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Mandate</string>
-                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="label_6">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border:0</string>
+                   </property>
+                   <property name="text">
+                    <string>Vision</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignTop">
+                  <widget class="QLabel" name="label_7">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border:0;</string>
+                   </property>
+                   <property name="text">
+                    <string>Sustainable development and management of Ground Water resources of the Country.</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_14">
-                <property name="text">
-                 <string>To develop and disseminate technologies, monitor and implement National policies for the scientific and sustainable development and management of India's Ground Water resources, including its exploration, assessment, conservation, augmentation, protection from pollution and distribution, based on principles of economic and ecological efficiency and equity.</string>
+               <widget class="QWidget" name="widget_8" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>200</height>
+                 </size>
                 </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
+                <property name="maximumSize">
+                 <size>
+                  <width>250</width>
+                  <height>250</height>
+                 </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #f0f0f0;
+border: 2px solid #000000;
+border-radius: 10px;
+padding: 5px;</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="label_13">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border: 0;
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Mandate</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignTop">
+                  <widget class="QLabel" name="label_14">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border:0</string>
+                   </property>
+                   <property name="text">
+                    <string>To develop and disseminate technologies, monitor and implement National policies for the scientific and sustainable development and management of India's Ground Water resources, including its exploration, assessment, conservation, augmentation, protection from pollution and distribution, based on principles of economic and ecological efficiency and equity.</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>

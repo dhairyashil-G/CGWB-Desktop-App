@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-131</y>
+         <y>-932</y>
          <width>886</width>
-         <height>1422</height>
+         <height>1454</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -271,7 +271,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -298,7 +298,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
+                 <y>-51</y>
                  <width>809</width>
                  <height>436</height>
                 </rect>
@@ -331,7 +331,7 @@ Assumptions:
 
 Data Requirements:
 
- - 𝑄, pumping rate [m3/day]
+ - 𝑄, pumping rate [m³/day]
  - distance from well [m]
 observation well measurements (time and displacement)
 
@@ -373,7 +373,7 @@ observation well measurements (time and displacement)
                  <x>0</x>
                  <y>0</y>
                  <width>826</width>
-                 <height>353</height>
+                 <height>385</height>
                 </rect>
                </property>
                <widget class="QLabel" name="label_10">
@@ -407,7 +407,7 @@ Assumptions:
 
 Data Requirements:
 
- - 𝑄, pumping rate [m3/day]
+ - 𝑄, pumping rate [m³/day]
  - distance from well [m]
  - observation well measurements (time and displacement)
 
@@ -479,7 +479,7 @@ Assumptions:
 
 Data Requirements:
 
- - 𝑄, pumping rate [m3/day]
+ - 𝑄, pumping rate [m³/day]
  - distance from well [m]
  - observation well measurements (time and displacement)
 
