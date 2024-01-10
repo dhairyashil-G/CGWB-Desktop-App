@@ -19,7 +19,8 @@ a = Analysis(
         ('logo.png','.'),
         ('logo.jpg','.'),
         ('icon.ico', '.'),
-        ('loading_gif.gif', '.')
+        ('loading_gif.gif', '.'),
+        ('Home_image1.gif', '.')
     ],
     hiddenimports=[],
     hookspath=[],

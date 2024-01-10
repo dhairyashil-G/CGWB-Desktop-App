@@ -17,8 +17,8 @@ class WellTablePage(PageWindow,QObject):
         self.table_widget.setColumnWidth(2, 200)
         self.table_widget.setColumnWidth(3, 250)
         self.table_widget.setColumnWidth(4, 250)
-        self.table_widget.setColumnWidth(5, 200)
-        self.table_widget.setColumnWidth(6, 100)
+        self.table_widget.setColumnWidth(5, 150)
+        self.table_widget.setColumnWidth(6, 150)
         self.table_widget.setColumnHidden(0, True)
 
         self.back_button.clicked.connect(self.goback)

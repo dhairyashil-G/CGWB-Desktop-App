@@ -118,6 +118,12 @@
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QTableWidget {
+    margin-right: 60px;
+	margin-left: 60px;
+}</string>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
