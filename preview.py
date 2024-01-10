@@ -261,14 +261,14 @@ class PreviewPage(PageWindow, QObject):
                 f"End Datetime: {enddatetime} ")
             lst1.append(
                 f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
-            lst2.append(f"Geology:  {well_object.get('Geology')}")
+            lst2.append(f"Geology: {well_object.get('Geology')}")
             zones_list=eval(well_object.get('ZonesTappedIn'))
             lst1.append(f"Zones Tapped: {len(zones_list)}")
-            lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m-bgl")
+            lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
             lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
-            lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
+            lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
             lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
-            lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
+            lst2.append(f"Distance from Well: {well_object.get('DistanceFromWell')} m")
             pdf.set_font("Arial", "", 12)
             col_width = pdf.w / 2.2
             for item1, item2 in zip(lst1, lst2):

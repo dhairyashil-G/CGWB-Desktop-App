@@ -192,20 +192,11 @@ class CooperJacobPage(PageWindow,QObject):
         fig.update_xaxes(type="log")
 
         fig.update_layout(
-        title="Method:Cooper Jacob",
+        title="Method: Cooper Jacob",
         xaxis_title="log Time (min)",
         yaxis_title="Drawdown (m)",
         legend_title="Legend",
         title_x=0.5
-        )
-        fig.add_annotation(
-            text="Drawdown vs Time",
-            xref="paper",
-            yref="paper",
-            x=0,  # Set x-coordinate to 1 for right alignment
-            y=1,  # Set y-coordinate to 1 for top alignment
-            showarrow=False,
-            font=dict(size=16)
         )
 
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
@@ -242,14 +233,14 @@ class CooperJacobPage(PageWindow,QObject):
             f"End Datetime: {enddatetime} ")
         lst1.append(
             f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
-        lst2.append(f"Geology:  {well_object.get('Geology')}")
+        lst2.append(f"Geology: {well_object.get('Geology')}")
         zones_list=eval(well_object.get('ZonesTappedIn'))
         lst1.append(f"Zones Tapped: {len(zones_list)}")
-        lst2.append(f"Static Water Level:  {well_object.get('StaticWaterLevel')} m-bgl")
+        lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
-        lst2.append(f"Well Diameter:  {well_object.get('WellDiameter')} m")
+        lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
         lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
-        lst2.append(f"Distance from Well:  {well_object.get('DistanceFromWell')} m")
+        lst2.append(f"Distance from Well: {well_object.get('DistanceFromWell')} m")
         pdf.set_font("Arial", "", 12)
         col_width = pdf.w / 2.2
         for item1, item2 in zip(lst1, lst2):
