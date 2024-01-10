@@ -108,12 +108,13 @@ class MultiPageApp(QMainWindow):
                 self.well_table_obj.load_data_from_database()
         
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, False)
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
 if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, False)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
+if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
+    QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    # app.setStyle(QStyleFactory.create('WindowsVista'))
     app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, 'icon.ico')))
 
     main_app = MultiPageApp()
