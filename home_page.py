@@ -17,10 +17,7 @@ class HomePage(PageWindow):
         self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
-
-        self.tabWidget.setTabText(0,'Theis')
-        self.tabWidget.setTabText(1,'Cooper Jacob')
-        self.tabWidget.setTabText(2,'Theis Recovery')
+        
         self.tabWidget.setCurrentIndex(0)
         
 
