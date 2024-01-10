@@ -1,6 +1,7 @@
 import sqlite3
 import sys, os
 from PyQt5 import QtCore, QtGui
+from PyQt5.QtCore import Qt
 from multiPageHandler import PageWindow
 from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QStyleFactory
 from well_table import WellTablePage
@@ -106,13 +107,15 @@ class MultiPageApp(QMainWindow):
             if(name=='welltable'):
                 self.well_table_obj.load_data_from_database()
         
-
-
+if hasattr(Qt, 'AA_EnableHighDpiScaling'):
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, False)
+if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, False)
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     # app.setStyle(QStyleFactory.create('WindowsVista'))
     app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, 'icon.ico')))
 
     main_app = MultiPageApp()
-    main_app.show()
+    main_app.showMaximized()
     sys.exit(app.exec_())
