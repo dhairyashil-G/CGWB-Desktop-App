@@ -2,7 +2,7 @@ import sqlite3
 import sys, os
 from PyQt5 import QtCore, QtGui
 from multiPageHandler import PageWindow
-from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QStyleFactory
 from well_table import WellTablePage
 from home_page import HomePage
 from create_well import CreateWellPage
@@ -110,7 +110,11 @@ class MultiPageApp(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setStyle(QStyleFactory.create('WindowsVista'))
     app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, 'icon.ico')))
+
     main_app = MultiPageApp()
     main_app.show()
+    # main_app = MultiPageApp()
+    # main_app.show()
     sys.exit(app.exec_())
