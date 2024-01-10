@@ -26,7 +26,7 @@
          <x>0</x>
          <y>-906</y>
          <width>886</width>
-         <height>1428</height>
+         <height>1468</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -241,7 +241,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
           <property name="minimumSize">
            <size>
             <width>850</width>
-            <height>250</height>
+            <height>400</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -264,7 +264,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -408,7 +408,10 @@ Estimated Parameters:
 
  - S, Storativity
  - T, Transmissivity [m²/day]
- - Mean fitting error</string>
+ - Mean fitting error
+
+
+</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
