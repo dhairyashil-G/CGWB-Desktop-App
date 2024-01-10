@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-751</y>
+         <y>-542</y>
          <width>886</width>
-         <height>1273</height>
+         <height>1275</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -82,6 +82,18 @@
         </item>
         <item>
          <widget class="QWidget" name="widget_3" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>300</height>
+           </size>
+          </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="label_6">
@@ -108,7 +120,7 @@
              <property name="minimumSize">
               <size>
                <width>850</width>
-               <height>0</height>
+               <height>300</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -276,7 +288,7 @@ padding: 5px;</string>
           </layout>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QTabWidget" name="tabWidget">
           <property name="minimumSize">
            <size>
@@ -286,7 +298,7 @@ padding: 5px;</string>
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>850</width>
             <height>16777215</height>
            </size>
           </property>
@@ -338,7 +350,7 @@ QTabBar::tab:selected, QTabBar::tab:hover {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>809</width>
+                 <width>791</width>
                  <height>343</height>
                 </rect>
                </property>
@@ -406,7 +418,7 @@ Estimated Parameters:
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>826</width>
+                 <width>808</width>
                  <height>294</height>
                 </rect>
                </property>
@@ -425,27 +437,26 @@ Estimated Parameters:
 
 Assumptions:
 
-Aquifer has infinite areal extent
-Aquifer is homogeneous, isotropic and of uniform thickness
-Control well is fully penetrating
-Flow to control well is horizontal
-Aquifer is nonleaky confined
-Flow is unsteady
-Water is released instantaneously from storage with decline of hydraulic head
-Diameter of pumping well is very small so that storage in the well can be neglected
-Values of 𝑢 are small (i.e., 𝑟 is small and 𝑡 is large)
+ - Aquifer has infinite areal extent
+ - Aquifer is homogeneous, isotropic and of uniform thickness
+ - Control well is fully penetrating
+ - Flow to control well is horizontal - Aquifer is nonleaky confined
+ - Flow is unsteady
+ - Water is released instantaneously from storage with decline of hydraulic head
+ - Diameter of pumping well is very small so that storage in the well can be neglected
+ - Values of 𝑢 are small (i.e., 𝑟 is small and 𝑡 is large)
 
 Data Requirements:
 
-𝑄, pumping rate [m3/day]
-distance from well [m]
+ - 𝑄, pumping rate [m3/day]
+ - distance from well [m]
 observation well measurements (time and displacement)
 
-Estimated Parameters:
+ - Estimated Parameters:
 
-S, Storativity
-T, Transmissivity [m²/day]
-Mean fitting error</string>
+ - S, Storativity
+ - T, Transmissivity [m²/day]
+ - Mean fitting error</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -476,7 +487,7 @@ Mean fitting error</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>809</width>
+                 <width>791</width>
                  <height>343</height>
                 </rect>
                </property>

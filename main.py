@@ -110,11 +110,9 @@ class MultiPageApp(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setStyle(QStyleFactory.create('WindowsVista'))
+    # app.setStyle(QStyleFactory.create('WindowsVista'))
     app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, 'icon.ico')))
 
     main_app = MultiPageApp()
     main_app.show()
-    # main_app = MultiPageApp()
-    # main_app.show()
     sys.exit(app.exec_())
