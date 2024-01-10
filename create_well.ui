@@ -339,10 +339,18 @@
             <widget class="QWidget" name="widget_7" native="true">
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
-               <widget class="QDoubleSpinBox" name="zones_tapped_start_spinbox"/>
+               <widget class="QDoubleSpinBox" name="zones_tapped_start_spinbox">
+                <property name="maximum">
+                 <double>10000.000000000000000</double>
+                </property>
+               </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="zones_tapped_end_spinbox"/>
+               <widget class="QDoubleSpinBox" name="zones_tapped_end_spinbox">
+                <property name="maximum">
+                 <double>10000.000000000000000</double>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QPushButton" name="zones_tapped_add_button">
