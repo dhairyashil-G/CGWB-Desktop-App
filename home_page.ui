@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-544</y>
+         <y>-906</y>
          <width>886</width>
          <height>1428</height>
         </rect>
@@ -264,7 +264,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
