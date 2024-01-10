@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-932</y>
+         <y>0</y>
          <width>886</width>
-         <height>1454</height>
+         <height>1404</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -40,8 +40,8 @@
             <widget class="QLabel" name="label_3">
              <property name="maximumSize">
               <size>
-               <width>150</width>
-               <height>200</height>
+               <width>112</width>
+               <height>150</height>
               </size>
              </property>
              <property name="text">
@@ -298,7 +298,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-51</y>
+                 <y>0</y>
                  <width>809</width>
                  <height>436</height>
                 </rect>
