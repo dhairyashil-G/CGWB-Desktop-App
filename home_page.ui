@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-906</y>
+         <y>-131</y>
          <width>886</width>
-         <height>1468</height>
+         <height>1422</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -85,7 +85,7 @@
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>220</height>
+            <height>300</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -100,7 +100,13 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>40</height>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>30</height>
               </size>
              </property>
              <property name="font">
@@ -109,6 +115,9 @@
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>Introducing AquaProbe – Empowering Water Management</string>
@@ -120,7 +129,7 @@
              <property name="minimumSize">
               <size>
                <width>850</width>
-               <height>150</height>
+               <height>200</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -149,9 +158,7 @@ In response to the urgent need for understanding aquifer reactions, AquaProbe fa
 
 Our application plays a crucial role in water resource studies by allowing users to estimate significant aquifer parameters such as Transmissivity, Storativity, and Specific Yield. With a user-friendly interface, AquaProbe enables professionals to input data directly or import it seamlessly from existing sources, streamlining decision-making processes.
 
-Embark on a journey towards sustainable water management with AquaProbe – your comprehensive solution for advancing groundwater-related research and safeguarding our invaluable water resources.
-
-</string>
+Embark on a journey towards sustainable water management with AquaProbe – your comprehensive solution for advancing groundwater-related research and safeguarding our invaluable water resources.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -264,7 +271,7 @@ Embark on a journey towards sustainable water management with AquaProbe – your
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -366,7 +373,7 @@ observation well measurements (time and displacement)
                  <x>0</x>
                  <y>0</y>
                  <width>826</width>
-                 <height>313</height>
+                 <height>353</height>
                 </rect>
                </property>
                <widget class="QLabel" name="label_10">
