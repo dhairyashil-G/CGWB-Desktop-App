@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-542</y>
+         <y>-544</y>
          <width>886</width>
-         <height>1275</height>
+         <height>1428</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -85,13 +85,13 @@
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>150</height>
+            <height>220</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>300</height>
+            <height>380</height>
            </size>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -120,7 +120,7 @@
              <property name="minimumSize">
               <size>
                <width>850</width>
-               <height>300</height>
+               <height>150</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -144,8 +144,11 @@
              </property>
              <property name="text">
               <string>AquaProbe, an innovative desktop application, emerges as the result of our dedication and participation in the Smart India Hackathon 2022. Crafted to address the pressing issues of groundwater depletion and contamination, AquaProbe stands as a pivotal tool for groundwater professionals, researchers, students, teachers, and beyond.
+
 In response to the urgent need for understanding aquifer reactions, AquaProbe facilitates the analysis and interpretation of pumping test data. Leveraging cutting-edge methods like Theiss, Theiss recovery, and Jacob, this freeware redefines the process of input, analysis, visualization, interpretation, and reporting for aquifer test data.
+
 Our application plays a crucial role in water resource studies by allowing users to estimate significant aquifer parameters such as Transmissivity, Storativity, and Specific Yield. With a user-friendly interface, AquaProbe enables professionals to input data directly or import it seamlessly from existing sources, streamlining decision-making processes.
+
 Embark on a journey towards sustainable water management with AquaProbe – your comprehensive solution for advancing groundwater-related research and safeguarding our invaluable water resources.
 
 </string>
@@ -159,383 +162,13 @@ Embark on a journey towards sustainable water management with AquaProbe – your
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="widget_4" native="true">
+         <widget class="QWidget" name="widget_2" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>300</height>
+            <height>100</height>
            </size>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QWidget" name="vision_widget" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>250</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>250</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #f0f0f0;
-border: 2px solid #3498db;
-border-radius: 10px;
-padding: 2px;</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_5">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: #f0f0f0;
-padding: 2px;</string>
-                </property>
-                <property name="text">
-                 <string>Vision</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_4">
-                <property name="text">
-                 <string>Sustainable development and management of Ground Water resources of the Country.</string>
-                </property>
-                <property name="scaledContents">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_6" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>250</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>250</width>
-               <height>200</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #f0f0f0;
-border: 2px solid #3498db;
-border-radius: 10px;
-padding: 5px;</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_7">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Mandate</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_8">
-                <property name="text">
-                 <string>To develop and disseminate technologies, monitor and implement National policies for the scientific and sustainable development and management of India's Ground Water resources, including its exploration, assessment, conservation, augmentation, protection from pollution and distribution, based on principles of economic and ecological efficiency and equity.</string>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QTabWidget" name="tabWidget">
-          <property name="minimumSize">
-           <size>
-            <width>850</width>
-            <height>250</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>850</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="autoFillBackground">
-           <bool>true</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QTabWidget::pane {
-    border: 2px solid #3498db;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-QTabBar::tab {
-    background-color: #f0f0f0;
-    border: 2px solid #3498db;
-    border-bottom: none;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 8px;
-}
-
-QTabBar::tab:selected, QTabBar::tab:hover {
-    background-color: #3498db;
-    color: #ffffff;
-}
-</string>
-          </property>
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="tab">
-           <attribute name="title">
-            <string>Tab 1</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_5">
-            <item>
-             <widget class="QScrollArea" name="scrollArea_2">
-              <property name="styleSheet">
-               <string notr="true">QScrollArea {
-    border: none;
-}</string>
-              </property>
-              <property name="widgetResizable">
-               <bool>true</bool>
-              </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_2">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>791</width>
-                 <height>343</height>
-                </rect>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_6">
-                <item>
-                 <widget class="QLabel" name="label_9">
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>The Theis (1935) solution is useful for determining the transmissivity of nonleaky confined aquifers from pumping tests.
-
-
-Assumptions:
-
-Aquifer has infinite areal extent
-Aquifer is homogeneous, isotropic and of uniform thickness
-Control well is fully penetrating
-Flow to control well is horizontal
-Aquifer is nonleaky confined
-Flow is unsteady
-Water is released instantaneously from storage with decline of hydraulic head
-Diameter of pumping well is very small so that storage in the well can be neglected
-
-Data Requirements:
-
- - 𝑄, pumping rate [m3/day]
- - distance from well [m]
- - observation well measurements (time and displacement)
-
-Estimated Parameters:
-
- - S, Storativity
- - T, Transmissivity [m²/day]
- - Mean fitting error</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_3">
-           <attribute name="title">
-            <string>Page</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <item>
-             <widget class="QScrollArea" name="scrollArea_3">
-              <property name="styleSheet">
-               <string notr="true">QScrollArea {
-    border: none;
-}</string>
-              </property>
-              <property name="widgetResizable">
-               <bool>true</bool>
-              </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_3">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>808</width>
-                 <height>294</height>
-                </rect>
-               </property>
-               <widget class="QLabel" name="label_10">
-                <property name="geometry">
-                 <rect>
-                  <x>10</x>
-                  <y>10</y>
-                  <width>808</width>
-                  <height>320</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>The Cooper and Jacob (1946) solution (sometimes called Jacob's modified nonequilibrium method) is a late-time approximation derived from the Theis type-curve method.
-
-
-Assumptions:
-
- - Aquifer has infinite areal extent
- - Aquifer is homogeneous, isotropic and of uniform thickness
- - Control well is fully penetrating
- - Flow to control well is horizontal - Aquifer is nonleaky confined
- - Flow is unsteady
- - Water is released instantaneously from storage with decline of hydraulic head
- - Diameter of pumping well is very small so that storage in the well can be neglected
- - Values of 𝑢 are small (i.e., 𝑟 is small and 𝑡 is large)
-
-Data Requirements:
-
- - 𝑄, pumping rate [m3/day]
- - distance from well [m]
-observation well measurements (time and displacement)
-
- - Estimated Parameters:
-
- - S, Storativity
- - T, Transmissivity [m²/day]
- - Mean fitting error</string>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </widget>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_2">
-           <attribute name="title">
-            <string>Tab 2</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
-            <item>
-             <widget class="QScrollArea" name="scrollArea_4">
-              <property name="styleSheet">
-               <string notr="true">QScrollArea {
-    border: none;
-}</string>
-              </property>
-              <property name="widgetResizable">
-               <bool>true</bool>
-              </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_4">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>791</width>
-                 <height>343</height>
-                </rect>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_9">
-                <item>
-                 <widget class="QLabel" name="label_11">
-                  <property name="text">
-                   <string>The Theis (1935) solution is useful for determining the transmissivity of nonleaky confined aquifers from recovery tests.
-
-
-Assumptions:
-
-Aquifer has infinite areal extent
-Aquifer is homogeneous, isotropic and of uniform thickness
-Control well is fully penetrating
-Flow to control well is horizontal
-Aquifer is nonleaky confined
-Flow is unsteady
-Water is released instantaneously from storage with decline of hydraulic head
-Diameter of pumping well is very small so that storage in the well can be neglected
-Values of 𝑢 are small (i.e., 𝑟 is small and 𝑡 is large)
-
-Data Requirements:
-
-𝑄, pumping rate [m3/day]
-distance from well [m]
-observation well measurements (time and displacement)
-
-Estimated Parameters:
-
-T, Transmissivity [m²/day]
-𝑆/𝑆′ (ratio of storativity during pumping to storativity during recovery)</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-        <item>
-         <widget class="QWidget" name="widget_2" native="true">
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
             <widget class="QPushButton" name="welltable_button">
@@ -586,6 +219,276 @@ T, Transmissivity [m²/day]
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label_4">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    margin-bottom: 25px; /* Adjust the value to set the desired padding */
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>Home_image1.gif</pixmap>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="minimumSize">
+           <size>
+            <width>850</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>850</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="currentIndex">
+           <number>2</number>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>10</width>
+            <height>10</height>
+           </size>
+          </property>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>Cooper Jacob</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QScrollArea" name="scrollArea_2">
+              <property name="styleSheet">
+               <string notr="true">QScrollArea {
+    border: none;
+}</string>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents_2">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>809</width>
+                 <height>436</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QLabel" name="label_9">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>The Cooper and Jacob (1946) solution (sometimes called Jacob's modified nonequilibrium method) is a late-time approximation derived from the Theis type-curve method.
+
+
+Assumptions:
+
+ - Aquifer has infinite areal extent
+ - Aquifer is homogeneous, isotropic and of uniform thickness
+ - Control well is fully penetrating
+ - Flow to control well is horizontal - Aquifer is nonleaky confined
+ - Flow is unsteady
+ - Water is released instantaneously from storage with decline of hydraulic head
+ - Diameter of pumping well is very small so that storage in the well can be neglected
+ - Values of 𝑢 are small (i.e., 𝑟 is small and 𝑡 is large)
+
+Data Requirements:
+
+ - 𝑄, pumping rate [m3/day]
+ - distance from well [m]
+observation well measurements (time and displacement)
+
+ - Estimated Parameters:
+
+ - S, Storativity
+ - T, Transmissivity [m²/day]
+ - Mean fitting error</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_3">
+           <attribute name="title">
+            <string>Theis</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QScrollArea" name="scrollArea_3">
+              <property name="styleSheet">
+               <string notr="true">QScrollArea {
+    border: none;
+}</string>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents_3">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>826</width>
+                 <height>313</height>
+                </rect>
+               </property>
+               <widget class="QLabel" name="label_10">
+                <property name="geometry">
+                 <rect>
+                  <x>10</x>
+                  <y>10</y>
+                  <width>808</width>
+                  <height>320</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>The Theis (1935) solution is useful for determining the transmissivity of nonleaky confined aquifers from pumping tests.
+
+
+Assumptions:
+
+ - Aquifer has infinite areal extent
+ - Aquifer is homogeneous, isotropic and of uniform thickness
+ - Control well is fully penetrating
+ - Flow to control well is horizontal
+ - Aquifer is nonleaky confined
+ - Flow is unsteady
+ - Water is released instantaneously from storage with decline of hydraulic head
+ - Diameter of pumping well is very small so that storage in the well can be neglected
+
+Data Requirements:
+
+ - 𝑄, pumping rate [m3/day]
+ - distance from well [m]
+ - observation well measurements (time and displacement)
+
+Estimated Parameters:
+
+ - S, Storativity
+ - T, Transmissivity [m²/day]
+ - Mean fitting error</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Theis Recovery</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item>
+             <widget class="QScrollArea" name="scrollArea_4">
+              <property name="styleSheet">
+               <string notr="true">QScrollArea {
+    border: none;
+}</string>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents_4">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>809</width>
+                 <height>421</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <widget class="QLabel" name="label_11">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>The Theis (1935) solution is useful for determining the transmissivity of nonleaky confined aquifers from recovery tests.
+
+
+Assumptions:
+
+ - Aquifer has infinite areal extent
+ - Aquifer is homogeneous, isotropic and of uniform thickness
+ - Control well is fully penetrating
+ - Flow to control well is horizontal
+ - Aquifer is nonleaky confined
+ - Flow is unsteady
+ - Water is released instantaneously from storage with decline of hydraulic head
+ - Diameter of pumping well is very small so that storage in the well can be neglected
+ - Values of 𝑢 are small (i.e., 𝑟 is small and 𝑡 is large)
+
+Data Requirements:
+
+ - 𝑄, pumping rate [m3/day]
+ - distance from well [m]
+ - observation well measurements (time and displacement)
+
+Estimated Parameters:
+
+ - T, Transmissivity [m²/day]
+ - 𝑆/𝑆′ (ratio of storativity during pumping to storativity during recovery)</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>

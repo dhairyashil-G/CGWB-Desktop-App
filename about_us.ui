@@ -25,12 +25,12 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>780</width>
-         <height>539</height>
+         <width>763</width>
+         <height>723</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QWidget" name="widget" native="true">
           <property name="minimumSize">
            <size>
@@ -112,7 +112,7 @@
           </layout>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QWidget" name="widget_2" native="true">
           <property name="minimumSize">
            <size>
@@ -123,6 +123,12 @@
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QWidget" name="widget_4" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <weight>50</weight>
@@ -130,7 +136,7 @@
               </font>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_4">
                 <property name="font">
                  <font>
@@ -144,7 +150,7 @@
                 </property>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_5">
                 <property name="font">
                  <font>
@@ -156,7 +162,7 @@
                 </property>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_8">
                 <property name="font">
                  <font>
@@ -173,8 +179,14 @@
            </item>
            <item>
             <widget class="QWidget" name="widget_5" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>0</height>
+              </size>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_11">
                 <property name="font">
                  <font>
@@ -188,7 +200,7 @@
                 </property>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_10">
                 <property name="font">
                  <font>
@@ -200,7 +212,7 @@
                 </property>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_9">
                 <property name="font">
                  <font>
@@ -212,7 +224,7 @@
                 </property>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_12">
                 <property name="font">
                  <font>
@@ -221,6 +233,136 @@
                 </property>
                 <property name="text">
                  <string>Vikas Baloda (Technical Mentor)</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_6" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>300</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QWidget" name="vision_widget" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>250</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #f0f0f0;
+border: 2px solid #3498db;
+border-radius: 10px;
+padding: 2px;</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_6">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #f0f0f0;
+padding: 2px;</string>
+                </property>
+                <property name="text">
+                 <string>Vision</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Sustainable development and management of Ground Water resources of the Country.</string>
+                </property>
+                <property name="scaledContents">
+                 <bool>false</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_7" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>250</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #f0f0f0;
+border: 2px solid #3498db;
+border-radius: 10px;
+padding: 5px;</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_13">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Mandate</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>To develop and disseminate technologies, monitor and implement National policies for the scientific and sustainable development and management of India's Ground Water resources, including its exploration, assessment, conservation, augmentation, protection from pollution and distribution, based on principles of economic and ecological efficiency and equity.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
