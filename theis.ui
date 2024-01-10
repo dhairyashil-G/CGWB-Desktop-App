@@ -23,8 +23,8 @@
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>0</y>
+         <x>-137</x>
+         <y>-455</y>
          <width>978</width>
          <height>977</height>
         </rect>
@@ -305,7 +305,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transmissivity(m&lt;span style=&quot; vertical-align:super;&quot;&gt;2&lt;/span&gt;/day) :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Transmissivity (m&lt;span style=&quot; vertical-align:super;&quot;&gt;2&lt;/span&gt;/day) :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
