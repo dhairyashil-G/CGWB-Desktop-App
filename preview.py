@@ -208,12 +208,17 @@ class PreviewPage(PageWindow, QObject):
     def combined_report_save(self):
         print(PreviewPage.is_cooper_jacob_analyzed)
         if(PreviewPage.is_cooper_jacob_analyzed!=True):
+            self.combined_report_button.setText('Save Combined Report')
             QMessageBox.warning(None,'Error','Please analyze Cooper-Jacob analysis first!')
         elif(PreviewPage.is_theis_analyzed!=True):
+            self.combined_report_button.setText('Save Combined Report')
             QMessageBox.warning(None,'Error','Please analyze Theis analysis first!')
         elif(PreviewPage.is_theis_recovery_analyzed!=True):
+            self.combined_report_button.setText('Save Combined Report')
             QMessageBox.warning(None,'Error','Please analyze Theis Recovery analysis first!')
         else:
+            self.combined_report_button.setText('Please wait...')
+            QApplication.processEvents()
             #pdf creation
             print(PreviewPage.cooper_jacob_data_dict)
             well_id = PreviewPage.well_id_global
@@ -350,3 +355,6 @@ class PreviewPage(PageWindow, QObject):
             if(file_path):
                 pdf.output(f'{file_path}')
                 QMessageBox.information(self, 'Success', 'Report saved successfully!')
+                self.combined_report_button.setText('Save Combined Report')
+            else:
+                self.combined_report_button.setText('Save Combined Report')
