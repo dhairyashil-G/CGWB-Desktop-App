@@ -43,7 +43,8 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         PumpingRate INTEGER,
         DistanceFromWell INTEGER,
         TimeWhenPumpingStopped INTEGER,
-        CsvFilePath TEXT  
+        CsvFilePath TEXT,
+        CsvFileData TEXT
     );
     ''')
 
