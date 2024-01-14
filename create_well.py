@@ -6,6 +6,9 @@ from PyQt5.QtCore import Qt, QDateTime
 from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from PyQt5 import uic
 from multiPageHandler import PageWindow
+import pandas as pd
+import json
+
 class CreateWellPage(PageWindow):
     def __init__(self):
         super(CreateWellPage,self).__init__()
@@ -119,14 +122,30 @@ class CreateWellPage(PageWindow):
                 timepumpingstopped=self.timepumpingstopped_spinbox.value()
                 csv_file_path = self.file_name
                 
+                try:
+                    df = pd.read_csv(csv_file_path)
+                except Exception as e:
+                    print(e)
+                    
+                    QMessageBox.critical(None,"Error","File not found at given location!")
+                    self.loading_label.setText('')
+                    self.goto('welltable')
+
+                csv_file_data = {
+                    'time': df.iloc[:, 0].tolist(),       # Assuming the first column is the 'time' column
+                    'drawdown': df.iloc[:, 1].tolist()    # Assuming the second column is the 'drawdown' column
+                }
+
+                print(csv_file_data)
+                json_csv_file_data=json.dumps(csv_file_data)
 
                 # db_path = os.path.join(os.path.dirname(__file__), '..', 'database.db')
                 conn = sqlite3.connect('./database.db')
                 cursor = conn.cursor()
                 try:
-                    cursor.execute('''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell, TimeWhenPumpingStopped, CsvFilePath) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                   (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime, enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel, pumpingrate, distancefromwell, timepumpingstopped, csv_file_path))
+                    cursor.execute('''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell, TimeWhenPumpingStopped, CsvFilePath, CsvFileData) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                   (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime, enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel, pumpingrate, distancefromwell, timepumpingstopped, csv_file_path,json_csv_file_data))
                 except sqlite3.Error as e:
                     print("SQLite error:", e)
                     print("Failed to execute query with values:")
