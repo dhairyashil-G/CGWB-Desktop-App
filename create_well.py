@@ -132,8 +132,8 @@ class CreateWellPage(PageWindow):
                     self.goto('welltable')
 
                 csv_file_data = {
-                    'time': df.iloc[:, 0].tolist(),       # Assuming the first column is the 'time' column
-                    'drawdown': df.iloc[:, 1].tolist()    # Assuming the second column is the 'drawdown' column
+                    'Time': df.iloc[:, 0].tolist(),       # Assuming the first column is the 'time' column
+                    'Drawdown': df.iloc[:, 1].tolist()    # Assuming the second column is the 'drawdown' column
                 }
 
                 print(csv_file_data)

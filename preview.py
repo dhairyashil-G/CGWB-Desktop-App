@@ -104,17 +104,10 @@ class PreviewPage(PageWindow, QObject):
 
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped', 0)
         # t_when_pumping_stopped = 240
-        csv_file_url = well_object.get('CsvFilePath', '')
-        print(csv_file_url)
-        try:
-            df = pd.read_csv(csv_file_url)
-        except Exception as e:
-            print(e)
-            
-            QMessageBox.critical(None,"Error","File not found at given location!")
-            self.loading_label.setText('')
-            self.goto('welltable')
-
+        csv_file_data = well_object.get('CsvFileData')
+        dict_csv_data=eval(csv_file_data)
+        df = pd.DataFrame(dict_csv_data)
+        
         df_pumping_test = df[df['Time'] <= t_when_pumping_stopped]
         df_recovery_test = df[df['Time'] > t_when_pumping_stopped]
 

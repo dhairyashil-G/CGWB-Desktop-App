@@ -72,14 +72,10 @@ class TheisRecoveryPage(PageWindow,QObject):
         Q = well_object.get('PumpingRate')
         r = well_object.get('DistanceFromWell')
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
-        csv_file_url = well_object.get('CsvFilePath')
-        try:
-            df = pd.read_csv(csv_file_url)
-        except Exception as e:
-            print(e)
-            self.loading_label.setText('')
-            QMessageBox.critical(None,"Error","File not found at given location!")
-            self.goto('welltable')
+        
+        csv_file_data = well_object.get('CsvFileData')
+        dict_csv_data=eval(csv_file_data)
+        df = pd.DataFrame(dict_csv_data)
 
         df = df.loc[df['Time'] > t_when_pumping_stopped]
         df['Time'] = df['Time']-t_when_pumping_stopped
