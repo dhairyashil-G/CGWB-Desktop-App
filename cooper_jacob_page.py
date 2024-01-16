@@ -34,6 +34,8 @@ class CooperJacobPage(PageWindow,QObject):
         CooperJacobPage.pdf_obj=None
         CooperJacobPage.slope=0
         CooperJacobPage.x_intercept=0
+        CooperJacobPage.start_time = 0
+        CooperJacobPage.end_time = 0
         self.back_button.clicked.connect(self.goback)
         # self.calculate_cooper_jacob()
         
@@ -41,6 +43,9 @@ class CooperJacobPage(PageWindow,QObject):
 
         self.adjust_x_intercept.valueChanged.connect(self.x_intercept_changed)
         self.adjust_slope.valueChanged.connect(self.slope_changed)
+
+        self.adjust_start_time.valueChanged.connect(self.start_time_changed)
+        self.adjust_end_time.valueChanged.connect(self.end_time_changed)
         
         self.plot_button.clicked.connect(self.calculate_cooper_jacob)
         self.download_report_button.clicked.connect(self.create_report)
@@ -68,6 +73,14 @@ class CooperJacobPage(PageWindow,QObject):
     @pyqtSlot(float)
     def slope_changed(self,value):
         CooperJacobPage.slope=value
+    
+    @pyqtSlot(float)
+    def start_time_changed(self,value):
+        CooperJacobPage.start_time=value
+    
+    @pyqtSlot(float)
+    def end_time_changed(self,value):
+        CooperJacobPage.end_time=value
 
     @pyqtSlot(int)
     def get_well(self, row):
@@ -130,10 +143,15 @@ class CooperJacobPage(PageWindow,QObject):
         csv_file_data = well_object.get('CsvFileData')
         dict_csv_data=eval(csv_file_data)
         df = pd.DataFrame(dict_csv_data)
-        start_time=df['Time'].iloc[0]
-        end_time=df['Time'].iloc[-1]
+        if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
+            start_time = df['Time'].iloc[0]
+            end_time = df['Time'].iloc[-1]
+            self.adjust_start_time.setValue(start_time)
+            self.adjust_end_time.setValue(end_time)
+            CooperJacobPage.start_time=start_time
+            CooperJacobPage.end_time=end_time
 
-        df = df.loc[df['Time'] <= t_when_pumping_stopped]
+        df = df.loc[CooperJacobPage.start_time <= df['Time'] and df['Time'] <= CooperJacobPage.end_time]
 
         x_data = np.array(df['Time'])
         y_data = np.array(df['Drawdown'])
