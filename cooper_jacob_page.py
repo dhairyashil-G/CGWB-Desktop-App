@@ -32,12 +32,16 @@ class CooperJacobPage(PageWindow,QObject):
         self.setWindowTitle('AquaProbe-Beta1.1')
         CooperJacobPage.well_id_global=None
         CooperJacobPage.pdf_obj=None
+        CooperJacobPage.slope=0
+        CooperJacobPage.x_intercept=0
         self.back_button.clicked.connect(self.goback)
         # self.calculate_cooper_jacob()
         
         # self.loading_label.hide()
 
-
+        self.adjust_x_intercept.valueChanged.connect(self.x_intercept_changed)
+        self.adjust_slope.valueChanged.connect(self.slope_changed)
+        
         self.plot_button.clicked.connect(self.calculate_cooper_jacob)
         self.download_report_button.clicked.connect(self.create_report)
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
@@ -56,6 +60,14 @@ class CooperJacobPage(PageWindow,QObject):
 
     def goto_welltable(self):
         self.goto('welltable')
+
+    @pyqtSlot(float)
+    def x_intercept_changed(self,value):
+        CooperJacobPage.x_intercept=value
+
+    @pyqtSlot(float)
+    def slope_changed(self,value):
+        CooperJacobPage.slope=value
 
     @pyqtSlot(int)
     def get_well(self, row):
@@ -115,22 +127,11 @@ class CooperJacobPage(PageWindow,QObject):
         Q = well_object.get('PumpingRate')
         r = well_object.get('DistanceFromWell')
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
-        # csv_file_url = well_object.get('CsvFilePath')
-        # try:
-        #     df = pd.read_csv(csv_file_url)
-
-        # except Exception as e:
-        #     print(e)
-        #     self.loading_label.setText('')
-        #     QMessageBox.critical(None,"Error","File not found at given location!")
-        #     self.goto('welltable')
-
-        # recovery_df = df.loc[df['Time'] > t_when_pumping_stopped]
-
         csv_file_data = well_object.get('CsvFileData')
         dict_csv_data=eval(csv_file_data)
         df = pd.DataFrame(dict_csv_data)
-
+        start_time=df['Time'].iloc[0]
+        end_time=df['Time'].iloc[-1]
 
         df = df.loc[df['Time'] <= t_when_pumping_stopped]
 
@@ -144,10 +145,12 @@ class CooperJacobPage(PageWindow,QObject):
             x_intercept = np.log(x_intercept)  #log of x-intercept
             self.adjust_slope.setValue(round(slope,6))
             self.adjust_x_intercept.setValue(round(np.exp(x_intercept),6))
-        else:
-            slope=self.adjust_slope.value()
-            x_intercept=np.log(self.adjust_x_intercept.value())
+            CooperJacobPage.x_intercept=round(np.exp(x_intercept),6)
+            CooperJacobPage.slope=round(slope,6)
+        
 
+        x_intercept=np.log(CooperJacobPage.x_intercept)
+        slope=CooperJacobPage.slope
 
         y_intercept = ((-slope)*(x_intercept))
 
