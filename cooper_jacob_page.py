@@ -230,6 +230,21 @@ class CooperJacobPage(PageWindow,QObject):
         title_x=0.5
         )
 
+        fig.update_layout(
+            annotations=[
+                dict(
+                    text="Drawdown vs Time",
+                    x=0.54,
+                    y=1.1,  # Adjust the y-coordinate to position the text below the graph
+                    showarrow=False,
+                    xref="paper",
+                    yref="paper",
+                    font=dict(size=14),
+                )
+            ]
+        )
+
+
         self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
 
         pdf = FPDF()
