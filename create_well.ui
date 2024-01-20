@@ -177,10 +177,10 @@
            <item row="8" column="5">
             <widget class="QDoubleSpinBox" name="staticwaterlevel_spinbox">
              <property name="decimals">
-              <number>3</number>
+              <number>2</number>
              </property>
              <property name="maximum">
-              <double>99999.990000000005239</double>
+              <double>1000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -190,7 +190,7 @@
               <number>5</number>
              </property>
              <property name="maximum">
-              <double>99999.990000000005239</double>
+              <double>10000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -215,10 +215,10 @@
            <item row="12" column="2">
             <widget class="QDoubleSpinBox" name="pumpingrate_spinbox">
              <property name="decimals">
-              <number>3</number>
+              <number>2</number>
              </property>
              <property name="maximum">
-              <double>99999.990000000005239</double>
+              <double>10000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -264,20 +264,20 @@
            <item row="6" column="2">
             <widget class="QDoubleSpinBox" name="welldepth_spinbox">
              <property name="decimals">
-              <number>3</number>
+              <number>2</number>
              </property>
              <property name="maximum">
-              <double>99999.990000000005239</double>
+              <double>1000.000000000000000</double>
              </property>
             </widget>
            </item>
            <item row="8" column="2">
             <widget class="QDoubleSpinBox" name="distancefromwell_spinbox">
              <property name="decimals">
-              <number>5</number>
+              <number>2</number>
              </property>
              <property name="maximum">
-              <double>99999.990000000005239</double>
+              <double>1000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -287,7 +287,7 @@
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>100000.000000000000000</double>
+              <double>10000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -341,14 +341,14 @@
               <item>
                <widget class="QDoubleSpinBox" name="zones_tapped_start_spinbox">
                 <property name="maximum">
-                 <double>10000.000000000000000</double>
+                 <double>1000.000000000000000</double>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QDoubleSpinBox" name="zones_tapped_end_spinbox">
                 <property name="maximum">
-                 <double>10000.000000000000000</double>
+                 <double>1000.000000000000000</double>
                 </property>
                </widget>
               </item>
