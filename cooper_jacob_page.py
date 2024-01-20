@@ -77,10 +77,14 @@ class CooperJacobPage(PageWindow,QObject):
     @pyqtSlot(float)
     def start_time_changed(self,value):
         CooperJacobPage.start_time=value
+        self.adjust_x_intercept.setValue(0)
+        self.adjust_slope.setValue(0)
     
     @pyqtSlot(float)
     def end_time_changed(self,value):
         CooperJacobPage.end_time=value
+        self.adjust_x_intercept.setValue(0)
+        self.adjust_slope.setValue(0)
 
     @pyqtSlot(int)
     def get_well(self, row):
@@ -145,13 +149,13 @@ class CooperJacobPage(PageWindow,QObject):
         df = pd.DataFrame(dict_csv_data)
         if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
             start_time = df['Time'].iloc[0]
-            end_time = df['Time'].iloc[-1]
+            end_time = t_when_pumping_stopped
             self.adjust_start_time.setValue(start_time)
             self.adjust_end_time.setValue(end_time)
             CooperJacobPage.start_time=start_time
             CooperJacobPage.end_time=end_time
 
-        df = df.loc[CooperJacobPage.start_time <= df['Time'] and df['Time'] <= CooperJacobPage.end_time]
+        df = df.loc[(CooperJacobPage.start_time <= df['Time']) & (df['Time'] <= CooperJacobPage.end_time)]
 
         x_data = np.array(df['Time'])
         y_data = np.array(df['Drawdown'])
