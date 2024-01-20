@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>909</width>
     <height>600</height>
    </rect>
   </property>
@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>763</width>
-         <height>749</height>
+         <width>872</width>
+         <height>945</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -40,18 +40,27 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QLabel" name="label_3">
+            <widget class="QLabel" name="label_20">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>112</width>
-               <height>150</height>
+               <width>200</width>
+               <height>100</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>logo.png</pixmap>
+              <pixmap>ministry_of_education_logo.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -59,16 +68,26 @@
             </widget>
            </item>
            <item>
+            <widget class="QWidget" name="widget_12" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="label_2">
              <property name="minimumSize">
               <size>
-               <width>300</width>
+               <width>0</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>300</width>
+               <width>16677215</width>
                <height>16777215</height>
               </size>
              </property>
@@ -80,7 +99,7 @@
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">padding-left:90%</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>About Us</string>
@@ -91,7 +110,48 @@
             </widget>
            </item>
            <item>
+            <widget class="QWidget" name="widget_13" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_19">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>sih_logo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="label">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>200</width>
@@ -138,6 +198,77 @@
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
+         <widget class="QWidget" name="widget_11" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>600</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #f0f0f0;
+border: 2px solid #000000;
+border-radius: 10px;
+padding: 5px;</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="maximumSize">
+              <size>
+               <width>112</width>
+               <height>150</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:none;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>logo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:none;</string>
+             </property>
+             <property name="text">
+              <string>CENTRAL GROUND WATER BOARD (CGWB)
+Ministry of Jal Shakti
+Department of Water Resources River Development and Ganga Rejuvenation
+Government of India</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QWidget" name="widget_2" native="true">
           <property name="minimumSize">
            <size>
@@ -146,10 +277,8 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #f0f0f0;
-border: 2px solid #000000;
-border-radius: 10px;
-padding: 5px;</string>
+           <string notr="true">padding: 5px;
+margin-top: 10px</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
@@ -165,6 +294,12 @@ padding: 5px;</string>
                <weight>50</weight>
                <bold>false</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #f0f0f0;
+border: 2px solid #000000;
+border-radius: 10px;
+</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item alignment="Qt::AlignHCenter">
@@ -230,6 +365,12 @@ padding: 5px;</string>
                <width>300</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #f0f0f0;
+border: 2px solid #000000;
+border-radius: 10px;
+</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item alignment="Qt::AlignHCenter">
@@ -503,7 +644,7 @@ padding: 5px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>909</width>
      <height>21</height>
     </rect>
    </property>
