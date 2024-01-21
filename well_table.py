@@ -72,19 +72,23 @@ class WellTablePage(PageWindow,QObject):
 
             # Create "Delete" and "Next" buttons in the last two columns
             delete_button = QPushButton("Delete")
+            update_button = QPushButton("Update")
             next_button = QPushButton("Analysis")
 
             # Set button properties
             delete_button.setProperty("row", row_index)
+            update_button.setProperty("row",row_index)
             next_button.setProperty("row", row_index)
 
             # Connect button signals to functions
             delete_button.clicked.connect(self.delete_row)
+            update_button.clicked.connect(self.update_row)
             next_button.clicked.connect(self.next_row)
 
             # Add buttons to the table
             self.table_widget.setCellWidget(row_index, col_index + 1, delete_button)
-            self.table_widget.setCellWidget(row_index, col_index + 2, next_button)
+            self.table_widget.setCellWidget(row_index, col_index + 2, update_button)
+            self.table_widget.setCellWidget(row_index, col_index + 3, next_button)
 
         # Close the database connection
         conn.close()
@@ -136,3 +140,13 @@ class WellTablePage(PageWindow,QObject):
         self.well_id_signal.emit(int(row))
         # print("Next button clicked for row:", row)
         self.goto('preview')
+    
+    def update_row(self):
+        # Get the row number from the button's property
+        rownum = self.sender().property("row")
+        id_item = self.table_widget.item(rownum, 0)
+        row=id_item.text()
+        self.well_id_signal.emit(int(row))
+        # print("Next button clicked for row:", row)
+        self.goto('updatewell')
+

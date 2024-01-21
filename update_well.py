@@ -8,22 +8,27 @@ from PyQt5 import uic
 from multiPageHandler import PageWindow
 import pandas as pd
 import json
+import re
+from PyQt5.QtCore import QObject, pyqtSlot
 
-class CreateWellPage(PageWindow):
+class UpdateWellPage(PageWindow,QObject):
     def __init__(self):
-        super(CreateWellPage,self).__init__()
-        uic.loadUi('create_well.ui',self)
+        super(UpdateWellPage,self).__init__()
+        uic.loadUi('update_well.ui',self)
         self.setWindowTitle('AquaProbe-Beta1.1')
+
+        UpdateWellPage.well_id_global=None
 
         self.zones_list = []
 
         self.csv_button.clicked.connect(self.select_csv_file)
         self.save_button.clicked.connect(self.save_well_data)
         self.back_button.clicked.connect(self.goback)
-        self.menuWellTable.aboutToShow.connect(self.goto_welltable)
-        self.menuHome.aboutToShow.connect(self.goto_home)
-        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
-        self.menuHelp.aboutToShow.connect(self.goto_help)
+        self.refill_button.clicked.connect(self.refill)
+        # self.menuWellTable.aboutToShow.connect(self.goto_welltable)
+        # self.menuHome.aboutToShow.connect(self.goto_home)
+        # self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        # self.menuHelp.aboutToShow.connect(self.goto_help)
         self.zones_tapped_add_button.clicked.connect(self.add_zones_range)
 
     def goto_aboutus(self):
@@ -37,6 +42,71 @@ class CreateWellPage(PageWindow):
 
     def goto_welltable(self):
         self.goto('welltable')
+
+    @pyqtSlot(int)
+    def get_well(self, row):
+        UpdateWellPage.well_id_global=row
+        print('row received')
+    
+    def refill(self):
+        # Connect to the SQLite database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+
+        well_id = UpdateWellPage.well_id_global
+    
+        # print(f'IN showPlot : {well_id}')
+
+
+        cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
+        row = cursor.fetchone()
+
+        # Populate the input widgets with the fetched values
+        well_object = {}
+
+        if row:
+            column_names = [desc[0] for desc in cursor.description]
+            for i in range(len(column_names)):
+                well_object[column_names[i]] = row[i]    
+        
+        self.wellname_edit.setText(well_object.get('WellName'))
+        self.location_edit.setText(well_object.get('Location'))
+        coordinates=well_object.get('Coordinates')
+        # Define a regular expression pattern to find numeric values
+        pattern = r'(\d+)'
+
+        # Find all matches of the pattern in the coordinates string
+        matches = re.findall(pattern, coordinates)
+
+        # Extract latitude and longitude values
+        latitude = int(matches[0]) if matches and len(matches) > 0 else None
+        longitude = int(matches[1]) if matches and len(matches) > 1 else None
+        self.latitude_edit.setText(latitude)
+        self.longitude_edit.setText(longitude)
+        self.performedby_edit.setText(well_object.get('Performedby'))
+        self.startdatetime_edit.setDateTime(QDateTime.fromString(well_object.get('StartDatetime'), 'yyyy-MM-dd hh:mm:ss'))
+        self.enddatetime_edit.setDateTime(QDateTime.fromString(well_object.get('EndDatetime'), 'yyyy-MM-dd hh:mm:ss'))
+        # Additional fields need to be filled similarly
+
+        # Filling the rest of the fields
+        # self.zones_tapped_table.setRowCount(1)  # Assuming 1 row for simplicity
+        # self.zones_tapped_table.setItem(0, 0, QTableWidgetItem(str(zonestappedin)))
+
+        self.welldepth_spinbox.setValue(well_object.get('WellDepth'))
+        self.welldiameter_spinbox.setValue(well_object.get('WellDiameter'))
+        self.staticwaterlevel_spinbox.setValue(well_object.get('StaticWaterLevel'))
+        self.pumpingrate_spinbox.setValue(well_object.get('PumpingRate'))
+        self.timepumpingstopped_spinbox.setValue(well_object.get('TimeWhenPumpingStopped'))
+        self.distancefromwell_spinbox.setValue(well_object.get('DistanceFromWell'))
+        self.csv_button.setText(well_object.get('CsvFilePath'))
+        self.file_name=well_object.get('CsvFilePath')
+        self.geology_edit.setText(well_object.get('Geology'))
+        zones_tapped_list=eval(well_object.get('ZonesTappedIn'))
+        prev_zones_data='Old Zones Tapped Data:\n'
+        for zones in zones_tapped_list:
+            prev_zones_data+=f'-    {zones[0]}-{zones[1]}\n'
+        
+        self.zones_tapped_prev_data.setText(prev_zones_data)
 
     def add_zones_range(self):
         try:
@@ -142,12 +212,20 @@ class CreateWellPage(PageWindow):
                 conn = sqlite3.connect('./database.db')
                 cursor = conn.cursor()
                 try:
-                    cursor.execute('''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell, TimeWhenPumpingStopped, CsvFilePath, CsvFileData) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                   (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime, enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel, pumpingrate, distancefromwell, timepumpingstopped, csv_file_path,json_csv_file_data))
+                    cursor.execute('''UPDATE WellData 
+                                    SET WellName=?, Location=?, Coordinates=?, Geology=?, PerformedBy=?, CurrentDatetime=?, 
+                                        StartDatetime=?, EndDatetime=?, TotalDuration=?, ZonesTappedIn=?, WellDepth=?, 
+                                        WellDiameter=?, StaticWaterLevel=?, PumpingRate=?, DistanceFromWell=?, 
+                                        TimeWhenPumpingStopped=?, CsvFilePath=?, CsvFileData=?
+                                    WHERE Id = ?''',
+                                (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime, 
+                                    enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel, 
+                                    pumpingrate, distancefromwell, timepumpingstopped, csv_file_path, json_csv_file_data, UpdateWellPage.well_id_global))
                 except sqlite3.Error as e:
                     print("SQLite error:", e)
                     print("Failed to execute query with values:")
+
+
 
                 conn.commit()
                 conn.close()

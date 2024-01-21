@@ -12,6 +12,7 @@ from theis_page import TheisPage
 from cooper_jacob_page import CooperJacobPage
 from theis_recovery_page import TheisRecoveryPage
 from about_us_page import AboutUsPage
+from update_well import UpdateWellPage
 from help import HelpPage
 
 basedir = os.path.dirname(__file__)
@@ -59,6 +60,7 @@ class MultiPageApp(QMainWindow):
         self.pages={}
         self.setWindowTitle('AquaProbe')
         self.well_table_obj=WellTablePage()
+        self.update_well_obj=UpdateWellPage()
         self.prev_page_obj=PreviewPage()
         self.theis_page_obj=TheisPage()
         self.cooper_jacob_page_obj=CooperJacobPage()
@@ -68,6 +70,7 @@ class MultiPageApp(QMainWindow):
             self.well_table_obj.well_id_signal.connect(self.theis_page_obj.get_well)
             self.well_table_obj.well_id_signal.connect(self.cooper_jacob_page_obj.get_well)
             self.well_table_obj.well_id_signal.connect(self.theis_recovery_page_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.update_well_obj.get_well)
 
             self.cooper_jacob_page_obj.cooper_jacob_analyzed.connect(self.prev_page_obj.cooper_jacob_analyzed)
             self.cooper_jacob_page_obj.cooper_jacob_signal_data.connect(self.prev_page_obj.cooper_jacob_data)
@@ -84,6 +87,7 @@ class MultiPageApp(QMainWindow):
 
         self.register_page(HomePage(),'homepage')
         self.register_page(self.well_table_obj,'welltable')
+        self.register_page(self.update_well_obj,'updatewell')
         self.register_page(self.prev_page_obj,'preview')
         self.register_page(PreviewPage(),'preview')
         self.register_page(CreateWellPage(),'createwell')
