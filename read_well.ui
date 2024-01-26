@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>600</height>
+    <width>818</width>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_6">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QScrollArea" name="scrollArea">
       <property name="widgetResizable">
@@ -24,8 +24,8 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>1338</width>
+         <y>-121</y>
+         <width>781</width>
          <height>632</height>
         </rect>
        </property>
@@ -131,57 +131,6 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="2" column="5">
-            <widget class="QWidget" name="widget_2" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <item>
-               <widget class="QLabel" name="label_4">
-                <property name="text">
-                 <string>Latitude :</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="latitude_value">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_8">
-                <property name="text">
-                 <string>Longitude :</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="longitude_value">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="12" column="5">
-            <widget class="QWidget" name="widget_7" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_5"/>
-            </widget>
-           </item>
            <item row="4" column="4">
             <widget class="QLabel" name="label_11">
              <property name="minimumSize">
@@ -200,39 +149,39 @@
              </property>
             </widget>
            </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label_15">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
+           <item row="13" column="2">
+            <widget class="QPushButton" name="csv_button">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
              <property name="text">
-              <string>Distance From Well (m) :</string>
+              <string>Open File Explorer</string>
              </property>
             </widget>
            </item>
-           <item row="12" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
+           <item row="6" column="5">
+            <widget class="QDoubleSpinBox" name="welldiameter_spinbox">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
+             <property name="decimals">
+              <number>5</number>
              </property>
-             <property name="text">
-              <string>Pumping Rate (m&lt;sup&gt;3&lt;/sup&gt;/day) :</string>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="2">
+            <widget class="QDoubleSpinBox" name="pumpingrate_spinbox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -254,6 +203,62 @@
              </property>
             </widget>
            </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Distance From Well (m) :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="5">
+            <widget class="QDoubleSpinBox" name="staticwaterlevel_spinbox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>1000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="location_edit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Location :</string>
+             </property>
+            </widget>
+           </item>
            <item row="3" column="4">
             <widget class="QLabel" name="label_18">
              <property name="minimumSize">
@@ -269,6 +274,154 @@
              </property>
              <property name="text">
               <string>End Datetime :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLineEdit" name="geology_edit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="2">
+            <widget class="QDoubleSpinBox" name="welldepth_spinbox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>1000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Pumping Rate (m&lt;sup&gt;3&lt;/sup&gt;/day) :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="2">
+            <widget class="QDoubleSpinBox" name="distancefromwell_spinbox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="maximum">
+              <double>1000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="5">
+            <widget class="QDoubleSpinBox" name="timepumpingstopped_spinbox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="wellname_edit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="label_21">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Select CSV File :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="5">
+            <widget class="QWidget" name="widget_7" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="zones_tapped_prev_data">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="5">
+            <widget class="QWidget" name="widget_2" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Latitude :</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="latitude_edit">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Longitude :</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="longitude_edit">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="8" column="4">
+            <widget class="QLabel" name="label_14">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Static Water Level (m-bgl) :</string>
              </property>
             </widget>
            </item>
@@ -308,20 +461,8 @@
              </property>
             </widget>
            </item>
-           <item row="14" column="0">
-            <widget class="QLabel" name="label_21">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Select CSV File :</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_7">
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_17">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -334,25 +475,14 @@
               </font>
              </property>
              <property name="text">
-              <string>Location :</string>
+              <string>Start Datetime :</string>
              </property>
             </widget>
            </item>
-           <item row="8" column="4">
-            <widget class="QLabel" name="label_14">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Static Water Level (m-bgl) :</string>
+           <item row="1" column="5">
+            <widget class="QLineEdit" name="performedby_edit">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -381,6 +511,20 @@
              </property>
             </widget>
            </item>
+           <item row="3" column="5">
+            <widget class="QDateTimeEdit" name="enddatetime_edit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QDateTimeEdit" name="startdatetime_edit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
            <item row="2" column="4">
             <widget class="QLabel" name="label_6">
              <property name="minimumSize">
@@ -396,42 +540,6 @@
              </property>
              <property name="text">
               <string>Coordinates :</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="4">
-            <widget class="QLabel" name="label_16">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Well Diameter (m) :</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_17">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Start Datetime :</string>
              </property>
             </widget>
            </item>
@@ -453,143 +561,54 @@
              </property>
             </widget>
            </item>
-           <item row="12" column="2">
-            <widget class="QLabel" name="pumpingrate_value">
+           <item row="6" column="4">
+            <widget class="QLabel" name="label_16">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="text">
-              <string/>
+              <string>Well Diameter (m) :</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="5">
-            <widget class="QLabel" name="performedby_value">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="refill_button">
              <property name="text">
-              <string/>
+              <string>Show Data</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
-            <widget class="QLabel" name="wellname_value">
+           <item row="13" column="4">
+            <widget class="QLabel" name="label_39">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="text">
-              <string/>
+              <string>CSV data : </string>
              </property>
             </widget>
            </item>
            <item row="13" column="5">
-            <widget class="QTableWidget" name="zones_tapped_table">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>70</height>
-              </size>
-             </property>
+            <widget class="QTableView" name="csv_file_data">
              <attribute name="horizontalHeaderStretchLastSection">
               <bool>true</bool>
              </attribute>
-             <column>
-              <property name="text">
-               <string>Start</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>End</string>
-              </property>
-             </column>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="location_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="5">
-            <widget class="QLabel" name="testduration_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="5">
-            <widget class="QLabel" name="enddatetime_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="3">
-            <widget class="QLabel" name="label_19">
-             <property name="minimumSize">
-              <size>
-               <width>100</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="QLabel" name="geology_value">
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <widget class="QLabel" name="startdatetime_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="5">
-            <widget class="QLabel" name="statiwaterlevel_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="5">
-            <widget class="QLabel" name="welldiameter_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QLabel" name="welldepth_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="2">
-            <widget class="QLabel" name="distancefromwell_value">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="1">
-            <widget class="QSlider" name="horizontalSlider">
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
             </widget>
            </item>
           </layout>
@@ -631,7 +650,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="save_button">
+            <widget class="QPushButton" name="edit_button">
              <property name="minimumSize">
               <size>
                <width>100</width>
@@ -645,7 +664,7 @@
               </size>
              </property>
              <property name="text">
-              <string>Submit</string>
+              <string>Edit</string>
              </property>
             </widget>
            </item>
@@ -663,7 +682,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>819</width>
+     <width>818</width>
      <height>21</height>
     </rect>
    </property>
