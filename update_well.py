@@ -25,10 +25,10 @@ class UpdateWellPage(PageWindow,QObject):
         self.save_button.clicked.connect(self.save_well_data)
         self.back_button.clicked.connect(self.goback)
         self.refill_button.clicked.connect(self.refill)
-        # self.menuWellTable.aboutToShow.connect(self.goto_welltable)
-        # self.menuHome.aboutToShow.connect(self.goto_home)
-        # self.menuAbout.aboutToShow.connect(self.goto_aboutus)
-        # self.menuHelp.aboutToShow.connect(self.goto_help)
+        self.menuWellTable.aboutToShow.connect(self.goto_welltable)
+        self.menuHome.aboutToShow.connect(self.goto_home)
+        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        self.menuHelp.aboutToShow.connect(self.goto_help)
         self.zones_tapped_add_button.clicked.connect(self.add_zones_range)
 
     def goto_aboutus(self):
