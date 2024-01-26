@@ -76,6 +76,8 @@ class MultiPageApp(QMainWindow):
             self.well_table_obj.well_id_signal.connect(self.update_well_obj.get_well)
             self.well_table_obj.well_id_signal.connect(self.read_well_obj.get_well)
 
+            self.read_well_obj.well_id_signal.connect(self.update_well_obj.get_well)
+
             self.cooper_jacob_page_obj.cooper_jacob_analyzed.connect(self.prev_page_obj.cooper_jacob_analyzed)
             self.cooper_jacob_page_obj.cooper_jacob_signal_data.connect(self.prev_page_obj.cooper_jacob_data)
 

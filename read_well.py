@@ -9,7 +9,7 @@ from multiPageHandler import PageWindow
 import pandas as pd
 import json
 import re
-from PyQt5.QtCore import QObject, pyqtSlot
+from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
 Qt = QtCore.Qt
 
@@ -36,6 +36,7 @@ class PandasModel(QtCore.QAbstractTableModel):
         return QtCore.QVariant()
 
 class ReadWellPage(PageWindow,QObject):
+    well_id_signal = pyqtSignal(int)
     def __init__(self):
         super(ReadWellPage,self).__init__()
         uic.loadUi('read_well.ui',self)
@@ -46,6 +47,7 @@ class ReadWellPage(PageWindow,QObject):
 
         self.back_button.clicked.connect(self.goback)
         self.refill_button.clicked.connect(self.refill)
+        self.edit_button.clicked.connect(self.goedit)
         # self.menuWellTable.aboutToShow.connect(self.goto_welltable)
         # self.menuHome.aboutToShow.connect(self.goto_home)
         # self.menuAbout.aboutToShow.connect(self.goto_aboutus)
@@ -141,4 +143,7 @@ class ReadWellPage(PageWindow,QObject):
     def goback(self):
         self.goto('homepage')
    
-    
+    def goedit(self):
+        self.well_id_signal.emit(int(ReadWellPage.well_id_global))
+        # print("Next button clicked for row:", row)
+        self.goto('updatewell')
