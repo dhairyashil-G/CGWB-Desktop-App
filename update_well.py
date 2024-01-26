@@ -71,16 +71,10 @@ class UpdateWellPage(PageWindow,QObject):
         
         self.wellname_edit.setText(well_object.get('WellName'))
         self.location_edit.setText(well_object.get('Location'))
-        coordinates=well_object.get('Coordinates')
-        # Define a regular expression pattern to find numeric values
-        pattern = r'(\d+)'
+        coordinates=well_object.get('Coordinates').split()
 
-        # Find all matches of the pattern in the coordinates string
-        matches = re.findall(pattern, coordinates)
-
-        # Extract latitude and longitude values
-        latitude = int(matches[0]) if matches and len(matches) > 0 else None
-        longitude = int(matches[1]) if matches and len(matches) > 1 else None
+        latitude = coordinates[1]
+        longitude = coordinates[3]
         self.latitude_edit.setText(latitude)
         self.longitude_edit.setText(longitude)
         self.performedby_edit.setText(well_object.get('Performedby'))

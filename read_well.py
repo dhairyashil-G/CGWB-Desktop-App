@@ -82,7 +82,6 @@ class ReadWellPage(PageWindow,QObject):
 
         cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
         row = cursor.fetchone()
-
         # Populate the input widgets with the fetched values
         well_object = {}
 
@@ -93,19 +92,13 @@ class ReadWellPage(PageWindow,QObject):
         
         self.wellname_edit.setText(well_object.get('WellName'))
         self.location_edit.setText(well_object.get('Location'))
-        coordinates=well_object.get('Coordinates')
-        # Define a regular expression pattern to find numeric values
-        pattern = r'(\d+)'
+        coordinates=well_object.get('Coordinates').split()
 
-        # Find all matches of the pattern in the coordinates string
-        matches = re.findall(pattern, coordinates)
-
-        # Extract latitude and longitude values
-        latitude = int(matches[0]) if matches and len(matches) > 0 else None
-        longitude = int(matches[1]) if matches and len(matches) > 1 else None
+        latitude = coordinates[1]
+        longitude = coordinates[3]
         self.latitude_edit.setText(latitude)
         self.longitude_edit.setText(longitude)
-        self.performedby_edit.setText(well_object.get('Performedby'))
+        self.performedby_edit.setText(well_object.get('PerformedBy'))
         self.startdatetime_edit.setDateTime(QDateTime.fromString(well_object.get('StartDatetime'), 'yyyy-MM-dd hh:mm:ss'))
         self.enddatetime_edit.setDateTime(QDateTime.fromString(well_object.get('EndDatetime'), 'yyyy-MM-dd hh:mm:ss'))
         # Additional fields need to be filled similarly
@@ -113,7 +106,6 @@ class ReadWellPage(PageWindow,QObject):
         # Filling the rest of the fields
         # self.zones_tapped_table.setRowCount(1)  # Assuming 1 row for simplicity
         # self.zones_tapped_table.setItem(0, 0, QTableWidgetItem(str(zonestappedin)))
-
         self.welldepth_spinbox.setValue(well_object.get('WellDepth'))
         self.welldiameter_spinbox.setValue(well_object.get('WellDiameter'))
         self.staticwaterlevel_spinbox.setValue(well_object.get('StaticWaterLevel'))
@@ -129,7 +121,6 @@ class ReadWellPage(PageWindow,QObject):
             prev_zones_data+=f'-    {zones[0]}-{zones[1]}\n'
         
         self.zones_tapped_prev_data.setText(prev_zones_data)
-
         csv_file_data_dict=eval(well_object.get('CsvFileData'))
         csv_data_df=pd.DataFrame(csv_file_data_dict)
 
