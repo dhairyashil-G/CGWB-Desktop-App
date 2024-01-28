@@ -48,10 +48,10 @@ class ReadWellPage(PageWindow,QObject):
         self.refill_button.clicked.connect(self.refill)
         self.edit_button.clicked.connect(self.goedit)
         self.save_csv_file.clicked.connect(self.savecsv)
-        # self.menuWellTable.aboutToShow.connect(self.goto_welltable)
-        # self.menuHome.aboutToShow.connect(self.goto_home)
-        # self.menuAbout.aboutToShow.connect(self.goto_aboutus)
-        # self.menuHelp.aboutToShow.connect(self.goto_help)
+        self.menuWellTable.aboutToShow.connect(self.goto_welltable)
+        self.menuHome.aboutToShow.connect(self.goto_home)
+        self.menuAbout.aboutToShow.connect(self.goto_aboutus)
+        self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
         self.goto('aboutus')
