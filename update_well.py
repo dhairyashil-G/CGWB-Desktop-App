@@ -77,7 +77,7 @@ class UpdateWellPage(PageWindow,QObject):
         longitude = coordinates[3]
         self.latitude_edit.setText(latitude)
         self.longitude_edit.setText(longitude)
-        self.performedby_edit.setText(well_object.get('Performedby'))
+        self.performedby_edit.setText(well_object.get('PerformedBy'))
         self.startdatetime_edit.setDateTime(QDateTime.fromString(well_object.get('StartDatetime'), 'yyyy-MM-dd hh:mm:ss'))
         self.enddatetime_edit.setDateTime(QDateTime.fromString(well_object.get('EndDatetime'), 'yyyy-MM-dd hh:mm:ss'))
         # Additional fields need to be filled similarly

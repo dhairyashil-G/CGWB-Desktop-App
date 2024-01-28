@@ -149,16 +149,6 @@
              </property>
             </widget>
            </item>
-           <item row="13" column="2">
-            <widget class="QPushButton" name="csv_button">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Open File Explorer</string>
-             </property>
-            </widget>
-           </item>
            <item row="6" column="5">
             <widget class="QDoubleSpinBox" name="welldiameter_spinbox">
              <property name="enabled">
@@ -346,31 +336,6 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
-            </widget>
-           </item>
-           <item row="13" column="0">
-            <widget class="QLabel" name="label_21">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Select CSV File :</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="5">
-            <widget class="QWidget" name="widget_7" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item>
-               <widget class="QLabel" name="zones_tapped_prev_data">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </widget>
            </item>
            <item row="2" column="5">
@@ -586,7 +551,7 @@
              </property>
             </widget>
            </item>
-           <item row="13" column="4">
+           <item row="13" column="0">
             <widget class="QLabel" name="label_39">
              <property name="minimumSize">
               <size>
@@ -600,18 +565,22 @@
               </font>
              </property>
              <property name="text">
-              <string>CSV data : </string>
+              <string>CSV File : </string>
              </property>
             </widget>
            </item>
-           <item row="13" column="5">
-            <widget class="QTableView" name="csv_file_data">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>100</height>
-              </size>
+           <item row="13" column="2">
+            <widget class="QPushButton" name="save_csv_file">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
+             <property name="text">
+              <string>Save CSV File</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="5">
+            <widget class="QTableView" name="zones_tapped">
              <attribute name="horizontalHeaderStretchLastSection">
               <bool>true</bool>
              </attribute>
