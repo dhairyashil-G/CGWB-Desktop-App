@@ -141,7 +141,7 @@ class UpdateWellPage(PageWindow,QObject):
 
 
     def goback(self):
-        self.goto('homepage')
+        self.goto('welltable')
    
     
     def save_well_data(self):
