@@ -21,11 +21,15 @@ class TheisPage(PageWindow,QObject):
         super(TheisPage, self).__init__()
         TheisPage.well_id_global=None
         TheisPage.pdf_obj=None
+        TheisPage.start_time=0
+        TheisPage.end_time=0
         uic.loadUi('theis.ui', self)
         self.setWindowTitle('AquaProbe-Beta1.1')
         self.plot_button.clicked.connect(self.calculate_theis)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)
+        self.adjust_start_time.valueChanged.connect(self.start_time_changed)
+        self.adjust_end_time.valueChanged.connect(self.end_time_changed)
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
         self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
@@ -46,6 +50,18 @@ class TheisPage(PageWindow,QObject):
     @pyqtSlot(int)
     def get_well(self, row):
         TheisPage.well_id_global=row
+
+    @pyqtSlot(float)
+    def start_time_changed(self,value):
+        TheisPage.start_time=value
+        self.adjust_storativity.setValue(0)
+        self.adjust_transmissivity.setValue(0)
+    
+    @pyqtSlot(float)
+    def end_time_changed(self,value):
+        TheisPage.end_time=value
+        self.adjust_storativity.setValue(0)
+        self.adjust_transmissivity.setValue(0)
 
     def goback(self):
         self.goto('preview')
@@ -85,8 +101,19 @@ class TheisPage(PageWindow,QObject):
         dict_csv_data=eval(csv_file_data)
         df = pd.DataFrame(dict_csv_data)
 
-        # recovery_df = df.loc[df['Time'] > t_when_pumping_stopped]
-        df = df.loc[df['Time'] <= t_when_pumping_stopped]
+        
+
+        if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
+            start_time = df['Time'].iloc[0]
+            end_time = t_when_pumping_stopped
+            print("point 1")
+            self.adjust_start_time.setValue(start_time)
+            self.adjust_end_time.setValue(end_time)
+            TheisPage.start_time=start_time
+            TheisPage.end_time=end_time
+
+        df = df.loc[(TheisPage.start_time <= df['Time']) & (df['Time'] <= TheisPage.end_time)]
+
         s = np.array(df['Drawdown'])
         t = np.array(df['Time'])
         
