@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>905</width>
+    <width>1006</width>
     <height>582</height>
    </rect>
   </property>
@@ -23,10 +23,10 @@
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
-         <x>-110</x>
-         <y>-473</y>
+         <x>-9</x>
+         <y>0</y>
          <width>978</width>
-         <height>977</height>
+         <height>1021</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -104,6 +104,112 @@
             <widget class="Line" name="line_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_10" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Adjust Start-Time :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="adjust_start_time">
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.001000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_11" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>430</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Adjust End-Time :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="adjust_end_time">
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1000000.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.001000000000000</double>
              </property>
             </widget>
            </item>
@@ -459,7 +565,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>905</width>
+     <width>1006</width>
      <height>21</height>
     </rect>
    </property>

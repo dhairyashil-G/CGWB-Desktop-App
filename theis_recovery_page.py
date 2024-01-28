@@ -21,10 +21,14 @@ class TheisRecoveryPage(PageWindow,QObject):
         super(TheisRecoveryPage, self).__init__()
         TheisRecoveryPage.well_id_global=None
         TheisRecoveryPage.pdf_obj=None
+        TheisRecoveryPage.start_time = 0
+        TheisRecoveryPage.end_time = 0
         uic.loadUi('theis_recovery.ui', self)
         self.setWindowTitle('AquaProbe-Beta1.1')
         self.plot_button.clicked.connect(self.calculate_theis_recovery)
         self.back_button.clicked.connect(self.goback)
+        self.adjust_start_time.valueChanged.connect(self.start_time_changed)
+        self.adjust_end_time.valueChanged.connect(self.end_time_changed)
         self.download_report_button.clicked.connect(self.create_report)
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
         self.menuHome.aboutToShow.connect(self.goto_home)
@@ -46,6 +50,14 @@ class TheisRecoveryPage(PageWindow,QObject):
     @pyqtSlot(int)
     def get_well(self, row):
         TheisRecoveryPage.well_id_global=row
+
+    @pyqtSlot(float)
+    def start_time_changed(self,value):
+        TheisRecoveryPage.start_time=value
+    
+    @pyqtSlot(float)
+    def end_time_changed(self,value):
+        TheisRecoveryPage.end_time=value
 
     def goback(self):
         self.goto('preview')
@@ -77,6 +89,16 @@ class TheisRecoveryPage(PageWindow,QObject):
         df = pd.DataFrame(dict_csv_data)
 
         df = df.loc[df['Time'] > t_when_pumping_stopped]
+        if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
+            start_time = t_when_pumping_stopped
+            end_time = df['Time'].iloc[-1]
+            self.adjust_start_time.setValue(start_time)
+            self.adjust_end_time.setValue(end_time)
+            TheisRecoveryPage.start_time=start_time
+            TheisRecoveryPage.end_time=end_time
+
+        df = df.loc[(TheisRecoveryPage.start_time <= df['Time']) & (df['Time'] <= TheisRecoveryPage.end_time)]
+
         df['Time'] = df['Time']-t_when_pumping_stopped
         df.rename(columns={'Time': 't_dash',
                 'Drawdown': 'Residual_Drawdown'}, inplace=True)
