@@ -52,7 +52,6 @@ class TheisRecoveryPage(PageWindow,QObject):
         self.loading_label.setText('Please wait...This might take some time...')
         QApplication.processEvents()
         well_id = TheisRecoveryPage.well_id_global 
-        # print(f'IN showPlot : {well_id}')
 
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
