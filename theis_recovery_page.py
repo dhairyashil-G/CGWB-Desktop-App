@@ -134,7 +134,7 @@ class TheisRecoveryPage(PageWindow,QObject):
         fig.update_layout(
             annotations=[
                 dict(
-                    text="Drawdown vs Time",
+                    text="Residual Drawdown Vs t/t'",
                     x=0.54,
                     y=1.1,  # Adjust the y-coordinate to position the text below the graph
                     showarrow=False,

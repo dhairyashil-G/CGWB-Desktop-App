@@ -141,7 +141,7 @@ class TheisPage(PageWindow,QObject):
         fig.update_layout(
             annotations=[
                 dict(
-                    text="Drawdown vs Time",
+                    text="Time Vs Drawdown",
                     x=0.56,
                     y=1.1,  # Adjust the y-coordinate to position the text below the graph
                     showarrow=False,
