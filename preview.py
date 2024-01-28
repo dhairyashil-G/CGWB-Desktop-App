@@ -1,10 +1,11 @@
-from PyQt5 import uic
+from PyQt5 import uic,QtWebEngineWidgets
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject, pyqtSlot
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QMessageBox,QApplication,QFileDialog
+from PyQt5.QtWidgets import QTableWidgetItem,QHeaderView,QMessageBox,QApplication,QFileDialog
 import sqlite3
 import pandas as pd
+from PyQt5.QtGui import QStandardItemModel
 import plotly.graph_objs as go
 import plotly.io as pio
 import os

@@ -3,6 +3,7 @@ from PyQt5 import QtCore
 import sqlite3
 import csv
 from datetime import datetime
+from PyQt5.QtWidgets import QTableWidgetItem
 from PyQt5.QtCore import Qt, QDateTime
 from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from PyQt5 import uic

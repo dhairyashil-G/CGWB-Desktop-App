@@ -3,7 +3,7 @@ import sys, os
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import Qt
 from multiPageHandler import PageWindow
-from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QStyleFactory
 from well_table import WellTablePage
 from home_page import HomePage
 from create_well import CreateWellPage

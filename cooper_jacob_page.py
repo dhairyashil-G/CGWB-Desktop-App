@@ -1,7 +1,8 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
+from PyQt5.QtWidgets import QScrollArea,QWidget, QFileDialog,QMessageBox,QApplication
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot,pyqtSignal
+from PyQt5.QtGui import QMovie
 import pandas as pd
 import plotly.graph_objs as go
 import sqlite3
@@ -11,13 +12,22 @@ import math
 from fpdf import FPDF
 import os
 from datetime import datetime
-
 class CooperJacobPage(PageWindow,QObject):
     cooper_jacob_analyzed=pyqtSignal(bool)
     cooper_jacob_signal_data=pyqtSignal(dict)
 
     def __init__(self):
         super(CooperJacobPage, self).__init__()
+         # Create a scroll area to contain the entire window's content
+        # self.scroll_area = QScrollArea(self)
+        # self.scroll_area.setWidgetResizable(True)
+
+        # # Create a widget to hold all the window's content
+        # self.scroll_widget = QWidget()
+        # self.scroll_area.setWidget(self.scroll_widget)
+
+        # # Set the scroll area as the central widget of the main window
+        # self.setCentralWidget(self.scroll_area)
         uic.loadUi('cooper_jacob.ui', self)
         self.setWindowTitle('AquaProbe-Beta1.1')
         CooperJacobPage.well_id_global=None
@@ -27,6 +37,10 @@ class CooperJacobPage(PageWindow,QObject):
         CooperJacobPage.start_time = 0
         CooperJacobPage.end_time = 0
         self.back_button.clicked.connect(self.goback)
+        # self.calculate_cooper_jacob()
+        
+        # self.loading_label.hide()
+
         self.adjust_x_intercept.valueChanged.connect(self.x_intercept_changed)
         self.adjust_slope.valueChanged.connect(self.slope_changed)
 
@@ -107,8 +121,13 @@ class CooperJacobPage(PageWindow,QObject):
     
     def calculate_cooper_jacob(self):
         self.loading_label.setText('Please wait...This might take some time...')
+        # self.movie = QMovie("loading_gif.gif")
+        # self.loading_label.setMovie(self.movie)
+        # self.loading_label.show()
+        # self.movie.start()
         QApplication.processEvents()
         well_id = CooperJacobPage.well_id_global 
+        # print(f'IN showPlot : {well_id}')
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
@@ -189,6 +208,9 @@ class CooperJacobPage(PageWindow,QObject):
 
         self.transmissivity_value.setText(str(round(T,3)))
         self.storativity_value.setText("{:.3f}".format(S))
+        # self.rms_error_value.setText(str(round(mse_error,3)))
+
+    # def show_plot(self,x_data,y_data,y_intercept,slope):
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=x_data, y=y_data,
                             mode='lines+markers',
@@ -293,6 +315,8 @@ class CooperJacobPage(PageWindow,QObject):
                         int(pdf.get_y()), dash_length=1, space_length=1)
         CooperJacobPage.pdf_obj=pdf
 
+        # self.movie.stop()
+        # self.loading_label.clear()
         self.loading_label.setText('')
         self.cooper_jacob_analyzed.emit(True)
 
