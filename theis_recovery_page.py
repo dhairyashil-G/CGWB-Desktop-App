@@ -3,9 +3,7 @@ from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot,pyqtSignal
 from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 import sqlite3
-from scipy.special import exp1
 import pandas as pd
 import numpy as np
 from fpdf import FPDF

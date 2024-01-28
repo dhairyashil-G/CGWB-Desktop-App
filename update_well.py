@@ -1,5 +1,4 @@
 import os
-import sys
 import sqlite3
 from PyQt5.QtWidgets import QTableWidgetItem
 from PyQt5.QtCore import Qt, QDateTime
@@ -8,7 +7,6 @@ from PyQt5 import uic
 from multiPageHandler import PageWindow
 import pandas as pd
 import json
-import re
 from PyQt5.QtCore import QObject, pyqtSlot
 
 class UpdateWellPage(PageWindow,QObject):
