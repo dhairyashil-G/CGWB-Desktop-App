@@ -23,7 +23,7 @@
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>-193</x>
          <y>0</y>
          <width>978</width>
          <height>1021</height>
@@ -156,6 +156,9 @@
              <property name="decimals">
               <number>3</number>
              </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
              <property name="singleStep">
               <double>0.001000000000000</double>
              </property>
@@ -218,7 +221,7 @@
               <number>3</number>
              </property>
              <property name="maximum">
-              <double>1000000.000000000000000</double>
+              <double>10000.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.001000000000000</double>
