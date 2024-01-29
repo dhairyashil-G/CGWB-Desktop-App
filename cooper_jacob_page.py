@@ -167,14 +167,18 @@ class CooperJacobPage(PageWindow,QObject):
             x_intercept = np.log(x_intercept)  #log of x-intercept
             self.adjust_slope.setValue(round(slope,6))
             self.adjust_x_intercept.setValue(round(np.exp(x_intercept),6))
+            # self.adjust_x_intercept.setValue(round(x_intercept,6))
             CooperJacobPage.x_intercept=round(np.exp(x_intercept),6)
+            # CooperJacobPage.x_intercept=round(x_intercept,6)
             CooperJacobPage.slope=round(slope,6)
         
 
         x_intercept=np.log(CooperJacobPage.x_intercept)
+        # x_intercept=CooperJacobPage.x_intercept
         slope=CooperJacobPage.slope
 
         y_intercept = ((-slope)*(x_intercept))
+        # y_intercept = ((-slope)*(np.log(x_intercept)))
 
 
         delta_s = abs((slope*math.log(100) + y_intercept) -
