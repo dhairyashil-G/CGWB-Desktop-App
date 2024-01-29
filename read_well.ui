@@ -546,6 +546,12 @@
            </item>
            <item row="0" column="0">
             <widget class="QPushButton" name="refill_button">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>Show Data</string>
              </property>

@@ -242,7 +242,7 @@ class PreviewPage(PageWindow, QObject):
 
             pdf.set_font('Arial', 'BU', 18)
             pdf.cell(0, 10, 'Pumping Test Report', align='C', ln=1)
-            pdf.ln(5)
+            pdf.ln(10)
 
             pdf.set_font('Arial', '', 12)
             lst1 = list()
@@ -261,7 +261,7 @@ class PreviewPage(PageWindow, QObject):
                 f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
             lst2.append(f"Geology: {well_object.get('Geology')}")
             zones_list=eval(well_object.get('ZonesTappedIn'))
-            lst1.append(f"Zones Tapped: {len(zones_list)}")
+            lst1.append(f"Number of Zones Tapped: {len(zones_list)}")
             lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
             lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
             lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
@@ -292,9 +292,10 @@ class PreviewPage(PageWindow, QObject):
             pdf.ln(5)
 
             pdf.add_page()
+            pdf.ln(15)
             pdf.set_font('Arial', 'UB', 16)
             pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
-            pdf.ln(5)
+            pdf.ln(10)
 
             pdf.set_font('Arial',"", 12)
             pdf.cell(0,10,"Test Parameters:",ln=1)
@@ -325,9 +326,10 @@ class PreviewPage(PageWindow, QObject):
 
 
             pdf.add_page()
+            pdf.ln(15)
             pdf.set_font('Arial', 'UB', 16)
             pdf.cell(0, 10, 'Theis Test Report', align='C', ln=1)
-            pdf.ln(5)
+            pdf.ln(10)
 
             pdf.set_font('Arial',"", 12)
             pdf.cell(0,10,"Test Parameters:",ln=1)
@@ -355,9 +357,10 @@ class PreviewPage(PageWindow, QObject):
             pdf.ln(5)
 
             pdf.add_page()
+            pdf.ln(15)
             pdf.set_font('Arial', 'UB', 16)
             pdf.cell(0, 10, 'Theis Recovery Test Report', align='C', ln=1)
-            pdf.ln(5)
+            pdf.ln(10)
 
             pdf.set_font('Arial',"", 12)
             pdf.cell(0,10,"Test Parameters:",ln=1)

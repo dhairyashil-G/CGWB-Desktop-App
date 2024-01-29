@@ -200,7 +200,7 @@ class TheisPage(PageWindow,QObject):
 
         pdf.set_font('Arial', 'BU', 18)
         pdf.cell(0, 10, 'Theis Test Report', align='C', ln=1)
-        pdf.ln(5)
+        pdf.ln(10)
 
         pdf.set_font('Arial', '', 12)
         lst1 = list()
@@ -219,7 +219,7 @@ class TheisPage(PageWindow,QObject):
             f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
         lst2.append(f"Geology: {well_object.get('Geology')}")
         zones_list=eval(well_object.get('ZonesTappedIn'))
-        lst1.append(f"Zones Tapped: {len(zones_list)}")
+        lst1.append(f"Number of Zones Tapped: {len(zones_list)}")
         lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
         lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
@@ -261,7 +261,7 @@ class TheisPage(PageWindow,QObject):
         pdf.ln(5)
         
         pdf.add_page()
-
+        pdf.ln(15)
         pdf.set_font('Arial', 'B', 13)
         pdf.cell(0, 10, "Graphical Interpretation", ln=1)
         fig.write_image("fig.png")
@@ -274,8 +274,6 @@ class TheisPage(PageWindow,QObject):
         # pdf.cell(0, 10, f'RMS Residual : {round(rms_residual, 3)}%', ln=1)
         pdf.ln(5)
 
-        pdf.dashed_line(10, int(pdf.get_y()), 210 - 10,
-                        int(pdf.get_y()), dash_length=1, space_length=1)
         TheisPage.pdf_obj=pdf
         self.loading_label.setText('')
         self.theis_analyzed.emit(True)
