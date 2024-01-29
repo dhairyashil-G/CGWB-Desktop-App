@@ -285,8 +285,10 @@ class CooperJacobPage(PageWindow,QObject):
         lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
         lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
-        lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m3/day")
+        lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m³/day")
         lst2.append(f"Distance from Well: {well_object.get('DistanceFromWell')} m")
+        lst1.append(f"Analysis Start Time: {CooperJacobPage.start_time} min")
+        lst2.append(f"Analysis End Time: {CooperJacobPage.end_time} min")
         pdf.set_font("Arial", "", 12)
         col_width = pdf.w / 2.2
         for item1, item2 in zip(lst1, lst2):
