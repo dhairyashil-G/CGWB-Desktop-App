@@ -74,6 +74,8 @@ class CreateWellPage(PageWindow):
             QMessageBox.information(self, 'Success', 'Upload successful!')
             self.csv_button.setText(self.file_name)
             print("Selected CSV File:", self.file_name)
+        else:
+            QMessageBox.information(self, 'Error', 'File not Uploaded!')
 
 
     def goback(self):
@@ -167,7 +169,11 @@ class CreateWellPage(PageWindow):
                 self.pumpingrate_spinbox.setValue(0)
                 self.timepumpingstopped_spinbox.setValue(0)
                 self.distancefromwell_spinbox.setValue(0)
+                self.file_name=""
+                self.csv_button.setText("Open File Explorer")
+                self.zones_list=[]
                 self.geology_edit.clear()
+                
                 self.goto('welltable')
             except Exception as e:
                 QMessageBox.critical(self, 'Error', 'Well creation unsuccessful!')
