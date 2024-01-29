@@ -355,6 +355,8 @@ class CooperJacobPage(PageWindow,QObject):
             'y_intercept': y_intercept,
             'transmissivity': T,
             'storativity': S,
+            'start_time':CooperJacobPage.start_time,
+            'end_time':CooperJacobPage.end_time
         }
         self.cooper_jacob_signal_data.emit(signal_data)
         

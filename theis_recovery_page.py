@@ -278,6 +278,8 @@ class TheisRecoveryPage(PageWindow,QObject):
             'y_intercept': y_intercept,
             'transmissivity': T,
             'deltas': delta_s_dash,
+            'start_time':TheisRecoveryPage.start_time,
+            'end_time':TheisRecoveryPage.end_time
         }
         self.theis_recovery_signal_data.emit(signal_data)
 

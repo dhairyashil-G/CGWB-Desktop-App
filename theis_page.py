@@ -285,6 +285,8 @@ class TheisPage(PageWindow,QObject):
             'fig_json': fig_json,
             'transmissivity': T,
             'storativity': S,
+            'start_time':TheisPage.start_time,
+            'end_time':TheisPage.end_time
         }
         self.theis_signal_data.emit(signal_data)
 
