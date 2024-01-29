@@ -225,8 +225,8 @@ class TheisRecoveryPage(PageWindow,QObject):
         pdf.cell(0,10,"Zones Tapped:",ln=1)
         lst5=list()
         lst6=list()
-        lst5.append("Start(m)")
-        lst6.append("End(m)")
+        lst5.append("Start (m)")
+        lst6.append("End (m)")
         for zones in zones_list:
             lst5.append(f"{zones[0]}")
             lst6.append(f"{zones[1]}")
