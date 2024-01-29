@@ -115,7 +115,7 @@ class ReadWellPage(PageWindow,QObject):
         
         self.save_csv_file.setEnabled(True)
 
-        zones_tapped_df = pd.DataFrame(zones_tapped_list, columns=['start', 'end'])
+        zones_tapped_df = pd.DataFrame(zones_tapped_list, columns=['Start', 'End'])
         model = PandasModel(zones_tapped_df)
         self.zones_tapped.setModel(model)
 

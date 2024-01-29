@@ -54,10 +54,14 @@ class TheisRecoveryPage(PageWindow,QObject):
     @pyqtSlot(float)
     def start_time_changed(self,value):
         TheisRecoveryPage.start_time=value
+        self.adjust_x_intercept.setValue(0)
+        self.adjust_slope.setValue(0)
     
     @pyqtSlot(float)
     def end_time_changed(self,value):
         TheisRecoveryPage.end_time=value
+        self.adjust_x_intercept.setValue(0)
+        self.adjust_slope.setValue(0)
 
     def goback(self):
         self.goto('preview')
