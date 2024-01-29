@@ -265,7 +265,7 @@ class PreviewPage(PageWindow, QObject):
             lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
             lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
             lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
-            lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')}  m³/day")
+            lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m³/day")
             lst2.append(f"Distance from Well: {well_object.get('DistanceFromWell')} m")
             pdf.set_font("Arial", "", 12)
             col_width = pdf.w / 2.2
@@ -279,8 +279,8 @@ class PreviewPage(PageWindow, QObject):
             pdf.cell(0,10,"Zones Tapped:",ln=1)
             lst5=list()
             lst6=list()
-            lst5.append("Start(m)")
-            lst6.append("End(m)")
+            lst5.append("Start (m)")
+            lst6.append("End (m)")
             for zones in zones_list:
                 lst5.append(f"{zones[0]}")
                 lst6.append(f"{zones[1]}")
