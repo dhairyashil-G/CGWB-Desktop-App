@@ -274,7 +274,7 @@ class CooperJacobPage(PageWindow,QObject):
         lst1.append(f"Well Name: {well_object.get('WellName')}" )
         lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
         lst1.append(f"Location: {well_object.get('Location')}")
-        lst2.append(f"Coordinates: {well_object.get('Coordinates')}")
+        lst2.append(f"{well_object.get('Coordinates')}")
         startdatetime=well_object.get('StartDatetime').replace('T',' ')
         enddatetime=well_object.get('EndDatetime').replace('T',' ')
         lst1.append(
