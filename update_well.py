@@ -101,6 +101,8 @@ class UpdateWellPage(PageWindow,QObject):
             prev_zones_data+=f'-    {zones[0]}-{zones[1]}\n'
         
         self.zones_tapped_prev_data.setText(prev_zones_data)
+        zones_tapped_list=[]    
+        self.zones_list=[]
 
     def add_zones_range(self):
         try:
@@ -240,6 +242,8 @@ class UpdateWellPage(PageWindow,QObject):
                 self.timepumpingstopped_spinbox.setValue(0)
                 self.distancefromwell_spinbox.setValue(0)
                 self.geology_edit.clear()
+                self.zones_tapped_prev_data.setText("")
+            
                 self.goto('welltable')
             except Exception as e:
                 QMessageBox.critical(self, 'Error', 'Well creation unsuccessful!')
