@@ -90,10 +90,10 @@ class WellTablePage(PageWindow,QObject):
             next_button.clicked.connect(self.next_row)
 
             # Add buttons to the table
-            self.table_widget.setCellWidget(row_index, col_index + 1, delete_button)
+            self.table_widget.setCellWidget(row_index, col_index + 1, next_button)
             self.table_widget.setCellWidget(row_index, col_index + 2, read_button)
             self.table_widget.setCellWidget(row_index, col_index + 3, update_button)
-            self.table_widget.setCellWidget(row_index, col_index + 4, next_button)
+            self.table_widget.setCellWidget(row_index, col_index + 4, delete_button)
 
         # Close the database connection
         conn.close()
