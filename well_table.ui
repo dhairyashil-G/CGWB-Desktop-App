@@ -205,7 +205,7 @@
          </column>
          <column>
           <property name="text">
-           <string>Delete</string>
+           <string>Analysis</string>
           </property>
           <property name="font">
            <font>
@@ -238,7 +238,7 @@
          </column>
          <column>
           <property name="text">
-           <string>Analysis</string>
+           <string>Delete</string>
           </property>
           <property name="font">
            <font>
