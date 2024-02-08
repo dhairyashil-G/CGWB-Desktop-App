@@ -144,8 +144,10 @@ class CooperJacobPage(PageWindow,QObject):
         Q = well_object.get('PumpingRate')
         r = well_object.get('DistanceFromWell')
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
+        t_when_pumping_stopped_org = well_object.get('TimeWhenPumpingStopped')
         csv_file_data = well_object.get('CsvFileData')
         dict_csv_data=eval(csv_file_data)
+        df_org = pd.DataFrame(dict_csv_data)
         df = pd.DataFrame(dict_csv_data)
         if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
             start_time = df['Time'].iloc[0]
@@ -159,6 +161,10 @@ class CooperJacobPage(PageWindow,QObject):
 
         x_data = np.array(df['Time'])
         y_data = np.array(df['Drawdown'])
+        
+        df_org = df_org.loc[(df_org['Time'] <= t_when_pumping_stopped_org)]
+        x_org_data = np.array(df_org['Time'])
+        y_org_data = np.array(df_org['Drawdown'])
 
         if(self.adjust_slope.value()==0 and self.adjust_x_intercept.value()==0):
             print('if block')
@@ -216,9 +222,14 @@ class CooperJacobPage(PageWindow,QObject):
 
     # def show_plot(self,x_data,y_data,y_intercept,slope):
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=x_data, y=y_data,
+
+        fig.add_trace(go.Scatter(x=x_org_data, y=y_org_data,
                             mode='lines+markers',
                             name='Actual Data'))
+
+        fig.add_trace(go.Scatter(x=x_data, y=y_data,
+                            mode='lines+markers',
+                            name='Selected Data'))
         fig.update_xaxes(type="log")
 
         fig.add_trace(go.Scatter(x=np.exp((y_data - y_intercept)/slope), y=y_data,
@@ -231,7 +242,8 @@ class CooperJacobPage(PageWindow,QObject):
         xaxis_title="log Time (min)",
         yaxis_title="Drawdown (m)",
         legend_title="Legend",
-        title_x=0.5
+        title_x=0.5,
+        xaxis=dict(rangeslider=dict(visible=True))
         )
 
         fig.update_layout(

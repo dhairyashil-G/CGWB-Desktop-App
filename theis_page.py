@@ -96,12 +96,12 @@ class TheisPage(PageWindow,QObject):
         Q = well_object.get('PumpingRate')
         r = well_object.get('DistanceFromWell')
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
+        t_when_pumping_stopped_org = well_object.get('TimeWhenPumpingStopped')
        
         csv_file_data = well_object.get('CsvFileData')
         dict_csv_data=eval(csv_file_data)
-        df = pd.DataFrame(dict_csv_data)
-
-        
+        df_org = pd.DataFrame(dict_csv_data)
+        df = pd.DataFrame(dict_csv_data)     
 
         if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
             start_time = df['Time'].iloc[0]
@@ -113,6 +113,11 @@ class TheisPage(PageWindow,QObject):
             TheisPage.end_time=end_time
 
         df = df.loc[(TheisPage.start_time <= df['Time']) & (df['Time'] <= TheisPage.end_time)]
+
+        df_org = df_org.loc[(df_org['Time'] <= t_when_pumping_stopped_org)]
+        s_org = np.array(df_org['Drawdown'])
+        t_org = np.array(df_org['Time'])
+        t_by_r2_org = np.divide(t_org, (r*r))
 
         s = np.array(df['Drawdown'])
         t = np.array(df['Time'])
@@ -142,35 +147,38 @@ class TheisPage(PageWindow,QObject):
 
         fig = make_subplots(specs=[[{"secondary_y": True}]])
 
-        fig.update_layout(
-            xaxis2={'anchor': 'y', 'overlaying': 'x', 'side': 'top'}, yaxis_domain=[0, 0.94])
+        fig.update_layout(xaxis2={'anchor': 'y', 'overlaying': 'x', 'side': 'top'}, yaxis_domain=[0, 0.94])
 
-        fig.add_trace(go.Scatter(x=one_by_u, y=wu, mode='lines',
+        fig.add_trace(go.Scatter(x=one_by_u, y=wu, mode='lines+markers',
                                 name='Well Function'), secondary_y=False)
         fig.update_xaxes(type="log")
         fig.update_yaxes(type="log")
 
-        # fig.add_trace(go.Scatter(x=t_by_r2, y=s, mode='lines',
-        #                          name="Drawdown vs t/r2"), secondary_y=True)
-        fig.add_trace(go.Scatter(x=t_by_r2, y=s, mode='lines',
-                                name="Drawdown vs t"), secondary_y=True)
+        fig.add_trace(go.Scatter(x=t_by_r2_org, y=s_org, mode='lines+markers',
+                                name="Actual Data"), secondary_y=True)
+        fig.data[1].update(xaxis='x2')
+
+        fig.add_trace(go.Scatter(x=t_by_r2, y=s, mode='lines+markers',
+                                name="Selected Data"), secondary_y=True)
         fig.update_xaxes(type="log")
         fig.update_yaxes(type="log")
 
-        fig.data[1].update(xaxis='x2')
+        fig.data[2].update(xaxis='x2')
 
         fig.update_layout(
             title="Method: Theis", 
             xaxis_title="log Time (min)",
             yaxis_title="log Drawdown (m)",
-            legend_title="Legend",title_x=0.5
+            legend_title="Legend",
+            title_x=0.5,
+            xaxis=dict(rangeslider=dict(visible=True))
         )
         fig.update_layout(
             annotations=[
                 dict(
                     text="Time Vs Drawdown",
                     x=0.56,
-                    y=1.1,  # Adjust the y-coordinate to position the text below the graph
+                    y=1.1,
                     showarrow=False,
                     xref="paper",
                     yref="paper",
