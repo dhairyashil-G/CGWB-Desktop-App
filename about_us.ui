@@ -219,7 +219,7 @@
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>sih_logo.png</pixmap>
+                 <pixmap>New_Sinhgad_Logo_2013_300-removebg-preview.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
@@ -301,7 +301,7 @@ padding:0 20px;</string>
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>../../Desktop/New_Sinhgad_Logo_2013_300-removebg-preview.png</pixmap>
+                 <pixmap>sih_logo.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
