@@ -1,8 +1,6 @@
-from PyQt5.QtWidgets import QVBoxLayout, QPushButton
 from PyQt5 import uic
 from multiPageHandler import PageWindow
-
-
+from PyQt5.QtGui import QPixmap
 
 class HomePage(PageWindow):
     def __init__(self):
@@ -20,6 +18,22 @@ class HomePage(PageWindow):
         
         self.tabWidget.setCurrentIndex(0)
         
+        self.images = [QPixmap('Home_image1.gif'),
+                       QPixmap('carousel_images/C0.jpg'), 
+                       QPixmap('carousel_images/C1.jpg'), 
+                       QPixmap('carousel_images/C2.jpg'), 
+                       QPixmap('carousel_images/C3.jpg'), 
+                       QPixmap('carousel_images/C4.jpg'),
+                       QPixmap('carousel_images/C5.jpg'),   
+                    ]
+        
+        self.currentIndex = 0
+
+        self.carousel_images_label.setPixmap(self.images[self.currentIndex])
+
+        self.carousel_prev_button.clicked.connect(self.previousImage)
+
+        self.carousel_next_button.clicked.connect(self.nextImage)
 
     def goto_aboutus(self):
         self.goto('aboutus')
@@ -37,4 +51,15 @@ class HomePage(PageWindow):
     def goto_createwell(self):
         self.goto('createwell')
 
+    def previousImage(self):
+        self.currentIndex -= 1
+        if self.currentIndex < 0:
+            self.currentIndex = len(self.images) - 1
+        self.carousel_images_label.setPixmap(self.images[self.currentIndex])
+
+    def nextImage(self):
+        self.currentIndex += 1
+        if self.currentIndex >= len(self.images):
+            self.currentIndex = 0
+        self.carousel_images_label.setPixmap(self.images[self.currentIndex])
 
