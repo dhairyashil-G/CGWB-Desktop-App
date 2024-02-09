@@ -87,10 +87,12 @@ class TheisRecoveryPage(PageWindow,QObject):
         Q = well_object.get('PumpingRate')
         r = well_object.get('DistanceFromWell')
         t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
+        t_when_pumping_stopped_org = well_object.get('TimeWhenPumpingStopped')
         
         csv_file_data = well_object.get('CsvFileData')
         dict_csv_data=eval(csv_file_data)
         df = pd.DataFrame(dict_csv_data)
+        df_org = pd.DataFrame(dict_csv_data)
 
         df = df.loc[df['Time'] > t_when_pumping_stopped]
         if(self.adjust_start_time.value()==0 and self.adjust_end_time.value()==0):
@@ -109,6 +111,16 @@ class TheisRecoveryPage(PageWindow,QObject):
         df['t'] = df['t_dash']+t_when_pumping_stopped
         df['t_by_t_dash'] = df['t']/df['t_dash']
         df = df[['t', 't_dash', 't_by_t_dash', 'Residual_Drawdown']]
+
+        df_org = df_org.loc[(df_org['Time'] > t_when_pumping_stopped_org)]
+        df_org['Time'] = df_org['Time']-t_when_pumping_stopped_org
+        df_org.rename(columns={'Time': 't_dash',
+                'Drawdown': 'Residual_Drawdown'}, inplace=True)
+        df_org['t'] = df_org['t_dash']+t_when_pumping_stopped_org
+        df_org['t_by_t_dash'] = df_org['t']/df_org['t_dash']
+        df_org = df_org[['t', 't_dash', 't_by_t_dash', 'Residual_Drawdown']]
+        x_org_data = np.array(df_org['t_by_t_dash'])
+        y_org_data = np.array(df_org['Residual_Drawdown'])
 
         x_data = np.array(df['t_by_t_dash'])
         y_data = np.array(df['Residual_Drawdown'])
@@ -140,9 +152,14 @@ class TheisRecoveryPage(PageWindow,QObject):
 
         fig = go.Figure()
 
-        fig.add_trace(go.Scatter(x=x_data, y=y_data,
+        fig.add_trace(go.Scatter(x=x_org_data, y=y_org_data,
                                 mode='lines+markers',
                                 name='Actual Data'))
+        fig.update_xaxes(type="log")
+
+        fig.add_trace(go.Scatter(x=x_data, y=y_data,
+                                mode='lines+markers',
+                                name='Selected Data'))
         fig.update_xaxes(type="log")
 
         fig.add_trace(go.Scatter(x=np.exp((y_data - y_intercept)/slope), y=y_data,
@@ -155,7 +172,8 @@ class TheisRecoveryPage(PageWindow,QObject):
             xaxis_title="log t/t'",
             yaxis_title="Residual Drawdown (m)",
             legend_title="Legend",
-            title_x=0.5
+            title_x=0.5,
+            xaxis=dict(rangeslider=dict(visible=True))
         )
         fig.update_layout(
             annotations=[
