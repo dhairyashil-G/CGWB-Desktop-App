@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-168</y>
+         <y>-177</y>
          <width>1016</width>
-         <height>1561</height>
+         <height>1575</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -208,23 +208,20 @@
             <widget class="QWidget" name="widget_16" native="true">
              <layout class="QHBoxLayout" name="horizontalLayout_9">
               <item>
-               <widget class="QLabel" name="label_36">
+               <widget class="QLabel" name="label_37">
                 <property name="maximumSize">
                  <size>
                   <width>200</width>
-                  <height>100</height>
+                  <height>150</height>
                  </size>
                 </property>
                 <property name="text">
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>sih_logo.png</pixmap>
+                 <pixmap>../../Desktop/New_Sinhgad_Logo_2013_300-removebg-preview.png</pixmap>
                 </property>
                 <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-                <property name="wordWrap">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -290,20 +287,23 @@ padding:0 20px;</string>
             <widget class="QWidget" name="widget_17" native="true">
              <layout class="QHBoxLayout" name="horizontalLayout_10">
               <item>
-               <widget class="QLabel" name="label_37">
+               <widget class="QLabel" name="label_36">
                 <property name="maximumSize">
                  <size>
                   <width>200</width>
-                  <height>150</height>
+                  <height>100</height>
                  </size>
                 </property>
                 <property name="text">
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>../../Desktop/New_Sinhgad_Logo_2013_300-removebg-preview.png</pixmap>
+                 <pixmap>sih_logo.png</pixmap>
                 </property>
                 <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="wordWrap">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -347,18 +347,12 @@ margin-top: 10px</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QWidget" name="widget_4" native="true">
+            <widget class="QWidget" name="widget_18" native="true">
              <property name="minimumSize">
               <size>
                <width>300</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
              </property>
              <property name="styleSheet">
               <string notr="true">background-color: #f0f0f0;
@@ -366,9 +360,9 @@ border: 2px solid #000000;
 border-radius: 10px;
 </string>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
+             <layout class="QVBoxLayout" name="verticalLayout_9">
               <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_15">
+               <widget class="QLabel" name="label_12">
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
@@ -391,6 +385,21 @@ border-radius: 10px;
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_15">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:0</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Dhairyashil Ghatage&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Sahil Gidwani &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_16">
                 <property name="font">
                  <font>
@@ -401,22 +410,7 @@ border-radius: 10px;
                  <string notr="true">border:0</string>
                 </property>
                 <property name="text">
-                 <string>Dhairyashil Ghatage</string>
-                </property>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_8">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">border:0</string>
-                </property>
-                <property name="text">
-                 <string>Sahil Gidwani</string>
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -472,7 +466,7 @@ border-radius: 10px;
                  <string notr="true">border:0</string>
                 </property>
                 <property name="text">
-                 <string>Praveen Kumar (Domain Expert)</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Praveen Kumar (Domain Expert)&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Sanjay Jotwani (Technical Mentor)&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Vikas Baloda (Technical Mentor)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
@@ -487,22 +481,7 @@ border-radius: 10px;
                  <string notr="true">border:0</string>
                 </property>
                 <property name="text">
-                 <string>Sanjay Jotwani (Technical Mentor)</string>
-                </property>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_12">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">border:0</string>
-                </property>
-                <property name="text">
-                 <string>Vikas Baloda (Technical Mentor)</string>
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -586,10 +565,7 @@ padding: 5px;</string>
                  <string notr="true">border:none;</string>
                 </property>
                 <property name="text">
-                 <string>CENTRAL GROUND WATER BOARD (CGWB)
-Ministry of Jal Shakti
-Department of Water Resources River Development and Ganga Rejuvenation
-Government of India</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;CENTRAL GROUND WATER BOARD (CGWB)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Ministry of Jal Shakti&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Department of Water Resources River Development and Ganga Rejuvenation&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Government of India&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>

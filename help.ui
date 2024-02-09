@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>928</width>
     <height>600</height>
    </rect>
   </property>
@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>780</width>
-         <height>539</height>
+         <y>-172</y>
+         <width>891</width>
+         <height>899</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -43,8 +43,8 @@
             <widget class="QLabel" name="label_3">
              <property name="maximumSize">
               <size>
-               <width>150</width>
-               <height>200</height>
+               <width>110</width>
+               <height>150</height>
               </size>
              </property>
              <property name="text">
@@ -113,56 +113,27 @@
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="widget_2" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>300</width>
-            <height>0</height>
-           </size>
+         <widget class="QWidget" name="widget_6" native="true">
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
-            <widget class="QWidget" name="widget_4" native="true">
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
+            <widget class="QWidget" name="widget_2" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>0</height>
+              </size>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
                <widget class="QLabel" name="label_4">
-                <property name="font">
-                 <font>
-                  <pointsize>12</pointsize>
-                 </font>
-                </property>
                 <property name="text">
-                 <string>Developers :</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Dear User,&lt;br/&gt;&lt;br/&gt;We value your feedback and are committed to ensuring the best experience for you. To address any issues, bugs, or provide feedback and reviews, please feel free to reach out to us at &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#0000ff;&quot;&gt;aquaprobe.help@gmail.com&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;. Your input is invaluable in helping us improve our services and address any concerns you may have.&lt;br/&gt;&lt;br/&gt;Thank you for your continued support!&lt;br/&gt;&lt;br/&gt;Best regards,&lt;br/&gt;Dhairyashil &amp;amp; Sahil&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_5">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Dhairyashil Anil Ghatage</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_8">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Sahil Dilip Gidwani</string>
+                <property name="wordWrap">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -170,53 +141,37 @@
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="widget_5" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_4">
+            <widget class="QWidget" name="widget_4" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
-               <widget class="QLabel" name="label_11">
+               <widget class="QLabel" name="label_7">
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Mentors :</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Getting Started:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_10">
+               <widget class="QLabel" name="label_14">
                 <property name="font">
                  <font>
                   <pointsize>10</pointsize>
                  </font>
                 </property>
-                <property name="text">
-                 <string>Praveen Kumar</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_9">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
+                <property name="styleSheet">
+                 <string notr="true">margin-x:50px;</string>
                 </property>
                 <property name="text">
-                 <string>Sanjay Jotwani</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to AquaProbe! Follow these simple steps to get started:&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Create a Well&lt;/span&gt;:&lt;/p&gt;&lt;p&gt;If a well is not already added, click on the &amp;quot;Create Well&amp;quot; button to add a new well to the system.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2. Enter Well Details&lt;/span&gt;:&lt;/p&gt;&lt;p&gt;Once the well creation interface is open, enter the necessary details about the well, such as well name, location, depth, etc.&lt;/p&gt;&lt;p&gt;After entering the details, click the &amp;quot;Submit&amp;quot; button to save the well information.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3.Navigate to Well Table:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;After adding the well, you'll be redirected to the &amp;quot;Well Table&amp;quot; page where you can view all the wells in the system.&lt;/p&gt;&lt;p&gt;Locate the newly added well in the table and click on the &amp;quot;Analysis&amp;quot; button corresponding to the well to proceed to the analysis page.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;4.Select Analysis Method:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;On the analysis page, you'll find options to select the analysis method for the well.&lt;/p&gt;&lt;p&gt;Choose from available methods such as Theis, Theis Recovery, or Cooper Jacob for conducting the analysis.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;5.Save Analysis Reports:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Once the analysis is complete, you have the option to save individual method analysis reports or generate a combined report.&lt;/p&gt;&lt;p&gt;Click on the respective buttons to save the reports as per your preference.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_12">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Vikas Baloda</string>
+                <property name="wordWrap">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -268,7 +223,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>928</width>
      <height>21</height>
     </rect>
    </property>
