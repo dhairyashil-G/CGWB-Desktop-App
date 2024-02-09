@@ -195,7 +195,7 @@ class TheisRecoveryPage(PageWindow,QObject):
         pdf.add_page()
 
         pdf.set_font('Arial', 'B', 10)
-        pdf.image('logo.jpg', x=10, y=10, w=25, h=30)
+        pdf.image('logo.png', x=10, y=10, w=25, h=30)
         pdf.image('aquaprobe_logo.png',
                 x=pdf.w-60, y=10, w=50, h=25)
         pdf.cell(0, 30, '', ln=1)
