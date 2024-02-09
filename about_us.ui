@@ -34,7 +34,7 @@
          <widget class="QWidget" name="widget" native="true">
           <property name="minimumSize">
            <size>
-            <width>1300</width>
+            <width>1000</width>
             <height>0</height>
            </size>
           </property>
