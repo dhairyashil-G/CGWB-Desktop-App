@@ -40,7 +40,8 @@ class ReadWellPage(PageWindow,QObject):
     def __init__(self):
         super(ReadWellPage,self).__init__()
         uic.loadUi('read_well.ui',self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
 
         ReadWellPage.well_id_global=None
         ReadWellPage.show_data_button_flag=False

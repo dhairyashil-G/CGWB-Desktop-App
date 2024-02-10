@@ -11,7 +11,8 @@ class WellTablePage(PageWindow,QObject):
     def __init__(self):
         super(WellTablePage, self).__init__()
         uic.loadUi('well_table.ui', self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
         self.table_widget.setColumnWidth(1, 150)
         self.table_widget.setColumnWidth(2, 150)
         self.table_widget.setColumnWidth(3, 200)

@@ -15,7 +15,7 @@ class HomePage(PageWindow):
         self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
-        
+        self.statusbar.showMessage("Version 1.0.0")
         self.tabWidget.setCurrentIndex(0)
         
         self.images = [QPixmap('Home_image1.gif'),

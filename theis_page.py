@@ -24,7 +24,8 @@ class TheisPage(PageWindow,QObject):
         TheisPage.start_time=0
         TheisPage.end_time=0
         uic.loadUi('theis.ui', self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
         self.plot_button.clicked.connect(self.calculate_theis)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)

@@ -15,7 +15,8 @@ class UpdateWellPage(PageWindow,QObject):
     def __init__(self):
         super(UpdateWellPage,self).__init__()
         uic.loadUi('update_well.ui',self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
 
         UpdateWellPage.well_id_global=None
 

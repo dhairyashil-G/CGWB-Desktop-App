@@ -6,7 +6,8 @@ class AboutUsPage(PageWindow):
     def __init__(self):
         super(AboutUsPage,self).__init__()
         uic.loadUi('about_us.ui',self)
-        self.setWindowTitle('AquaProbe-Beta1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
         self.back_button.clicked.connect(self.goback)
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
         self.menuHome.aboutToShow.connect(self.goto_home)

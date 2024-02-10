@@ -60,7 +60,7 @@ class MultiPageApp(QMainWindow):
         self.setCentralWidget(self.stacked_widget)
 
         self.pages={}
-        self.setWindowTitle('AquaProbe v1.3.0')
+        self.setWindowTitle('AquaProbe')
         self.well_table_obj=WellTablePage()
         self.update_well_obj=UpdateWellPage()
         self.read_well_obj=ReadWellPage()

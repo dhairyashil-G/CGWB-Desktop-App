@@ -13,7 +13,8 @@ class CreateWellPage(PageWindow):
     def __init__(self):
         super(CreateWellPage,self).__init__()
         uic.loadUi('create_well.ui',self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
 
         self.zones_list = []
 

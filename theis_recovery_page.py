@@ -24,7 +24,8 @@ class TheisRecoveryPage(PageWindow,QObject):
         TheisRecoveryPage.start_time = 0
         TheisRecoveryPage.end_time = 0
         uic.loadUi('theis_recovery.ui', self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
         self.plot_button.clicked.connect(self.calculate_theis_recovery)
         self.back_button.clicked.connect(self.goback)
         self.adjust_start_time.valueChanged.connect(self.start_time_changed)

@@ -42,7 +42,8 @@ class PreviewPage(PageWindow, QObject):
     def __init__(self):
         super(PreviewPage, self).__init__()
         uic.loadUi('preview.ui', self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        self.statusbar.showMessage("Version 1.0.0")
         self.back_button.clicked.connect(self.goback)
         self.theis_button.clicked.connect(self.gotheis)
         self.cooper_jacob_button.clicked.connect(self.gocooperjacob)
