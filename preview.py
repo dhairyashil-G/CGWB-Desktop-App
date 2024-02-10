@@ -143,7 +143,8 @@ class PreviewPage(PageWindow, QObject):
             title="Drawdown vs Time",
             xaxis_title="log Time (min)",
             yaxis_title="Drawdown (m)",
-            legend_title="Legend"
+            legend_title="Legend",
+            xaxis=dict(rangeslider=dict(visible=True))
         )
         
         self.browser.setHtml(fig.to_html(include_plotlyjs='cdn'))
