@@ -1,7 +1,8 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import QObject,pyqtSlot,pyqtSignal
-from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QFileDialog,QMessageBox,QApplication,QLabel
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import sqlite3
@@ -26,6 +27,11 @@ class TheisPage(PageWindow,QObject):
         uic.loadUi('theis.ui', self)
         self.setWindowTitle('AquaProbe')
         self.statusbar.showMessage("Version 1.0.0")
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.addPermanentWidget(copyright_label)
+
         self.plot_button.clicked.connect(self.calculate_theis)
         self.back_button.clicked.connect(self.goback)
         self.download_report_button.clicked.connect(self.create_report)

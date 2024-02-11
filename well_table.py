@@ -1,6 +1,7 @@
 import sqlite3
-from PyQt5.QtWidgets import QTableWidgetItem, QPushButton ,QMessageBox
+from PyQt5.QtWidgets import QTableWidgetItem, QPushButton ,QMessageBox ,QLabel
 from PyQt5 import uic
+from PyQt5 import QtCore
 from multiPageHandler import PageWindow
 from PyQt5.QtCore import pyqtSignal, QObject
 
@@ -13,6 +14,11 @@ class WellTablePage(PageWindow,QObject):
         uic.loadUi('well_table.ui', self)
         self.setWindowTitle('AquaProbe')
         self.statusbar.showMessage("Version 1.0.0")
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.addPermanentWidget(copyright_label)
+
         self.table_widget.setColumnWidth(1, 150)
         self.table_widget.setColumnWidth(2, 150)
         self.table_widget.setColumnWidth(3, 200)

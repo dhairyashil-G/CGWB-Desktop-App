@@ -1,8 +1,9 @@
 import os
 import sys
 import sqlite3
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QLabel
 from PyQt5.QtCore import Qt, QDateTime
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from PyQt5 import uic
 from multiPageHandler import PageWindow
@@ -15,6 +16,10 @@ class CreateWellPage(PageWindow):
         uic.loadUi('create_well.ui',self)
         self.setWindowTitle('AquaProbe')
         self.statusbar.showMessage("Version 1.0.0")
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.addPermanentWidget(copyright_label)
 
         self.zones_list = []
 

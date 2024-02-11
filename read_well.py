@@ -3,7 +3,7 @@ from PyQt5 import QtCore
 import sqlite3
 import csv
 from datetime import datetime
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt, QDateTime
 from PyQt5.QtWidgets import QFileDialog,QMessageBox
 from PyQt5 import uic
@@ -42,6 +42,10 @@ class ReadWellPage(PageWindow,QObject):
         uic.loadUi('read_well.ui',self)
         self.setWindowTitle('AquaProbe')
         self.statusbar.showMessage("Version 1.0.0")
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.addPermanentWidget(copyright_label)
 
         ReadWellPage.well_id_global=None
         ReadWellPage.show_data_button_flag=False

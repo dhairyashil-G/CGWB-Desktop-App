@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-755</y>
+         <y>0</y>
          <width>1013</width>
-         <height>1606</height>
+         <height>1600</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -152,13 +152,7 @@
               <number>1</number>
              </property>
              <property name="text">
-              <string>AquaProbe, an innovative desktop application, emerges as the result of our dedication and participation in the Smart India Hackathon 2022. Crafted to address the pressing issues of groundwater depletion and contamination, AquaProbe stands as a pivotal tool for groundwater professionals, researchers, students, teachers, and beyond.
-
-In response to the urgent need for understanding aquifer reactions, AquaProbe facilitates the analysis and interpretation of pumping test data. Leveraging cutting-edge methods like Theiss, Theiss recovery, and Jacob, this freeware redefines the process of input, analysis, visualization, interpretation, and reporting for aquifer test data.
-
-Our application plays a crucial role in water resource studies by allowing users to estimate significant aquifer parameters such as Transmissivity, Storativity, and Specific Yield. With a user-friendly interface, AquaProbe enables professionals to input data directly or import it seamlessly from existing sources, streamlining decision-making processes.
-
-Embark on a journey towards sustainable water management with AquaProbe – your comprehensive solution for advancing groundwater-related research and safeguarding our invaluable water resources.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;AquaProbe, an innovative desktop application, emerges as the result of our dedication and participation in the Smart India Hackathon 2022. Crafted to address the pressing issues of groundwater depletion and contamination, AquaProbe stands as a pivotal tool for groundwater professionals, researchers, students, teachers, and beyond.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;In response to the urgent need for understanding aquifer reactions, AquaProbe facilitates the analysis and interpretation of pumping test data. Leveraging cutting-edge methods like Theiss, Theiss recovery, and Jacob, this freeware redefines the process of input, analysis, visualization, interpretation, and reporting for aquifer test data.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Our application plays a crucial role in water resource studies by allowing users to estimate significant aquifer parameters such as Transmissivity, Storativity, and Specific Yield. With a user-friendly interface, AquaProbe enables professionals to input data directly or import it seamlessly from existing sources, streamlining decision-making processes.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Embark on a journey towards sustainable water management with AquaProbe – your comprehensive solution for advancing groundwater-related research and safeguarding our invaluable water resources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>

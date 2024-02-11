@@ -1,12 +1,18 @@
 from PyQt5 import uic
 from multiPageHandler import PageWindow
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QLabel
+from PyQt5 import QtCore
 
 class HomePage(PageWindow):
     def __init__(self):
         super(HomePage,self).__init__()
         uic.loadUi('home_page.ui',self)
-        self.setWindowTitle('AquaProbe-Beta1.1')
+        self.setWindowTitle('AquaProbe')
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.addPermanentWidget(copyright_label)
 
 
         self.createwell_button.clicked.connect(self.goto_createwell)
@@ -15,7 +21,6 @@ class HomePage(PageWindow):
         self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
-        self.statusbar.showMessage("Version 1.0.0")
         self.tabWidget.setCurrentIndex(0)
         
         self.images = [QPixmap('Home_image1.gif'),
