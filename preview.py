@@ -5,7 +5,8 @@ import pandas as pd
 from fpdf import FPDF
 import plotly.io as pio
 import plotly.graph_objs as go
-from PyQt5 import uic, QtCore
+from PyQt5.QtCore import Qt
+from PyQt5 import uic, QtCore, QtWebEngineWidgets
 from PyQt5.QtCore import QObject, pyqtSlot
 from PyQt5.QtWidgets import QLabel, QMessageBox, QApplication, QFileDialog
 from multiPageHandler import PageWindow
