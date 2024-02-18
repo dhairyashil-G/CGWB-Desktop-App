@@ -4,6 +4,7 @@ import csv
 from datetime import datetime
 import pandas as pd
 from PyQt5 import QtCore, uic
+from PyQt5.QtCore import QDateTime
 from PyQt5.QtWidgets import QLabel, QFileDialog, QMessageBox
 from multiPageHandler import PageWindow
 
@@ -138,10 +139,12 @@ class ReadWellPage(PageWindow):
         self.goto('welltable')
         self.save_csv_file.setEnabled(False)
         ReadWellPage.show_data_button_flag = False
+        self.reset_input_fields()
 
     def goedit(self):
         self.well_id_signal.emit(int(ReadWellPage.well_id_global))
         self.goto('updatewell')
+        self.reset_input_fields()
 
     def savecsv(self):
         if not ReadWellPage.show_data_button_flag:
@@ -169,3 +172,21 @@ class ReadWellPage(PageWindow):
 
                 QMessageBox.information(
                     self, 'Success', 'CSV saved successfully!')
+
+    def reset_input_fields(self):
+        self.wellname_edit.clear()
+        self.location_edit.clear()
+        self.latitude_edit.clear()
+        self.longitude_edit.clear()
+        self.performedby_edit.clear()
+        self.startdatetime_edit.setDateTime(
+            QDateTime.currentDateTime())
+        self.enddatetime_edit.setDateTime(QDateTime.currentDateTime())
+        # self.zones_tapped.clearContents()   -Not working not will fix in future
+        self.welldepth_spinbox.setValue(0)
+        self.welldiameter_spinbox.setValue(0)
+        self.staticwaterlevel_spinbox.setValue(0)
+        self.pumpingrate_spinbox.setValue(0)
+        self.timepumpingstopped_spinbox.setValue(0)
+        self.distancefromwell_spinbox.setValue(0)
+        self.geology_edit.clear()
