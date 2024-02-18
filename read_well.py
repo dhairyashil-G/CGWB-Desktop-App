@@ -1,17 +1,12 @@
 import os
-from PyQt5 import QtCore
 import sqlite3
 import csv
 from datetime import datetime
-from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import Qt, QDateTime
-from PyQt5.QtWidgets import QFileDialog,QMessageBox
-from PyQt5 import uic
-from multiPageHandler import PageWindow
+from PyQt5 import QtCore, uic
+from PyQt5.QtWidgets import QLabel, QFileDialog, QMessageBox
 import pandas as pd
-from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
+from multiPageHandler import PageWindow
 
-Qt = QtCore.Qt
 
 class PandasModel(QtCore.QAbstractTableModel):
     def __init__(self, data, parent=None):
@@ -25,30 +20,32 @@ class PandasModel(QtCore.QAbstractTableModel):
         return self._data.columns.size
 
     def headerData(self, section, orientation, role):
-        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+        if orientation == QtCore.Qt.Horizontal and role == QtCore.Qt.DisplayRole:
             return str(self._data.columns[section])
-    
-    def data(self, index, role=Qt.DisplayRole):
+
+    def data(self, index, role=QtCore.Qt.DisplayRole):
         if index.isValid():
-            if role == Qt.DisplayRole:
-                return QtCore.QVariant(str(
-                    self._data.iloc[index.row()][index.column()]))
+            if role == QtCore.Qt.DisplayRole:
+                return QtCore.QVariant(str(self._data.iloc[index.row()][index.column()]))
         return QtCore.QVariant()
 
-class ReadWellPage(PageWindow,QObject):
-    well_id_signal = pyqtSignal(int)
+
+class ReadWellPage(PageWindow):
+    well_id_signal = QtCore.pyqtSignal(int)
+
     def __init__(self):
-        super(ReadWellPage,self).__init__()
-        uic.loadUi('read_well.ui',self)
+        super(ReadWellPage, self).__init__()
+        uic.loadUi('read_well.ui', self)
         self.setWindowTitle('AquaProbe')
         self.statusbar.showMessage("Version 1.0.0")
-        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
-        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        self.statusbar.showMessage("Version 1.0.0")
+        copyright_label = QLabel(
+            "Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(
+            QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         self.statusbar.addPermanentWidget(copyright_label)
 
-        ReadWellPage.well_id_global=None
-        ReadWellPage.show_data_button_flag=False
+        ReadWellPage.well_id_global = None
+        ReadWellPage.show_data_button_flag = False
 
         self.back_button.clicked.connect(self.goback)
         self.refill_button.clicked.connect(self.refill)
@@ -71,56 +68,59 @@ class ReadWellPage(PageWindow,QObject):
     def goto_welltable(self):
         self.goto('welltable')
 
-    @pyqtSlot(int)
+    @QtCore.pyqtSlot(int)
     def get_well(self, row):
-        ReadWellPage.well_id_global=row
+        ReadWellPage.well_id_global = row
         print('row received')
-    
+
     def refill(self):
-        ReadWellPage.show_data_button_flag=True
-        # Connect to the SQLite database
+        ReadWellPage.show_data_button_flag = True
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
 
         well_id = ReadWellPage.well_id_global
-    
-        # print(f'IN showPlot : {well_id}')
-
 
         cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
         row = cursor.fetchone()
-        # Populate the input widgets with the fetched values
+
         well_object = {}
 
         if row:
             column_names = [desc[0] for desc in cursor.description]
             for i in range(len(column_names)):
-                well_object[column_names[i]] = row[i]    
+                well_object[column_names[i]] = row[i]
+
         self.wellname_edit.setText(well_object.get('WellName'))
         self.location_edit.setText(well_object.get('Location'))
-        coordinates=well_object.get('Coordinates').split()
+        coordinates = well_object.get('Coordinates').split()
         latitude = coordinates[1]
         longitude = coordinates[3]
         self.latitude_edit.setText(latitude)
         self.longitude_edit.setText(longitude)
         self.performedby_edit.setText(well_object.get('PerformedBy'))
-        self.startdatetime_edit.setDateTime(QDateTime.fromString(well_object.get('StartDatetime'), Qt.ISODate))
-        self.enddatetime_edit.setDateTime(QDateTime.fromString(well_object.get('EndDatetime'), Qt.ISODate))
+        self.startdatetime_edit.setDateTime(QtCore.QDateTime.fromString(
+            well_object.get('StartDatetime'), QtCore.Qt.ISODate))
+        self.enddatetime_edit.setDateTime(QtCore.QDateTime.fromString(
+            well_object.get('EndDatetime'), QtCore.Qt.ISODate))
         self.welldepth_spinbox.setValue(well_object.get('WellDepth'))
         self.welldiameter_spinbox.setValue(well_object.get('WellDiameter'))
-        self.staticwaterlevel_spinbox.setValue(well_object.get('StaticWaterLevel'))
+        self.staticwaterlevel_spinbox.setValue(
+            well_object.get('StaticWaterLevel'))
         self.pumpingrate_spinbox.setValue(well_object.get('PumpingRate'))
-        self.timepumpingstopped_spinbox.setValue(well_object.get('TimeWhenPumpingStopped'))
-        self.distancefromwell_spinbox.setValue(well_object.get('DistanceFromWell'))
-        self.file_name=well_object.get('CsvFilePath')
+        self.timepumpingstopped_spinbox.setValue(
+            well_object.get('TimeWhenPumpingStopped'))
+        self.distancefromwell_spinbox.setValue(
+            well_object.get('DistanceFromWell'))
+        self.file_name = well_object.get('CsvFilePath')
         self.geology_edit.setText(well_object.get('Geology'))
-        zones_tapped_list=eval(well_object.get('ZonesTappedIn'))
+        zones_tapped_list = eval(well_object.get('ZonesTappedIn'))
 
-        self.csv_file_data_dict=eval(well_object.get('CsvFileData'))
-        
+        self.csv_file_data_dict = eval(well_object.get('CsvFileData'))
+
         self.save_csv_file.setEnabled(True)
 
-        zones_tapped_df = pd.DataFrame(zones_tapped_list, columns=['Start', 'End'])
+        zones_tapped_df = pd.DataFrame(
+            zones_tapped_list, columns=['Start', 'End'])
         model = PandasModel(zones_tapped_df)
         self.zones_tapped.setModel(model)
 
@@ -130,40 +130,42 @@ class ReadWellPage(PageWindow,QObject):
         # self.csv_file_data.setModel(model1)
         # ----------------------------------------------------------
 
-    def is_csv_file(self,file_path):
+    def is_csv_file(self, file_path):
         _, file_extension = os.path.splitext(file_path)
         return file_extension.lower() == ".csv"
 
     def goback(self):
         self.goto('welltable')
         self.save_csv_file.setEnabled(False)
-        ReadWellPage.show_data_button_flag=False
-    
-   
+        ReadWellPage.show_data_button_flag = False
+
     def goedit(self):
         self.well_id_signal.emit(int(ReadWellPage.well_id_global))
-        # print("Next button clicked for row:", row)
         self.goto('updatewell')
-    
+
     def savecsv(self):
-        if(ReadWellPage.show_data_button_flag==False):
-            QMessageBox.information(self, 'Error', 'Please click on show data button!')
+        if not ReadWellPage.show_data_button_flag:
+            QMessageBox.information(
+                self, 'Error', 'Please click on show data button!')
         else:
             current_datetime = datetime.now()
             formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')
-            
+
             options = QFileDialog.Options()
-            file_path, _ = QFileDialog.getSaveFileName(self, "Save Report", f"CSV Data {formatted_datetime}", "CSV Files (*.csv)", options=options)
-            
+            file_path, _ = QFileDialog.getSaveFileName(
+                self, "Save Report", f"CSV Data {formatted_datetime}", "CSV Files (*.csv)", options=options)
+
             if file_path:
-                data=self.csv_file_data_dict  
-                
+                data = self.csv_file_data_dict
+
                 with open(file_path, 'w', newline='') as csvfile:
                     fieldnames = ['Time', 'Drawdown']
                     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
                     writer.writeheader()
                     for i in range(len(data['Time'])):
-                        writer.writerow({'Time': data['Time'][i], 'Drawdown': data['Drawdown'][i]})
-                
-                QMessageBox.information(self, 'Success', 'Report saved successfully!')
+                        writer.writerow(
+                            {'Time': data['Time'][i], 'Drawdown': data['Drawdown'][i]})
+
+                QMessageBox.information(
+                    self, 'Success', 'CSV saved successfully!')
