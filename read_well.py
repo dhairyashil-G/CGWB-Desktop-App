@@ -2,9 +2,9 @@ import os
 import sqlite3
 import csv
 from datetime import datetime
+import pandas as pd
 from PyQt5 import QtCore, uic
 from PyQt5.QtWidgets import QLabel, QFileDialog, QMessageBox
-import pandas as pd
 from multiPageHandler import PageWindow
 
 
@@ -71,7 +71,7 @@ class ReadWellPage(PageWindow):
     @QtCore.pyqtSlot(int)
     def get_well(self, row):
         ReadWellPage.well_id_global = row
-        print('row received')
+        print(f"ReadWellPage.well_id_global: {ReadWellPage.well_id_global}")
 
     def refill(self):
         ReadWellPage.show_data_button_flag = True
