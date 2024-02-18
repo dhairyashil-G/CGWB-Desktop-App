@@ -1,7 +1,8 @@
-from PyQt5 import QtCore,QtWidgets
+from PyQt5 import QtCore, QtWidgets
+
 
 class PageWindow(QtWidgets.QMainWindow):
-    gotoSignal= QtCore.pyqtSignal(str)
+    gotoSignal = QtCore.pyqtSignal(str)
 
-    def goto(self,name):
+    def goto(self, name):
         self.gotoSignal.emit(name)
