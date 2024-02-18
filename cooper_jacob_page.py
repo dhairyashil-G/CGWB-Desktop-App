@@ -205,7 +205,7 @@ class CooperJacobPage(PageWindow, QObject):
 
         self.transmissivity_value.setText(str(round(T, 3)))
         self.storativity_value.setText("{:.8f}".format(S))
-        self.rms_error_value.setText(str(round(mse_error,3)))
+        # self.rms_error_value.setText(str(round(mse_error,3)))
 
         fig = go.Figure()
 

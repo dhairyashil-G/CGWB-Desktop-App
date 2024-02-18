@@ -154,7 +154,7 @@ class TheisRecoveryPage(PageWindow, QObject):
         self.transmissivity_value.setText(str(round(T, 3)))
         self.delta_s_value.setText("{:.3f}".format(delta_s_dash))
 
-        self.relative_change_s_value.setText(str(round(ratio_of_S,3)))
+        # self.relative_change_s_value.setText(str(round(ratio_of_S,3)))
 
         fig = go.Figure()
 
