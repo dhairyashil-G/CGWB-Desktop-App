@@ -63,6 +63,7 @@ class MultiPageApp(QMainWindow):
 
         self.pages = {}
         self.setWindowTitle('AquaProbe')
+
         self.well_table_obj = WellTablePage()
         self.update_well_obj = UpdateWellPage()
         self.read_well_obj = ReadWellPage()
@@ -70,6 +71,7 @@ class MultiPageApp(QMainWindow):
         self.theis_page_obj = TheisPage()
         self.cooper_jacob_page_obj = CooperJacobPage()
         self.theis_recovery_page_obj = TheisRecoveryPage()
+
         try:
             self.well_table_obj.well_id_signal.connect(
                 self.prev_page_obj.get_well)
