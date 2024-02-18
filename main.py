@@ -31,7 +31,7 @@ conn = sqlite3.connect('database.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         Id INTEGER PRIMARY KEY,
-        WellName TEXT UNIQUE,
+        WellName TEXT,
         Location TEXT,
         Coordinates TEXT,
         Geology TEXT,
