@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-179</y>
+         <y>-394</y>
          <width>891</width>
          <height>935</height>
         </rect>
@@ -187,7 +187,7 @@
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">margin-x:50px;</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Welcome to AquaProbe! Follow these simple steps to get started:&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1.Create a Well&lt;/span&gt;:&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;If a well is not already added, click on the &amp;quot;Create Well&amp;quot; button to add a new well to the system.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2. Enter Well Details&lt;/span&gt;:&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Once the well creation interface is open, enter the necessary details about the well, such as well name, location, depth, etc.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;After entering the details, click the &amp;quot;Submit&amp;quot; button to save the well information.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3.Navigate to Well Table:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;After adding the well, you'll be redirected to the &amp;quot;Well Table&amp;quot; page where you can view all the wells in the system.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Locate the newly added well in the table and click on the &amp;quot;Analysis&amp;quot; button corresponding to the well to proceed to the analysis page.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;4.Select Analysis Method:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;On the analysis page, you'll find options to select the analysis method for the well.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Choose from available methods such as Theis, Theis Recovery, or Cooper Jacob for conducting the analysis.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;5.Save Analysis Reports:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Once the analysis is complete, you have the option to save individual method analysis reports or generate a combined report.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Click on the respective buttons to save the reports as per your preference.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
