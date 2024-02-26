@@ -53,12 +53,16 @@ Central Ground Water Board (CGWB), Ministry of Jal Shakti
 
 ## Screenshots
 
-<p align="center">
-  <img src="docs/flowchart.svg" alt="Flowchart" width="400">
-</p>
+### Flowchart
 
 <p align="center">
-  <img src="docs/database.svg" alt="Database Structure" width="400">
+  <img src="docs/flowchart.svg" alt="Flowchart">
+</p>
+
+### Database Structure
+
+<p align="center">
+  <img src="docs/database.svg" alt="Database Structure">
 </p>
 
 ## License
