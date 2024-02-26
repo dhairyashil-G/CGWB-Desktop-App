@@ -1,10 +1,24 @@
-# Aquaprobe
+# AquaProbe
+
+![AquaProbe Logo](docs/icon.ico)
 
 AquaProbe - Groundwater Analysis Standalone Desktop Application
 
 ## Description
 
-AquaProbe is a standalone desktop application designed for groundwater analysis. It provides tools for visualizing, analyzing, and generating reports based on well data collected during pumping tests.
+The Central Ground Water Board (CGWB) suggests developing a standalone desktop application for the analysis and interpretation of pumping test data. This application is intended to be distributed as freeware for use by groundwater professionals, researchers, students, teachers, and others. Groundwater plays a pivotal role in the world's water supply, and its gradual depletion and contamination underscore the urgent need to investigate aquifer reactions to various human activities.
+
+Pumping tests, also known as aquifer performance tests, are the standard method for determining the hydraulic parameters of aquifers. They are conducted on a large scale by organizations like the CGWB and State Groundwater Departments. The parameters derived from pumping tests, such as transmissivity, storativity, and specific yield, are essential for groundwater-related studies. However, the analysis and interpretation of pumping test data can be tedious and are usually done using computer applications. Currently, there are no Indian software available for this purpose.
+
+To address this need, CGWB proposes to develop a standalone desktop application for the analysis and interpretation of pumping test data. The application will include modules for interpretation using standard methods such as Theiss, Theiss recovery, and Jacob methods. Users will be able to enter data directly using forms or import it from existing data sources.
+
+## Expected Outcome
+
+The expected outcome is a standalone desktop application for the analysis and interpretation of pumping test data. The application will offer modules for interpretation involving standard methods like Theiss, Theiss recovery, and Jacob methods. Additionally, an innovative approach may be attempted to design the most complete set of tools for aquifer test data input, analysis, visualization, interpretation, and reporting.
+
+## Organization
+
+Central Ground Water Board (CGWB), Ministry of Jal Shakti
 
 ## Features
 
@@ -48,3 +62,22 @@ AquaProbe is a standalone desktop application designed for groundwater analysis.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributors
+
+- [Sahil Gidwani](https://github.com/sahil-gidwani)
+- [Dhairyashil Ghatage](https://github.com/dhairyashil-G)
+
+## Acknowledgements
+
+We extend our gratitude to the following individuals and organizations:
+
+- Dr. Praveen Kumar - Domain Expert CGWB
+- Dr. Ranjan Kumar Ray - Domain Expert CGWB
+- Sanjay Jotwani - Technical Mentor
+- Vikas Baloda - Technical Mentor
+- [Devyani Toshniwal](https://github.com/Devyanit09)
+- [Andreas de Jong](https://www.youtube.com/@GeosearchInternational)
+- [Urdhvam Environmental Technologies Pvt. Ltd.](https://www.linkedin.com/company/urdhvam-environmental-technologies-pvt-ltd/)
+
+Your support and contributions have been invaluable to the success of this project. Thank you for your dedication and assistance.
