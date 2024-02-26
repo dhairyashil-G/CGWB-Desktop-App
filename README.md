@@ -1,6 +1,8 @@
 # AquaProbe
 
-![AquaProbe Logo](docs/icon.ico)
+<p align="center">
+  <img src="docs/icon.ico" alt="AquaProbe Logo" width="100">
+</p>
 
 AquaProbe - Groundwater Analysis Standalone Desktop Application
 
@@ -51,13 +53,13 @@ Central Ground Water Board (CGWB), Ministry of Jal Shakti
 
 ## Screenshots
 
-### Flowchart
+<p align="center">
+  <img src="docs/flowchart.svg" alt="Flowchart" width="400">
+</p>
 
-![Flowchart](docs/flowchart.svg)
-
-### Database Structure
-
-![Database Structure](docs/database.svg)
+<p align="center">
+  <img src="docs/database.svg" alt="Database Structure" width="400">
+</p>
 
 ## License
 
