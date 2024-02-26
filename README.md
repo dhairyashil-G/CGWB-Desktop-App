@@ -23,7 +23,7 @@ AquaProbe is a standalone desktop application designed for groundwater analysis.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your_username/your_repository.git`
+1. Clone the repository: `git clone https://github.com/dhairyashil-G/CGWB-Desktop-App.git`
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Run the application: `python main.py`
 
@@ -37,7 +37,13 @@ AquaProbe is a standalone desktop application designed for groundwater analysis.
 
 ## Screenshots
 
-Include screenshots of the application's interface and analysis results.
+### Flowchart
+
+![Flowchart](docs/flowchart.svg)
+
+### Database Structure
+
+![Database Structure](docs/database.svg)
 
 ## License
 
