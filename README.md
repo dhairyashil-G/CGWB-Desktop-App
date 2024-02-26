@@ -51,7 +51,7 @@ Central Ground Water Board (CGWB), Ministry of Jal Shakti
 4. Visualize and interpret analysis results through the interactive graphs.
 5. Generate and download analysis reports for further review and sharing.
 
-## Screenshots
+## Diagrams
 
 ### Flowchart
 
