@@ -486,7 +486,17 @@
             </widget>
            </item>
            <item row="3" column="5">
-            <widget class="QDateTimeEdit" name="enddatetime_edit"/>
+            <widget class="QDateTimeEdit" name="enddatetime_edit">
+             <property name="wrapping">
+              <bool>false</bool>
+             </property>
+             <property name="accelerated">
+              <bool>false</bool>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="label_17">
@@ -525,7 +535,17 @@
             </widget>
            </item>
            <item row="3" column="2">
-            <widget class="QDateTimeEdit" name="startdatetime_edit"/>
+            <widget class="QDateTimeEdit" name="startdatetime_edit">
+             <property name="currentSection">
+              <enum>QDateTimeEdit::DaySection</enum>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+             <property name="timeSpec">
+              <enum>Qt::LocalTime</enum>
+             </property>
+            </widget>
            </item>
            <item row="6" column="4">
             <widget class="QLabel" name="label_16">

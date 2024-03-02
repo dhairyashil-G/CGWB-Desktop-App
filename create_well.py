@@ -3,7 +3,7 @@ import sqlite3
 import json
 import pandas as pd
 from PyQt5 import QtCore, uic
-from PyQt5.QtWidgets import QTableWidgetItem, QLabel, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QTableWidgetItem, QLabel, QFileDialog, QMessageBox, QDateTimeEdit
 from PyQt5.QtCore import Qt, QDateTime
 from multiPageHandler import PageWindow
 
@@ -32,6 +32,10 @@ class CreateWellPage(PageWindow):
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
         self.zones_tapped_add_button.clicked.connect(self.add_zones_range)
+
+        self.startdatetime_edit.setDateTime(QDateTime.currentDateTime())
+        self.enddatetime_edit.setDateTime(QDateTime.currentDateTime())
+
 
     def goto_aboutus(self):
         self.goto('aboutus')
