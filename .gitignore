@@ -1,5 +1,6 @@
 /.vscode
 /virt
+/venv
 database.db
 __pycache__
 .pylintrc
