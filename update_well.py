@@ -2,16 +2,17 @@ import os
 import sqlite3
 import json
 import pandas as pd
-from PyQt5 import QtCore, uic
-from PyQt5.QtWidgets import QTableWidgetItem, QLabel, QFileDialog, QMessageBox, QDateTimeEdit
-from PyQt5.QtCore import Qt, QDateTime
+from PyQt5 import QtCore
+from PyQt5 import uic
+from PyQt5.QtCore import QObject, pyqtSlot, Qt, QDateTime
+from PyQt5.QtWidgets import QTableWidgetItem, QFileDialog, QMessageBox, QLabel
 from multiPageHandler import PageWindow
 
 
-class CreateWellPage(PageWindow):
+class UpdateWellPage(PageWindow, QObject):
     def __init__(self):
-        super(CreateWellPage, self).__init__()
-        uic.loadUi('create_well.ui', self)
+        super(UpdateWellPage, self).__init__()
+        uic.loadUi('update_well.ui', self)
         self.setWindowTitle('AquaProbe')
         self.statusbar.showMessage("Version 1.0.0")
         copyright_label = QLabel(
@@ -21,21 +22,19 @@ class CreateWellPage(PageWindow):
         self.statusbar.showMessage("Version 1.0.0")
         self.statusbar.addPermanentWidget(copyright_label)
 
+        UpdateWellPage.well_id_global = None
+
         self.zones_list = []
-        self.file_name = ""
 
         self.csv_button.clicked.connect(self.select_csv_file)
         self.save_button.clicked.connect(self.save_well_data)
         self.back_button.clicked.connect(self.goback)
+        self.refill_button.clicked.connect(self.refill)
         self.menuWellTable.aboutToShow.connect(self.goto_welltable)
         self.menuHome.aboutToShow.connect(self.goto_home)
         self.menuAbout.aboutToShow.connect(self.goto_aboutus)
         self.menuHelp.aboutToShow.connect(self.goto_help)
         self.zones_tapped_add_button.clicked.connect(self.add_zones_range)
-
-        self.startdatetime_edit.setDateTime(QDateTime.currentDateTime())
-        self.enddatetime_edit.setDateTime(QDateTime.currentDateTime())
-
 
     def goto_aboutus(self):
         self.goto('aboutus')
@@ -48,6 +47,63 @@ class CreateWellPage(PageWindow):
 
     def goto_welltable(self):
         self.goto('welltable')
+
+    @pyqtSlot(int)
+    def get_well(self, row):
+        UpdateWellPage.well_id_global = row
+        print(f"UpdateWellPage.well_id_global: {UpdateWellPage.well_id_global}")
+
+    def refill(self):
+        # Connect to the SQLite database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+
+        well_id = UpdateWellPage.well_id_global
+
+        cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
+        row = cursor.fetchone()
+
+        # Populate the input widgets with the fetched values
+        well_object = {}
+
+        if row:
+            column_names = [desc[0] for desc in cursor.description]
+            for i in range(len(column_names)):
+                well_object[column_names[i]] = row[i]
+
+        self.wellname_edit.setText(well_object.get('WellName'))
+        self.location_edit.setText(well_object.get('Location'))
+        coordinates = well_object.get('Coordinates').split()
+
+        latitude = coordinates[1]
+        longitude = coordinates[3]
+        self.latitude_edit.setText(latitude)
+        self.longitude_edit.setText(longitude)
+        self.performedby_edit.setText(well_object.get('PerformedBy'))
+        self.startdatetime_edit.setDateTime(QDateTime.fromString(
+            well_object.get('StartDatetime'), Qt.ISODate))
+        self.enddatetime_edit.setDateTime(QDateTime.fromString(
+            well_object.get('EndDatetime'), Qt.ISODate))
+        self.welldepth_spinbox.setValue(well_object.get('WellDepth'))
+        self.welldiameter_spinbox.setValue(well_object.get('WellDiameter'))
+        self.staticwaterlevel_spinbox.setValue(
+            well_object.get('StaticWaterLevel'))
+        self.pumpingrate_spinbox.setValue(well_object.get('PumpingRate'))
+        self.timepumpingstopped_spinbox.setValue(
+            well_object.get('TimeWhenPumpingStopped'))
+        self.distancefromwell_spinbox.setValue(
+            well_object.get('DistanceFromWell'))
+        self.csv_button.setText(well_object.get('CsvFilePath'))
+        self.file_name = well_object.get('CsvFilePath')
+        self.geology_edit.setText(well_object.get('Geology'))
+        zones_tapped_list = eval(well_object.get('ZonesTappedIn'))
+        prev_zones_data = 'Old Zones Tapped Data:\n'
+        for zones in zones_tapped_list:
+            prev_zones_data += f'-    {zones[0]}-{zones[1]}\n'
+
+        self.zones_tapped_prev_data.setText(prev_zones_data)
+        zones_tapped_list = []
+        self.zones_list = []
 
     def add_zones_range(self):
         try:
@@ -83,18 +139,13 @@ class CreateWellPage(PageWindow):
         if self.file_name:
             QMessageBox.information(self, 'Success', 'Upload successful!')
             self.csv_button.setText(self.file_name)
-        else:
-            QMessageBox.information(self, 'Error', 'File not Uploaded!')
 
     def goback(self):
-        self.goto('homepage')
+        self.goto('welltable')
 
     def save_well_data(self):
 
-        if (not are_all_fields_filled(self)):
-            QMessageBox.critical(self, 'Error', 'All fields are required!')
-
-        elif (self.startdatetime_edit.dateTime() > self.enddatetime_edit.dateTime()):
+        if (self.startdatetime_edit.dateTime() > self.enddatetime_edit.dateTime()):
             QMessageBox.critical(self, 'Error', 'Invalid datetime input!')
 
         elif (self.is_csv_file(self.file_name) == False):
@@ -137,8 +188,6 @@ class CreateWellPage(PageWindow):
                 try:
                     df = pd.read_csv(csv_file_path)
                 except Exception as e:
-                    print(f'Error reading csv file: {e}')
-
                     QMessageBox.critical(
                         None, "Error", "File not found at given location!")
                     self.loading_label.setText('')
@@ -157,11 +206,17 @@ class CreateWellPage(PageWindow):
                 conn = sqlite3.connect('./database.db')
                 cursor = conn.cursor()
                 try:
-                    cursor.execute('''INSERT INTO WellData (WellName, Location, Coordinates, Geology, PerformedBy, CurrentDatetime, StartDatetime, EndDatetime, TotalDuration, ZonesTappedIn, WellDepth, WellDiameter, StaticWaterLevel, PumpingRate, DistanceFromWell, TimeWhenPumpingStopped, CsvFilePath, CsvFileData) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                                   (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime, enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel, pumpingrate, distancefromwell, timepumpingstopped, csv_file_path, json_csv_file_data))
+                    cursor.execute('''UPDATE WellData 
+                                    SET WellName=?, Location=?, Coordinates=?, Geology=?, PerformedBy=?, CurrentDatetime=?, 
+                                        StartDatetime=?, EndDatetime=?, TotalDuration=?, ZonesTappedIn=?, WellDepth=?, 
+                                        WellDiameter=?, StaticWaterLevel=?, PumpingRate=?, DistanceFromWell=?, 
+                                        TimeWhenPumpingStopped=?, CsvFilePath=?, CsvFileData=?
+                                    WHERE Id = ?''',
+                                   (wellname, location, coordinates, geology, performedby, current_datetime, startdatetime,
+                                    enddatetime, totalduration, zonestappedin, welldepth, welldiameter, staticwaterlevel,
+                                    pumpingrate, distancefromwell, timepumpingstopped, csv_file_path, json_csv_file_data, UpdateWellPage.well_id_global))
                 except sqlite3.Error as e:
-                    print(f"Failed in create well query: {e}")
+                    print(f"Error updating well data: {e}")
 
                 conn.commit()
                 conn.close()
@@ -182,28 +237,10 @@ class CreateWellPage(PageWindow):
                 self.pumpingrate_spinbox.setValue(0)
                 self.timepumpingstopped_spinbox.setValue(0)
                 self.distancefromwell_spinbox.setValue(0)
-                self.file_name = ""
-                self.csv_button.setText("Open File Explorer")
-                self.zones_list = []
                 self.geology_edit.clear()
+                self.zones_tapped_prev_data.setText("")
 
                 self.goto('welltable')
             except Exception as e:
                 QMessageBox.critical(
-                    self, 'Error', 'Well creation unsuccessful!')
-
-
-def are_all_fields_filled(self):
-    required_fields = [
-        self.wellname_edit.text(),
-        self.location_edit.text(),
-        self.latitude_edit.text(),
-        self.longitude_edit.text(),
-        self.geology_edit.text(),
-        self.performedby_edit.text(),
-        self.file_name
-    ]
-    for field in required_fields:
-        if not field:
-            return False
-    return True
+                    self, 'Error', 'Well updation unsuccessful!')

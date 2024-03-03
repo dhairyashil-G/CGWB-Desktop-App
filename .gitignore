@@ -1,4 +1,7 @@
 /.vscode
 /virt
 database.db
-pages/__pycache__
+__pycache__
+.pylintrc
+build/
+dist/
