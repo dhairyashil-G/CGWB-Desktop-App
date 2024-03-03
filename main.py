@@ -22,14 +22,16 @@ basedir = os.path.dirname(__file__)
 
 try:
     from ctypes import windll  # Only exists on Windows.
-    myappid = 'cgwb.aquaprobe.app.1.3'
+
+    myappid = "cgwb.aquaprobe.app.1.3"
     windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 except ImportError:
     pass
 
-conn = sqlite3.connect('database.db')
+conn = sqlite3.connect("database.db")
 cursor = conn.cursor()
-cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
+cursor.execute(
+    """CREATE TABLE IF NOT EXISTS WellData (
         Id INTEGER PRIMARY KEY,
         WellName TEXT,
         Location TEXT,
@@ -50,7 +52,8 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS WellData (
         CsvFilePath TEXT,
         CsvFileData TEXT
     );
-    ''')
+    """
+)
 
 
 class MultiPageApp(QMainWindow):
@@ -62,7 +65,7 @@ class MultiPageApp(QMainWindow):
         self.setCentralWidget(self.stacked_widget)
 
         self.pages = {}
-        self.setWindowTitle('AquaProbe')
+        self.setWindowTitle("AquaProbe")
 
         self.well_table_obj = WellTablePage()
         self.update_well_obj = UpdateWellPage()
@@ -73,53 +76,54 @@ class MultiPageApp(QMainWindow):
         self.theis_recovery_page_obj = TheisRecoveryPage()
 
         try:
+            self.well_table_obj.well_id_signal.connect(self.prev_page_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.theis_page_obj.get_well)
             self.well_table_obj.well_id_signal.connect(
-                self.prev_page_obj.get_well)
+                self.cooper_jacob_page_obj.get_well
+            )
             self.well_table_obj.well_id_signal.connect(
-                self.theis_page_obj.get_well)
-            self.well_table_obj.well_id_signal.connect(
-                self.cooper_jacob_page_obj.get_well)
-            self.well_table_obj.well_id_signal.connect(
-                self.theis_recovery_page_obj.get_well)
-            self.well_table_obj.well_id_signal.connect(
-                self.update_well_obj.get_well)
-            self.well_table_obj.well_id_signal.connect(
-                self.read_well_obj.get_well)
+                self.theis_recovery_page_obj.get_well
+            )
+            self.well_table_obj.well_id_signal.connect(self.update_well_obj.get_well)
+            self.well_table_obj.well_id_signal.connect(self.read_well_obj.get_well)
 
-            self.read_well_obj.well_id_signal.connect(
-                self.update_well_obj.get_well)
+            self.read_well_obj.well_id_signal.connect(self.update_well_obj.get_well)
 
             self.cooper_jacob_page_obj.cooper_jacob_analyzed.connect(
-                self.prev_page_obj.cooper_jacob_analyzed)
+                self.prev_page_obj.cooper_jacob_analyzed
+            )
             self.cooper_jacob_page_obj.cooper_jacob_signal_data.connect(
-                self.prev_page_obj.cooper_jacob_data)
+                self.prev_page_obj.cooper_jacob_data
+            )
 
             self.theis_page_obj.theis_analyzed.connect(
-                self.prev_page_obj.theis_analyzed)
-            self.theis_page_obj.theis_signal_data.connect(
-                self.prev_page_obj.theis_data)
+                self.prev_page_obj.theis_analyzed
+            )
+            self.theis_page_obj.theis_signal_data.connect(self.prev_page_obj.theis_data)
 
             self.theis_recovery_page_obj.theis_recovery_analyzed.connect(
-                self.prev_page_obj.theis_recovery_analyzed)
+                self.prev_page_obj.theis_recovery_analyzed
+            )
             self.theis_recovery_page_obj.theis_recovery_signal_data.connect(
-                self.prev_page_obj.theis_recovery_data)
+                self.prev_page_obj.theis_recovery_data
+            )
 
         except Exception as e:
             print("Error connecting signal: ", e)
 
-        self.register_page(HomePage(), 'homepage')
-        self.register_page(self.well_table_obj, 'welltable')
-        self.register_page(self.update_well_obj, 'updatewell')
-        self.register_page(self.read_well_obj, 'readwell')
-        self.register_page(self.prev_page_obj, 'preview')
-        self.register_page(PreviewPage(), 'preview')
-        self.register_page(CreateWellPage(), 'createwell')
-        self.register_page(self.theis_page_obj, 'theispage')
-        self.register_page(self.cooper_jacob_page_obj, 'cooperjacobpage')
-        self.register_page(self.theis_recovery_page_obj, 'theisrecoverypage')
-        self.register_page(AboutUsPage(), 'aboutus')
-        self.register_page(HelpPage(), 'helppage')
-        self.goto('homepage')
+        self.register_page(HomePage(), "homepage")
+        self.register_page(self.well_table_obj, "welltable")
+        self.register_page(self.update_well_obj, "updatewell")
+        self.register_page(self.read_well_obj, "readwell")
+        self.register_page(self.prev_page_obj, "preview")
+        self.register_page(PreviewPage(), "preview")
+        self.register_page(CreateWellPage(), "createwell")
+        self.register_page(self.theis_page_obj, "theispage")
+        self.register_page(self.cooper_jacob_page_obj, "cooperjacobpage")
+        self.register_page(self.theis_recovery_page_obj, "theisrecoverypage")
+        self.register_page(AboutUsPage(), "aboutus")
+        self.register_page(HelpPage(), "helppage")
+        self.goto("homepage")
 
     def register_page(self, page, name):
         self.pages[name] = page
@@ -132,21 +136,22 @@ class MultiPageApp(QMainWindow):
     def goto(self, name):
         if name in self.pages:
             self.stacked_widget.setCurrentWidget(self.pages[name])
-            if (name == 'welltable'):
+            if name == "welltable":
                 self.well_table_obj.load_data_from_database()
 
 
-if hasattr(Qt, 'AA_EnableHighDpiScaling'):
+if hasattr(Qt, "AA_EnableHighDpiScaling"):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
-if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
+if hasattr(Qt, "AA_UseHighDpiPixmaps"):
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
-if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
+if hasattr(Qt, "AA_UseHighDpiPixmaps"):
     QApplication.setHighDpiScaleFactorRoundingPolicy(
-        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
+        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
+    )
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, 'icon.ico')))
+    app.setWindowIcon(QtGui.QIcon(os.path.join(basedir, "icon.ico")))
 
     main_app = MultiPageApp()
     main_app.showMaximized()

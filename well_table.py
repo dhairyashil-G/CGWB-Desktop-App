@@ -10,8 +10,8 @@ class WellTablePage(PageWindow, QObject):
 
     def __init__(self):
         super(WellTablePage, self).__init__()
-        uic.loadUi('well_table.ui', self)
-        self.setWindowTitle('AquaProbe')
+        uic.loadUi("well_table.ui", self)
+        self.setWindowTitle("AquaProbe")
         self.setup_ui()
 
     def setup_ui(self):
@@ -22,10 +22,8 @@ class WellTablePage(PageWindow, QObject):
         self.setup_menu_connections()
 
     def setup_status_bar(self):
-        copyright_label = QLabel(
-            "Copyright © 2024 AquaProbe. All rights reserved.")
-        copyright_label.setAlignment(
-            QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         self.statusbar.addPermanentWidget(copyright_label)
 
     def setup_table_widget(self):
@@ -50,29 +48,30 @@ class WellTablePage(PageWindow, QObject):
         self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
-        self.goto('aboutus')
+        self.goto("aboutus")
 
     def goto_home(self):
-        self.goto('homepage')
+        self.goto("homepage")
 
     def goto_help(self):
-        self.goto('helppage')
+        self.goto("helppage")
 
     def goto_welltable(self):
-        self.goto('welltable')
+        self.goto("welltable")
 
     def goback(self):
-        self.goto('homepage')
+        self.goto("homepage")
 
     def gocreatewell(self):
-        self.goto('createwell')
+        self.goto("createwell")
 
     def load_data_from_database(self):
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
 
         cursor.execute(
-            'SELECT "Id","WellName", "Location", "Coordinates", "PerformedBy" FROM WellData')
+            'SELECT "Id","WellName", "Location", "Coordinates", "PerformedBy" FROM WellData'
+        )
         selected_columns_data = cursor.fetchall()
 
         self.table_widget.setRowCount(len(selected_columns_data))
@@ -89,11 +88,9 @@ class WellTablePage(PageWindow, QObject):
             buttons = [next_button, read_button, update_button, delete_button]
             for idx, button in enumerate(buttons, 1):
                 button.setProperty("row", row_index)
-                button.clicked.connect(
-                    lambda _, idx=idx: self.on_button_clicked(idx))
+                button.clicked.connect(lambda _, idx=idx: self.on_button_clicked(idx))
 
-                self.table_widget.setCellWidget(
-                    row_index, col_index + idx, button)
+                self.table_widget.setCellWidget(row_index, col_index + idx, button)
 
         conn.close()
 
@@ -107,22 +104,24 @@ class WellTablePage(PageWindow, QObject):
             self.delete_row(row)
         elif button_idx == 3:
             self.well_id_signal.emit(int(row))
-            self.goto('updatewell')
+            self.goto("updatewell")
         elif button_idx == 2:
             self.well_id_signal.emit(int(row))
-            self.goto('readwell')
+            self.goto("readwell")
         elif button_idx == 1:
             self.well_id_signal.emit(int(row))
-            self.goto('preview')
+            self.goto("preview")
 
     def delete_row(self, row):
         confirmation = QMessageBox.question(
-            self, "Confirmation", "Are you sure you want to delete this well?",
-            QMessageBox.Yes | QMessageBox.No
+            self,
+            "Confirmation",
+            "Are you sure you want to delete this well?",
+            QMessageBox.Yes | QMessageBox.No,
         )
 
         if confirmation == QMessageBox.Yes:
-            conn = sqlite3.connect('database.db')
+            conn = sqlite3.connect("database.db")
             cursor = conn.cursor()
 
             try:

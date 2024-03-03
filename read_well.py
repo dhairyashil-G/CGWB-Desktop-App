@@ -27,7 +27,9 @@ class PandasModel(QtCore.QAbstractTableModel):
     def data(self, index, role=QtCore.Qt.DisplayRole):
         if index.isValid():
             if role == QtCore.Qt.DisplayRole:
-                return QtCore.QVariant(str(self._data.iloc[index.row()][index.column()]))
+                return QtCore.QVariant(
+                    str(self._data.iloc[index.row()][index.column()])
+                )
         return QtCore.QVariant()
 
 
@@ -36,13 +38,11 @@ class ReadWellPage(PageWindow):
 
     def __init__(self):
         super(ReadWellPage, self).__init__()
-        uic.loadUi('read_well.ui', self)
-        self.setWindowTitle('AquaProbe')
+        uic.loadUi("read_well.ui", self)
+        self.setWindowTitle("AquaProbe")
         self.statusbar.showMessage("Version 1.0.0")
-        copyright_label = QLabel(
-            "Copyright © 2024 AquaProbe. All rights reserved.")
-        copyright_label.setAlignment(
-            QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         self.statusbar.addPermanentWidget(copyright_label)
 
         ReadWellPage.well_id_global = None
@@ -58,16 +58,16 @@ class ReadWellPage(PageWindow):
         self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
-        self.goto('aboutus')
+        self.goto("aboutus")
 
     def goto_home(self):
-        self.goto('homepage')
+        self.goto("homepage")
 
     def goto_help(self):
-        self.goto('helppage')
+        self.goto("helppage")
 
     def goto_welltable(self):
-        self.goto('welltable')
+        self.goto("welltable")
 
     @QtCore.pyqtSlot(int)
     def get_well(self, row):
@@ -76,7 +76,7 @@ class ReadWellPage(PageWindow):
 
     def refill(self):
         ReadWellPage.show_data_button_flag = True
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
 
         well_id = ReadWellPage.well_id_global
@@ -91,37 +91,41 @@ class ReadWellPage(PageWindow):
             for i in range(len(column_names)):
                 well_object[column_names[i]] = row[i]
 
-        self.wellname_edit.setText(well_object.get('WellName'))
-        self.location_edit.setText(well_object.get('Location'))
-        coordinates = well_object.get('Coordinates').split()
+        self.wellname_edit.setText(well_object.get("WellName"))
+        self.location_edit.setText(well_object.get("Location"))
+        coordinates = well_object.get("Coordinates").split()
         latitude = coordinates[1]
         longitude = coordinates[3]
         self.latitude_edit.setText(latitude)
         self.longitude_edit.setText(longitude)
-        self.performedby_edit.setText(well_object.get('PerformedBy'))
-        self.startdatetime_edit.setDateTime(QtCore.QDateTime.fromString(
-            well_object.get('StartDatetime'), QtCore.Qt.ISODate))
-        self.enddatetime_edit.setDateTime(QtCore.QDateTime.fromString(
-            well_object.get('EndDatetime'), QtCore.Qt.ISODate))
-        self.welldepth_spinbox.setValue(well_object.get('WellDepth'))
-        self.welldiameter_spinbox.setValue(well_object.get('WellDiameter'))
-        self.staticwaterlevel_spinbox.setValue(
-            well_object.get('StaticWaterLevel'))
-        self.pumpingrate_spinbox.setValue(well_object.get('PumpingRate'))
+        self.performedby_edit.setText(well_object.get("PerformedBy"))
+        self.startdatetime_edit.setDateTime(
+            QtCore.QDateTime.fromString(
+                well_object.get("StartDatetime"), QtCore.Qt.ISODate
+            )
+        )
+        self.enddatetime_edit.setDateTime(
+            QtCore.QDateTime.fromString(
+                well_object.get("EndDatetime"), QtCore.Qt.ISODate
+            )
+        )
+        self.welldepth_spinbox.setValue(well_object.get("WellDepth"))
+        self.welldiameter_spinbox.setValue(well_object.get("WellDiameter"))
+        self.staticwaterlevel_spinbox.setValue(well_object.get("StaticWaterLevel"))
+        self.pumpingrate_spinbox.setValue(well_object.get("PumpingRate"))
         self.timepumpingstopped_spinbox.setValue(
-            well_object.get('TimeWhenPumpingStopped'))
-        self.distancefromwell_spinbox.setValue(
-            well_object.get('DistanceFromWell'))
-        self.file_name = well_object.get('CsvFilePath')
-        self.geology_edit.setText(well_object.get('Geology'))
-        zones_tapped_list = eval(well_object.get('ZonesTappedIn'))
+            well_object.get("TimeWhenPumpingStopped")
+        )
+        self.distancefromwell_spinbox.setValue(well_object.get("DistanceFromWell"))
+        self.file_name = well_object.get("CsvFilePath")
+        self.geology_edit.setText(well_object.get("Geology"))
+        zones_tapped_list = eval(well_object.get("ZonesTappedIn"))
 
-        self.csv_file_data_dict = eval(well_object.get('CsvFileData'))
+        self.csv_file_data_dict = eval(well_object.get("CsvFileData"))
 
         self.save_csv_file.setEnabled(True)
 
-        zones_tapped_df = pd.DataFrame(
-            zones_tapped_list, columns=['Start', 'End'])
+        zones_tapped_df = pd.DataFrame(zones_tapped_list, columns=["Start", "End"])
         model = PandasModel(zones_tapped_df)
         self.zones_tapped.setModel(model)
 
@@ -136,42 +140,46 @@ class ReadWellPage(PageWindow):
         return file_extension.lower() == ".csv"
 
     def goback(self):
-        self.goto('welltable')
+        self.goto("welltable")
         self.save_csv_file.setEnabled(False)
         ReadWellPage.show_data_button_flag = False
         self.reset_input_fields()
 
     def goedit(self):
         self.well_id_signal.emit(int(ReadWellPage.well_id_global))
-        self.goto('updatewell')
+        self.goto("updatewell")
         self.reset_input_fields()
 
     def savecsv(self):
         if not ReadWellPage.show_data_button_flag:
-            QMessageBox.information(
-                self, 'Error', 'Please click on show data button!')
+            QMessageBox.information(self, "Error", "Please click on show data button!")
         else:
             current_datetime = datetime.now()
-            formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')
+            formatted_datetime = current_datetime.strftime("%d-%m-%y,%H-%M-%S")
 
             options = QFileDialog.Options()
             file_path, _ = QFileDialog.getSaveFileName(
-                self, "Save Report", f"CSV Data {formatted_datetime}", "CSV Files (*.csv)", options=options)
+                self,
+                "Save Report",
+                f"CSV Data {formatted_datetime}",
+                "CSV Files (*.csv)",
+                options=options,
+            )
 
             if file_path:
                 data = self.csv_file_data_dict
 
-                with open(file_path, 'w', newline='') as csvfile:
-                    fieldnames = ['Time', 'Drawdown']
+                with open(file_path, "w", newline="") as csvfile:
+                    fieldnames = ["Time", "Drawdown"]
                     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
                     writer.writeheader()
-                    for i in range(len(data['Time'])):
+                    for i in range(len(data["Time"])):
                         writer.writerow(
-                            {'Time': data['Time'][i], 'Drawdown': data['Drawdown'][i]})
+                            {"Time": data["Time"][i], "Drawdown": data["Drawdown"][i]}
+                        )
 
-                QMessageBox.information(
-                    self, 'Success', 'CSV saved successfully!')
+                QMessageBox.information(self, "Success", "CSV saved successfully!")
 
     def reset_input_fields(self):
         self.wellname_edit.clear()
@@ -179,8 +187,7 @@ class ReadWellPage(PageWindow):
         self.latitude_edit.clear()
         self.longitude_edit.clear()
         self.performedby_edit.clear()
-        self.startdatetime_edit.setDateTime(
-            QDateTime.currentDateTime())
+        self.startdatetime_edit.setDateTime(QDateTime.currentDateTime())
         self.enddatetime_edit.setDateTime(QDateTime.currentDateTime())
         # self.zones_tapped.clearContents()   -Not working not will fix in future
         self.welldepth_spinbox.setValue(0)

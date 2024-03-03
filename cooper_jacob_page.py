@@ -19,13 +19,11 @@ class CooperJacobPage(PageWindow, QObject):
 
     def __init__(self):
         super(CooperJacobPage, self).__init__()
-        uic.loadUi('cooper_jacob.ui', self)
-        self.setWindowTitle('AquaProbe')
+        uic.loadUi("cooper_jacob.ui", self)
+        self.setWindowTitle("AquaProbe")
         self.statusbar.showMessage("Version 1.0.0")
-        copyright_label = QLabel(
-            "Copyright © 2024 AquaProbe. All rights reserved.")
-        copyright_label.setAlignment(
-            QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
+        copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         self.statusbar.showMessage("Version 1.0.0")
         self.statusbar.addPermanentWidget(copyright_label)
 
@@ -51,16 +49,16 @@ class CooperJacobPage(PageWindow, QObject):
         self.menuHelp.aboutToShow.connect(self.goto_help)
 
     def goto_aboutus(self):
-        self.goto('aboutus')
+        self.goto("aboutus")
 
     def goto_home(self):
-        self.goto('homepage')
+        self.goto("homepage")
 
     def goto_help(self):
-        self.goto('helppage')
+        self.goto("helppage")
 
     def goto_welltable(self):
-        self.goto('welltable')
+        self.goto("welltable")
 
     @pyqtSlot(float)
     def x_intercept_changed(self, value):
@@ -87,26 +85,29 @@ class CooperJacobPage(PageWindow, QObject):
         CooperJacobPage.well_id_global = row
 
     def goback(self):
-        self.goto('preview')
+        self.goto("preview")
 
     def output_info_table(pdf, df):
         table_cell_width = 90
         table_cell_height = 12
-        pdf.set_font('Arial', '', 12)
+        pdf.set_font("Arial", "", 12)
         cols = df.columns
         for row in df.itertuples():
             for col in cols:
                 value = str(getattr(row, col))
                 table_cell_width = 90
-                pdf.cell(table_cell_width, table_cell_height,
-                         value, align='L', border=1)
+                pdf.cell(
+                    table_cell_width, table_cell_height, value, align="L", border=1
+                )
             pdf.ln(table_cell_height)
 
     def calculate_drawdown(self, Q, T, t, S, r):
-        return ((2.303*Q)/(4*math.pi*T))*(math.log10((2.25*T*t)/(S*r*r)))
+        return ((2.303 * Q) / (4 * math.pi * T)) * (
+            math.log10((2.25 * T * t) / (S * r * r))
+        )
 
     def calculate_u(self, r, S, T, t):
-        return (r*r*S)/(4*T*t)
+        return (r * r * S) / (4 * T * t)
 
     def mse(self, actual, predicted):
         actual = np.array(actual)
@@ -116,11 +117,10 @@ class CooperJacobPage(PageWindow, QObject):
         return squared_differences.mean()
 
     def calculate_cooper_jacob(self):
-        self.loading_label.setText(
-            'Please wait...This might take some time...')
+        self.loading_label.setText("Please wait...This might take some time...")
         QApplication.processEvents()
         well_id = CooperJacobPage.well_id_global
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM WellData WHERE "Id" = ?', (well_id,))
         row = cursor.fetchone()
@@ -131,35 +131,37 @@ class CooperJacobPage(PageWindow, QObject):
             for i in range(len(column_names)):
                 well_object[column_names[i]] = row[i]
 
-        Q = well_object.get('PumpingRate')
-        r = well_object.get('DistanceFromWell')
-        t_when_pumping_stopped = well_object.get('TimeWhenPumpingStopped')
-        t_when_pumping_stopped_org = well_object.get('TimeWhenPumpingStopped')
-        csv_file_data = well_object.get('CsvFileData')
+        Q = well_object.get("PumpingRate")
+        r = well_object.get("DistanceFromWell")
+        t_when_pumping_stopped = well_object.get("TimeWhenPumpingStopped")
+        t_when_pumping_stopped_org = well_object.get("TimeWhenPumpingStopped")
+        csv_file_data = well_object.get("CsvFileData")
         dict_csv_data = eval(csv_file_data)
         df_org = pd.DataFrame(dict_csv_data)
         df = pd.DataFrame(dict_csv_data)
-        if (self.adjust_start_time.value() == 0 and self.adjust_end_time.value() == 0):
-            start_time = df['Time'].iloc[0]
+        if self.adjust_start_time.value() == 0 and self.adjust_end_time.value() == 0:
+            start_time = df["Time"].iloc[0]
             end_time = t_when_pumping_stopped
             self.adjust_start_time.setValue(start_time)
             self.adjust_end_time.setValue(end_time)
             CooperJacobPage.start_time = start_time
             CooperJacobPage.end_time = end_time
 
-        df = df.loc[(CooperJacobPage.start_time <= df['Time'])
-                    & (df['Time'] <= CooperJacobPage.end_time)]
+        df = df.loc[
+            (CooperJacobPage.start_time <= df["Time"])
+            & (df["Time"] <= CooperJacobPage.end_time)
+        ]
 
-        x_data = np.array(df['Time'])
-        y_data = np.array(df['Drawdown'])
+        x_data = np.array(df["Time"])
+        y_data = np.array(df["Drawdown"])
 
-        df_org = df_org.loc[(df_org['Time'] <= t_when_pumping_stopped_org)]
-        x_org_data = np.array(df_org['Time'])
-        y_org_data = np.array(df_org['Drawdown'])
+        df_org = df_org.loc[(df_org["Time"] <= t_when_pumping_stopped_org)]
+        x_org_data = np.array(df_org["Time"])
+        y_org_data = np.array(df_org["Drawdown"])
 
-        if (self.adjust_slope.value() == 0 and self.adjust_x_intercept.value() == 0):
+        if self.adjust_slope.value() == 0 and self.adjust_x_intercept.value() == 0:
             slope, y_intercept = np.polyfit(np.log(x_data), y_data, 1)
-            x_intercept = np.exp((-y_intercept)/slope)
+            x_intercept = np.exp((-y_intercept) / slope)
             x_intercept = np.log(x_intercept)  # log of x-intercept
             self.adjust_slope.setValue(round(slope, 6))
             self.adjust_x_intercept.setValue(round(np.exp(x_intercept), 6))
@@ -172,36 +174,37 @@ class CooperJacobPage(PageWindow, QObject):
         # x_intercept=CooperJacobPage.x_intercept
         slope = CooperJacobPage.slope
 
-        y_intercept = ((-slope)*(x_intercept))
+        y_intercept = (-slope) * (x_intercept)
         # y_intercept = ((-slope)*(np.log(x_intercept)))
 
-        delta_s = abs((slope*math.log(100) + y_intercept) -
-                      (slope*math.log(10) + y_intercept))
-        t_0 = np.exp((-y_intercept)/slope)
+        delta_s = abs(
+            (slope * math.log(100) + y_intercept) - (slope * math.log(10) + y_intercept)
+        )
+        t_0 = np.exp((-y_intercept) / slope)
 
-        T = (2.303*Q)/(4*math.pi*delta_s)
-        S = (2.25*T*(t_0/1440)) / (r*r)
+        T = (2.303 * Q) / (4 * math.pi * delta_s)
+        S = (2.25 * T * (t_0 / 1440)) / (r * r)
 
         calculate_drawdown_list = list()
         u_list = list()
         error_list = list()
         for index, row in df.iterrows():
-            drawdown = row['Drawdown']
-            time = row['Time']/1440
+            drawdown = row["Drawdown"]
+            time = row["Time"] / 1440
             calculated_drawdown = self.calculate_drawdown(Q, T, time, S, r)
             calculate_drawdown_list.append(calculated_drawdown)
             u = self.calculate_u(r, S, T, time)
             u_list.append(u)
-            error = (drawdown-calculated_drawdown)/drawdown
+            error = (drawdown - calculated_drawdown) / drawdown
             error_list.append(error)
 
         df_calc = df
-        df_calc['Calculated_Drawdown'] = calculate_drawdown_list
-        df_calc['u'] = u_list
-        df_calc['Error'] = error_list
+        df_calc["Calculated_Drawdown"] = calculate_drawdown_list
+        df_calc["u"] = u_list
+        df_calc["Error"] = error_list
         df_calc = df_calc.round(decimals=3)
 
-        mse_error = self.mse(df['Drawdown'], df['Calculated_Drawdown'])
+        mse_error = self.mse(df["Drawdown"], df["Calculated_Drawdown"])
 
         self.transmissivity_value.setText(str(round(T, 3)))
         self.storativity_value.setText("{:.8f}".format(S))
@@ -209,18 +212,25 @@ class CooperJacobPage(PageWindow, QObject):
 
         fig = go.Figure()
 
-        fig.add_trace(go.Scatter(x=x_org_data, y=y_org_data,
-                                 mode='lines+markers',
-                                 name='Actual Data'))
+        fig.add_trace(
+            go.Scatter(
+                x=x_org_data, y=y_org_data, mode="lines+markers", name="Actual Data"
+            )
+        )
 
-        fig.add_trace(go.Scatter(x=x_data, y=y_data,
-                                 mode='lines+markers',
-                                 name='Selected Data'))
+        fig.add_trace(
+            go.Scatter(x=x_data, y=y_data, mode="lines+markers", name="Selected Data")
+        )
         fig.update_xaxes(type="log")
 
-        fig.add_trace(go.Scatter(x=np.exp((y_data - y_intercept)/slope), y=y_data,
-                                 mode='lines+markers',
-                                 name='Fitting Line'))
+        fig.add_trace(
+            go.Scatter(
+                x=np.exp((y_data - y_intercept) / slope),
+                y=y_data,
+                mode="lines+markers",
+                name="Fitting Line",
+            )
+        )
         fig.update_xaxes(type="log")
 
         fig.update_layout(
@@ -229,7 +239,7 @@ class CooperJacobPage(PageWindow, QObject):
             yaxis_title="Drawdown (m)",
             legend_title="Legend",
             title_x=0.5,
-            xaxis=dict(rangeslider=dict(visible=True))
+            xaxis=dict(rangeslider=dict(visible=True)),
         )
 
         fig.update_layout(
@@ -246,50 +256,46 @@ class CooperJacobPage(PageWindow, QObject):
             ]
         )
 
-        self.graph_container.setHtml(fig.to_html(include_plotlyjs='cdn'))
+        self.graph_container.setHtml(fig.to_html(include_plotlyjs="cdn"))
 
         pdf = FPDF()
         pdf.add_page()
 
-        pdf.set_font('Arial', 'B', 10)
-        pdf.image('logo.png', x=10, y=10, w=25, h=30)
-        pdf.image('aquaprobe_logo.png',
-                  x=pdf.w-60, y=10, w=50, h=25)
-        pdf.cell(0, 30, '', ln=1)
+        pdf.set_font("Arial", "B", 10)
+        pdf.image("logo.png", x=10, y=10, w=25, h=30)
+        pdf.image("aquaprobe_logo.png", x=pdf.w - 60, y=10, w=50, h=25)
+        pdf.cell(0, 30, "", ln=1)
 
-        pdf.set_font('Arial', 'B', 10)
-        pdf.cell(0, 10, 'CENTRAL GROUND WATER BOARD (CGWB)', ln=1)
+        pdf.set_font("Arial", "B", 10)
+        pdf.cell(0, 10, "CENTRAL GROUND WATER BOARD (CGWB)", ln=1)
         pdf.ln(5)
 
-        pdf.set_font('Arial', 'BU', 18)
-        pdf.cell(0, 10, 'Cooper Jacob Test Report', align='C', ln=1)
+        pdf.set_font("Arial", "BU", 18)
+        pdf.cell(0, 10, "Cooper Jacob Test Report", align="C", ln=1)
         pdf.ln(10)
 
-        pdf.set_font('Arial', '', 12)
+        pdf.set_font("Arial", "", 12)
         lst1 = list()
         lst2 = list()
         lst1.append(f"Well Name: {well_object.get('WellName')}")
         lst2.append(f"Performed By: {well_object.get('PerformedBy')}")
         lst1.append(f"Location: {well_object.get('Location')}")
         lst2.append(f"{well_object.get('Coordinates')}")
-        startdatetime = well_object.get('StartDatetime').replace('T', ' ')
-        enddatetime = well_object.get('EndDatetime').replace('T', ' ')
+        startdatetime = well_object.get("StartDatetime").replace("T", " ")
+        enddatetime = well_object.get("EndDatetime").replace("T", " ")
+        lst1.append(f"Start Datetime: {startdatetime} ")
+        lst2.append(f"End Datetime: {enddatetime} ")
         lst1.append(
-            f"Start Datetime: {startdatetime} ")
-        lst2.append(
-            f"End Datetime: {enddatetime} ")
-        lst1.append(
-            f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min")
+            f"Duration Of Pumping Test: {well_object.get('TimeWhenPumpingStopped')} min"
+        )
         lst2.append(f"Geology: {well_object.get('Geology')}")
-        zones_list = eval(well_object.get('ZonesTappedIn'))
+        zones_list = eval(well_object.get("ZonesTappedIn"))
         lst1.append(f"Number of Zones Tapped: {len(zones_list)}")
-        lst2.append(
-            f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
+        lst2.append(f"Static Water Level: {well_object.get('StaticWaterLevel')} m-bgl")
         lst1.append(f"Well Depth: {well_object.get('WellDepth')} m")
         lst2.append(f"Well Diameter: {well_object.get('WellDiameter')} m")
         lst1.append(f"Pumping Rate: {well_object.get('PumpingRate')} m³/day")
-        lst2.append(
-            f"Distance from Well: {well_object.get('DistanceFromWell')} m")
+        lst2.append(f"Distance from Well: {well_object.get('DistanceFromWell')} m")
         lst1.append(f"Analysis Start Time: {CooperJacobPage.start_time} min")
         lst2.append(f"Analysis End Time: {CooperJacobPage.end_time} min")
         pdf.set_font("Arial", "", 12)
@@ -330,43 +336,47 @@ class CooperJacobPage(PageWindow, QObject):
 
         pdf.add_page()
         pdf.ln(15)
-        pdf.set_font('Arial', 'B', 13)
+        pdf.set_font("Arial", "B", 13)
         pdf.cell(0, 10, "Graphical Interpretation", ln=1)
         fig.write_image("fig.png")
-        pdf.image('fig.png', w=200, h=150)
+        pdf.image("fig.png", w=200, h=150)
         os.remove("fig.png")
         pdf.ln(5)
-        pdf.set_font('Arial', 'B', 12)
-        pdf.cell(0, 10, f'Transmissivity : {round(T, 3)} m²/day', ln=1)
+        pdf.set_font("Arial", "B", 12)
+        pdf.cell(0, 10, f"Transmissivity : {round(T, 3)} m²/day", ln=1)
         pdf.cell(0, 10, f'Storativity : {"{:.8f}".format(S)}', ln=1)
         # pdf.cell(0, 10, f'Root Mean Square Error = {round(mse_error, 3)}%', ln=1)
         pdf.ln(5)
 
         CooperJacobPage.pdf_obj = pdf
 
-        self.loading_label.setText('')
+        self.loading_label.setText("")
         self.cooper_jacob_analyzed.emit(True)
 
         fig_json = pio.to_json(fig)
         signal_data = {
-            'fig_json': fig_json,
-            'slope': slope,
-            'x_intercept': np.exp(x_intercept),
-            'y_intercept': y_intercept,
-            'transmissivity': T,
-            'storativity': S,
-            'start_time': CooperJacobPage.start_time,
-            'end_time': CooperJacobPage.end_time
+            "fig_json": fig_json,
+            "slope": slope,
+            "x_intercept": np.exp(x_intercept),
+            "y_intercept": y_intercept,
+            "transmissivity": T,
+            "storativity": S,
+            "start_time": CooperJacobPage.start_time,
+            "end_time": CooperJacobPage.end_time,
         }
         self.cooper_jacob_signal_data.emit(signal_data)
 
     def create_report(self):
         current_datetime = datetime.now()
-        formatted_datetime = current_datetime.strftime('%d-%m-%y,%H-%M-%S')
+        formatted_datetime = current_datetime.strftime("%d-%m-%y,%H-%M-%S")
         options = QFileDialog.Options()
         file_path, _ = QFileDialog.getSaveFileName(
-            self, "Save Report", f"Cooper Jacob Report {formatted_datetime}", "PDF Files (*.pdf)", options=options)
-        if (file_path):
-            CooperJacobPage.pdf_obj.output(f'{file_path}')
-            QMessageBox.information(
-                self, 'Success', 'Report saved successfully!')
+            self,
+            "Save Report",
+            f"Cooper Jacob Report {formatted_datetime}",
+            "PDF Files (*.pdf)",
+            options=options,
+        )
+        if file_path:
+            CooperJacobPage.pdf_obj.output(f"{file_path}")
+            QMessageBox.information(self, "Success", "Report saved successfully!")
