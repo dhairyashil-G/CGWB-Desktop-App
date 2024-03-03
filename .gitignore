@@ -1,7 +1,0 @@
-/.vscode
-/virt
-database.db
-__pycache__
-.pylintrc
-build/
-dist/
