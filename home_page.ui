@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-327</y>
          <width>1013</width>
-         <height>1600</height>
+         <height>1816</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -36,6 +36,28 @@
            <bool>false</bool>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>New_Sinhgad_Logo_2013_300-removebg-preview.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QLabel" name="label_3">
              <property name="maximumSize">
@@ -56,7 +78,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="label_5">
              <property name="maximumSize">
               <size>
                <width>200</width>
@@ -67,17 +89,39 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>aquaprobe_logo.png</pixmap>
+              <pixmap>sih_logo.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
              </property>
              <property name="wordWrap">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>300</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>aquaprobe_logo.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -91,7 +135,7 @@
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>380</height>
+            <height>450</height>
            </size>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -120,7 +164,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Introducing AquaProbe – Empowering Water Management</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Introducing AquaProbe – Empowering Water Management&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -129,7 +173,7 @@
              <property name="minimumSize">
               <size>
                <width>850</width>
-               <height>200</height>
+               <height>270</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -152,10 +196,29 @@
               <number>1</number>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;AquaProbe, an innovative desktop application, emerges as the result of our dedication and participation in the Smart India Hackathon 2022. Crafted to address the pressing issues of groundwater depletion and contamination, AquaProbe stands as a pivotal tool for groundwater professionals, researchers, students, teachers, and beyond.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;In response to the urgent need for understanding aquifer reactions, AquaProbe facilitates the analysis and interpretation of pumping test data. Leveraging cutting-edge methods like Theiss, Theiss recovery, and Jacob, this freeware redefines the process of input, analysis, visualization, interpretation, and reporting for aquifer test data.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Our application plays a crucial role in water resource studies by allowing users to estimate significant aquifer parameters such as Transmissivity, Storativity, and Specific Yield. With a user-friendly interface, AquaProbe enables professionals to input data directly or import it seamlessly from existing sources, streamlining decision-making processes.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Embark on a journey towards sustainable water management with AquaProbe – your comprehensive solution for advancing groundwater-related research and safeguarding our invaluable water resources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;- AquaProbe is a desktop application for analysis of pumping test data.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- The application was developed under the guidance of Central Ground Water Board (CGWB) as a part of Smart India Hackathon 2022. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- The application facilitates the estimation of aquifer parameters such as Transmissivity, Storativity and Specific Yield. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- It facilities for analysis of pumping test data using Cooper Jacob, Theis and Theis Recovery method.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- AquaProbe is a freeware. However please read the detailed terms of use.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- In scientific publications/reports, use of this application may be cited as follows: Surname, Initial. (Year). AquaProbe – a desktop application for analysis of pumping test data developed under SIH 2022, Central Ground Water Board (CGWB).&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;By using the application, you acknowledge and agree to abide by the terms of use.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QPushButton" name="review_terms_button">
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Review the Terms of Use</string>
              </property>
             </widget>
            </item>
