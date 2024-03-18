@@ -71,7 +71,7 @@ class HomePage(PageWindow):
         if self.currentIndex >= len(self.images):
             self.currentIndex = 0
         self.carousel_images_label.setPixmap(self.images[self.currentIndex])
-    
+
     def show_terms_of_use(self):
         terms_text = """
         <html><head/><body><p>
