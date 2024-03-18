@@ -24,7 +24,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-314</y>
          <width>1013</width>
          <height>1762</height>
         </rect>
@@ -161,7 +161,7 @@
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">margin-bottom: 5px;</string>
              </property>
              <property name="text">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Introducing AquaProbe – Empowering Water Management&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -216,6 +216,9 @@
                <width>200</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">margin-top: 10px;</string>
              </property>
              <property name="text">
               <string>View Terms of Use</string>
