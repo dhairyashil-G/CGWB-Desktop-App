@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-327</y>
+         <y>-1080</y>
          <width>1013</width>
-         <height>1816</height>
+         <height>1762</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -196,7 +196,7 @@
               <number>1</number>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;- AquaProbe is a desktop application for analysis of pumping test data.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- The application was developed under the guidance of Central Ground Water Board (CGWB) as a part of Smart India Hackathon 2022. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- The application facilitates the estimation of aquifer parameters such as Transmissivity, Storativity and Specific Yield. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- It facilities for analysis of pumping test data using Cooper Jacob, Theis and Theis Recovery method.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- AquaProbe is a freeware. However please read the detailed terms of use.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- In scientific publications/reports, use of this application may be cited as follows: Surname, Initial. (Year). AquaProbe – a desktop application for analysis of pumping test data developed under SIH 2022, Central Ground Water Board (CGWB).&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;By using the application, you acknowledge and agree to abide by the terms of use.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;- AquaProbe is a desktop application for analysis of pumping test data.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- The application was developed under the guidance of Central Ground Water Board (CGWB) as a part of Smart India Hackathon 2022. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- The application facilitates the estimation of aquifer parameters such as Transmissivity, Storativity and Specific Yield. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- It facilities for analysis of pumping test data using Cooper Jacob, Theis and Theis Recovery method.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- AquaProbe is a freeware. However please read the detailed terms of use.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- In scientific publications/reports, use of this application may be cited as follows - Gidwani, S., &amp;amp; Ghatage, D. (2024). AquaProbe: A Desktop Application for Water Analysis. Developed under SIH 2022. Central Ground Water Board (CGWB), Ministry of Jal Shakti, Govt of India.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;By using the application, you acknowledge and agree to abide by the terms of use.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -218,7 +218,7 @@
               </size>
              </property>
              <property name="text">
-              <string>Review the Terms of Use</string>
+              <string>View Terms of Use</string>
              </property>
             </widget>
            </item>
@@ -328,62 +328,6 @@
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_8" native="true">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item>
-               <widget class="QPushButton" name="carousel_prev_button">
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>Previous</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="carousel_next_button">
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Next</string>
                 </property>
                </widget>
               </item>
