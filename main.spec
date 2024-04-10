@@ -26,6 +26,7 @@ a = Analysis(
         ('ministry_of_education_logo.png', '.'),
         ('New_Sinhgad_Logo_2013_300-removebg-preview.png', '.'),
         ('sih_logo.png', '.'),
+        ('flowchart.svg', '.'),
         ('carousel_images', 'carousel_images'),
         ('about_us.ui', '.'),
         ('cooper_jacob.ui', '.'),

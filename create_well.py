@@ -160,7 +160,7 @@ class CreateWellPage(PageWindow):
                 json_csv_file_data = json.dumps(csv_file_data)
 
                 # db_path = os.path.join(os.path.dirname(__file__), '..', 'database.db')
-                conn = sqlite3.connect("./database.db")
+                conn = sqlite3.connect("database.db")
                 cursor = conn.cursor()
                 try:
                     cursor.execute(
