@@ -31,7 +31,7 @@ class HomePage(PageWindow):
 
     def setup_carousel(self):
         self.images = [
-            QPixmap("docs/flowchart.svg"),
+            QPixmap("flowchart.svg"),
             QPixmap("Home_image1.gif"),
             QPixmap("carousel_images/C0.jpg"),
             QPixmap("carousel_images/C1.jpg"),
