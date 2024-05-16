@@ -86,7 +86,7 @@ class HomePage(PageWindow):
         
         <b>Changes to Terms:</b> AquaProbe (SIH2022-BV798) reserves the right to change these terms at any time without notice. Your continued use of the Software after any such changes constitutes your acceptance of the new terms.<br><br>
         
-        <b>Citation:</b> The use of the software may be cited as follows - Gidwani, S., & Ghatage, D. (2024). AquaProbe: A Desktop Application for Water Analysis. Developed under SIH 2022. Central Ground Water Board (CGWB), Ministry of Jal Shakti, Govt of India.<br><br>
+        <b>Citation:</b> The use of the software may be cited as follows - Gidwani, S., & Ghatage, D. (2024). AquaProbe: A Desktop Application for Pumping Test Data Analysis. Developed under SIH 2022. Central Ground Water Board (CGWB), Ministry of Jal Shakti, Govt of India.<br><br>
         
         By using the Software, you acknowledge that you have read and understood these terms and agree to be bound by them. If you have any questions about these terms, please contact us at <a href="mailto:aquaprobe.help@gmail.com">aquaprobe.help@gmail.com</a>.
         </p></body></html>

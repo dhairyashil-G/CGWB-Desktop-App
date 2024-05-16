@@ -61,6 +61,8 @@ class TheisPage(PageWindow, QObject):
     @pyqtSlot(float)
     def start_time_changed(self, value):
         TheisPage.start_time = value
+        self.adjust_storativity.setDecimals(8)
+        self.adjust_storativity.setSingleStep(0.00000001)
         self.adjust_storativity.setValue(0)
         self.adjust_transmissivity.setValue(0)
 
