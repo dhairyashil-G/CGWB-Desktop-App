@@ -9,7 +9,7 @@ class AboutUsPage(PageWindow):
         super(AboutUsPage, self).__init__()
         self.setup_ui()
         self.setWindowTitle("AquaProbe")
-        self.set_statusbar_message("Version 1.0.0")
+        self.set_statusbar_message("Version 1.0.0-beta")
         self.add_copyright_label()
         self.setup_connections()
 

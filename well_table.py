@@ -15,7 +15,7 @@ class WellTablePage(PageWindow, QObject):
         self.setup_ui()
 
     def setup_ui(self):
-        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.showMessage("Version 1.0.0-beta")
         self.setup_status_bar()
         self.setup_table_widget()
         self.setup_buttons()

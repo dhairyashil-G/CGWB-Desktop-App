@@ -16,7 +16,7 @@ class HomePage(PageWindow):
     def setup_status_bar(self):
         copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
         copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.showMessage("Version 1.0.0-beta")
         self.statusbar.addPermanentWidget(copyright_label)
 
     def setup_navigation(self):

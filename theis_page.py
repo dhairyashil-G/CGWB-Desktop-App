@@ -26,10 +26,10 @@ class TheisPage(PageWindow, QObject):
         TheisPage.end_time = 0
         uic.loadUi("theis.ui", self)
         self.setWindowTitle("AquaProbe")
-        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.showMessage("Version 1.0.0-beta")
         copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
         copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.showMessage("Version 1.0.0-beta")
         self.statusbar.addPermanentWidget(copyright_label)
 
         self.plot_button.clicked.connect(self.calculate_theis)

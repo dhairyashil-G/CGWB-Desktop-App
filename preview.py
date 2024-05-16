@@ -44,10 +44,10 @@ class PreviewPage(PageWindow, QObject):
         super(PreviewPage, self).__init__()
         uic.loadUi("preview.ui", self)
         self.setWindowTitle("AquaProbe")
-        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.showMessage("Version 1.0.0-beta")
         copyright_label = QLabel("Copyright © 2024 AquaProbe. All rights reserved.")
         copyright_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
-        self.statusbar.showMessage("Version 1.0.0")
+        self.statusbar.showMessage("Version 1.0.0-beta")
         self.statusbar.addPermanentWidget(copyright_label)
 
         self.back_button.clicked.connect(self.goback)
